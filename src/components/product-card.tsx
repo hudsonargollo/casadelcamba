@@ -8,6 +8,14 @@ import { QuickAdd } from "./quick-add";
 /** Simple product icon (package + label) used in the category label row. */
 const LOW_STOCK = 5;
 
+const CATEGORY_LABEL: Record<string, string> = {
+  burgers: "Sándwich",
+  imperdibles: "Imperdible",
+  "plus-days": "Plus Days",
+  bebidas: "Bebida",
+  postres: "Postre",
+};
+
 /** "In stock" / "Only 3 left" / "Out of stock" under a regular price. */
 function Availability({ stock }: { stock: number }) {
   const [dot, text, label] =
@@ -57,7 +65,7 @@ export function ProductCard({ product }: { product: ProductView }) {
         <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" aria-hidden="true" />
 
         <p className="text-[0.68rem] uppercase tracking-[0.18em] text-muted">
-          {product.category.name}
+          {CATEGORY_LABEL[product.category.slug] ?? product.category.name}
         </p>
         <Link href={`/product/${product.slug}`}>
           <h3 className="mt-1 line-clamp-2 font-display text-lg leading-snug text-ink transition-colors group-hover:text-accent-strong">

@@ -30,10 +30,10 @@ const orgJsonLd = {
   "@type": "FastFoodRestaurant",
   name: "SantaMaria Fast Food",
   url: siteUrl,
-  slogan: "Burgers hechas al momento, sabor de barrio",
+  slogan: "Las Santa María hechas a la plancha, sabor de barrio",
   description:
-    "SantaMaria Fast Food — hamburguesas, combos y bebidas en 13 sucursales de Santa Cruz, Bolivia. Delivery y retiro en tienda con pago contra entrega.",
-  servesCuisine: ["Hamburguesas", "Comida rápida", "Combos"],
+    "SantaMaria Fast Food — sándwiches Santa María, combos y bebidas en 13 sucursales de Santa Cruz, Bolivia. Delivery y retiro en tienda con pago contra entrega.",
+  servesCuisine: ["Sándwiches", "Comida rápida", "Combos"],
   priceRange: "Bs 10–35",
   address: {
     "@type": "PostalAddress",
@@ -282,7 +282,7 @@ export default async function HomePage() {
                 <span className="brand-text">de barrio</span>
               </h2>
               <p className="mt-5 text-pretty leading-relaxed text-ink/80">
-                En SantaMaria Fast Food hacemos hamburguesas como nos gustan: carne a la
+                En SantaMaria Fast Food armamos Santa Marías como nos gustan: carne a la
                 plancha, pan tostado y queso que se derrite. Sin vueltas y con el sabor de
                 siempre.
               </p>

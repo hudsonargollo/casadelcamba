@@ -8,15 +8,27 @@ import { parseProductFilters } from "@/lib/filters";
 import { ShopBrowser } from "@/components/shop/shop-browser";
 import { Emblem } from "@/components/brand/emblem";
 
+// The category slug stays "burgers" for URLs; storefront copy speaks
+// "sándwich / Santa María", which is what people actually order.
+const CATEGORY_COPY: Record<string, { title: string; description: string }> = {
+  burgers: {
+    title: "Sándwiches",
+    description:
+      "Las Santa María de la casa: pan tostado a la plancha, carne al jugo y queso derretido.",
+  },
+};
+
 export async function generateMetadata({
   params,
 }: PageProps<"/shop/[category]">): Promise<Metadata> {
   const { category } = await params;
   const cat = await getCategoryBySlug(category);
   if (!cat) return { title: "No encontrado" };
+  const copy = CATEGORY_COPY[cat.slug];
   return {
-    title: cat.name,
-    description: cat.description ?? `Pide ${cat.name.toLowerCase()} en SantaMaria Fast Food.`,
+    title: copy?.title ?? cat.name,
+    description:
+      copy?.description ?? cat.description ?? `Pide ${cat.name.toLowerCase()} en SantaMaria Fast Food.`,
     alternates: { canonical: `/shop/${cat.slug}` },
   };
 }
@@ -74,8 +86,8 @@ export default async function CategoryPage({
   return (
     <ShopBrowser
       eyebrow="El menú"
-      title={cat.name}
-      description={cat.description}
+      title={CATEGORY_COPY[cat.slug]?.title ?? cat.name}
+      description={CATEGORY_COPY[cat.slug]?.description ?? cat.description}
       products={products}
       facets={facets}
     />

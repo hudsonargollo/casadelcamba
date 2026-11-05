@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { HeaderCart } from "./cart/header-cart";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
+import { useBranchPicker } from "./branch-picker";
 
 const NAV = [
   { label: "Inicio", href: "/" },
@@ -18,6 +19,7 @@ const iconBtn =
 
 export function SiteHeader({ branch = null }: { branch?: { name: string } | null }) {
   const pathname = usePathname();
+  const picker = useBranchPicker();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -81,14 +83,15 @@ export function SiteHeader({ branch = null }: { branch?: { name: string } | null
 
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-1.5 text-brand sm:gap-2 lg:justify-self-end">
-          <Link
-            href={`/sucursal?next=${encodeURIComponent(pathname)}`}
+          <button
+            type="button"
+            onClick={() => picker.open()}
             className="mr-1 hidden items-center gap-1.5 rounded-full border border-[var(--line)] bg-surface/60 px-3 py-1.5 text-xs font-semibold text-brand transition hover:border-accent hover:text-accent-strong md:flex dark:text-ink"
             title="Cambiar sucursal"
           >
             <PinIcon />
             <span className="max-w-[10rem] truncate">{branch?.name ?? "Elegir sucursal"}</span>
-          </Link>
+          </button>
           <Link href="/search" aria-label="Buscar" className={`${iconBtn} hidden sm:flex`}>
             <SearchIcon />
           </Link>
@@ -97,7 +100,7 @@ export function SiteHeader({ branch = null }: { branch?: { name: string } | null
           </Link>
           <ThemeToggle className={iconBtn} />
           <HeaderCart className={iconBtn} />
-          <MobileMenu />
+          <MobileMenu branchName={branch?.name ?? null} />
         </div>
       </div>
 

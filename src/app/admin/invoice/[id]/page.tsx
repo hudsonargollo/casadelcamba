@@ -45,7 +45,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
         <header className="flex items-start justify-between border-b-2 border-[#0d5aa7] pb-5">
           <div>
             <p className="font-display text-3xl font-bold tracking-[0.25em] text-[#0d5aa7]">SantaMaria</p>
-            <p className="mt-1 text-xs italic text-[#5b6b7c]">Hamburguesas y comida rápida</p>
+            <p className="mt-1 text-xs italic text-[#5b6b7c]">Sándwiches y comida rápida</p>
             <p className="mt-2 text-xs font-medium text-[#0d5aa7]">
               Sucursal: {order.branch.name} · {order.branch.code}
             </p>

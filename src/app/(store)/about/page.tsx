@@ -6,11 +6,11 @@ import { SplitText } from "@/components/text-reveal";
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Nosotros",
-  description: "SantaMaria Fast Food — hamburguesas hechas al momento y delivery en Santa Cruz, Bolivia, con 13 sucursales.",
+  description: "SantaMaria Fast Food — sándwiches Santa María hechos a la plancha y delivery en Santa Cruz, Bolivia, con 13 sucursales.",
 };
 
 const PILLARS = [
-  { title: "Hecho al momento", body: "Nada espera bajo una lámpara: tu burger se arma cuando confirmas el pedido." },
+  { title: "Hecho al momento", body: "Nada espera bajo una lámpara: tu Santa María se arma cuando confirmas el pedido." },
   { title: "Precios claros", body: "Combos de barrio y promos reales, sin sorpresas al pagar." },
   { title: "Delivery y retiro", body: "Te lo llevamos a la puerta o lo recoges en tu sucursal SantaMaria más cercana." },
 ];

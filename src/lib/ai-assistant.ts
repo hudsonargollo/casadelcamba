@@ -69,7 +69,7 @@ async function storeKnowledge(): Promise<{
   for (const p of products) counts.set(p.category.slug, (counts.get(p.category.slug) ?? 0) + 1);
 
   const text = `# Tienda
-SantaMaria Fast Food — hamburguesas y comida rápida en Santa Cruz, Bolivia, con 13 sucursales: burgers a la plancha, combos, papas, postres y bebidas. Precios en Bs (BOB).
+SantaMaria Fast Food — sándwiches Santa María y comida rápida en Santa Cruz, Bolivia, con 13 sucursales: sándwiches a la plancha, combos, papas, postres y bebidas. Precios en Bs (BOB).
 Páginas del sitio: Menú /shop · Categorías ${categories.map((x) => `/shop/${x.slug}`).join(", ")} · Sucursales /sucursal · Pedidos para eventos /custom · Seguimiento de pedido /account/orders · Delivery y devoluciones /shipping · Ingredientes y cuidado /care · Preguntas frecuentes /faq · Contacto /contact · Cuenta /account (registro /register).
 
 # Categorías

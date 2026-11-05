@@ -6,7 +6,7 @@ import type { CategoryView, ProductView } from "./types";
 export const sampleCategories: CategoryView[] = [
   { id: "c-imperdibles", name: "Imperdibles", slug: "imperdibles", description: "Los favoritos de SantaMaria, los que no puedes dejar pasar." },
   { id: "c-plus-days", name: "Plus Days", slug: "plus-days", description: "Promociones especiales del día." },
-  { id: "c-burgers", name: "Burgers", slug: "burgers", description: "Hamburguesas artesanales SantaMaria." },
+  { id: "c-burgers", name: "Sándwiches", slug: "burgers", description: "Las Santa María de la casa, hechas a la plancha." },
   { id: "c-postres", name: "Postres", slug: "postres", description: "Dulces para cerrar con broche de oro." },
   { id: "c-bebidas", name: "Bebidas", slug: "bebidas", description: "Gaseosas, aguas y aguas saborizadas bien frías." },
 ];

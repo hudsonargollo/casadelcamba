@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { formatPrice } from "@/lib/format";
 import { type StoreSettings, whatsappUrl } from "@/lib/settings-shared";
 
@@ -98,6 +99,7 @@ type Msg = { from: "bot" | "user"; text: string };
 
 
 export function SupportChat({ settings }: { settings: StoreSettings }) {
+  const pathname = usePathname();
   const FAQS = buildFaqs(settings);
   const WA = whatsappUrl(settings);
   const HAS_WHATSAPP = Boolean(WA);
@@ -191,6 +193,9 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
       setTyping(false);
     }
   };
+
+  // The map page has its own floating controls; the chat bubble would cover them.
+  if (pathname === "/sucursal") return null;
 
   return (
     <>

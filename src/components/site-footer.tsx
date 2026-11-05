@@ -61,8 +61,8 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-light/60">
-            Hamburguesas hechas al momento, combos y bebidas bien frías en tus 13
-            sucursales SantaMaria — con delivery y retiro en tienda.
+            Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías
+            en tus 13 sucursales SantaMaria — con delivery y retiro en tienda.
           </p>
           <div className="mt-6 flex gap-3">
             {CONTACT.instagram && (

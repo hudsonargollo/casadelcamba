@@ -17,7 +17,8 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "db:seed-combos": "tsx --env-file=.env prisma/apply-combos.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -26,6 +27,7 @@
     "@anthropic-ai/sdk": "^0.135.0",
     "@netlify/blobs": "^10.7.13",
     "@prisma/client": "6.19.3",
+    "@types/three": "^0.180.0",
     "@vercel/blob": "^2.8.0",
     "framer-motion": "^14.9.0",
     "lightweight-charts": "^4.2.3",
@@ -33,6 +35,7 @@
     "nodemailer": "10.0.10",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "three": "^0.180.0",
     "zod": "4.6.5"
   },
   "devDependencies": {

@@ -3,12 +3,14 @@
 import { preload } from "react-dom";
 import Link from "next/link";
 import { RotatingWord, SplitText } from "./text-reveal";
+import { useBranchPicker } from "./branch-picker";
 
 const HERO = "/imgs/kitchen.jpg";
 
 export function HeroSlider() {
   // The hero photo is the biggest thing above the fold — fetch it straight away.
   preload(HERO, { as: "image", fetchPriority: "high" });
+  const picker = useBranchPicker();
 
   return (
     <section className="relative overflow-hidden bg-brand text-light">
@@ -37,14 +39,14 @@ export function HeroSlider() {
             SantaMaria Fast Food · Santa Cruz
           </span>
           <h1 className="mt-3 max-w-[19ch] font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-balance sm:text-5xl lg:text-[4rem]">
-            <SplitText text="Hamburguesas hechas" delay={80} />{" "}
+            <SplitText text="Una Santa María" delay={80} />{" "}
             <RotatingWord
-              words={["al momento", "a tu gusto", "para compartir"]}
+              words={["a la plancha", "a tu gusto", "para compartir"]}
               className="text-accent-soft"
             />
           </h1>
           <p className="mt-5 max-w-md text-pretty text-lg leading-relaxed text-light/85">
-            Cheese burgers, combos y bebidas bien frías en tus 13 sucursales SantaMaria.
+            Sándwiches Santa María, combos y bebidas bien frías en tus 13 sucursales.
             Pide en línea y recíbelo en tu puerta o retíralo en tienda.
           </p>
 
@@ -55,12 +57,13 @@ export function HeroSlider() {
             >
               Ver el menú
             </Link>
-            <Link
-              href="/sucursal"
+            <button
+              type="button"
+              onClick={() => picker.open({ locate: true })}
               className="inline-block rounded-full border border-light/50 px-8 py-3.5 text-sm font-semibold text-light transition hover:border-accent-soft hover:bg-light/5 hover:text-accent-soft"
             >
               Encontrar sucursal
-            </Link>
+            </button>
           </div>
 
           <p className="mt-8 text-xs font-medium uppercase tracking-[0.16em] text-light/60">

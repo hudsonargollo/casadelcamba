@@ -22,11 +22,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "SantaMaria Fast Food | Hamburguesas en Santa Cruz",
+    default: "SantaMaria Fast Food | Las Santa María en Santa Cruz",
     template: "%s | SantaMaria Fast Food",
   },
   description:
-    "Cheese burgers, combos y bebidas bien frías en tus 13 sucursales SantaMaria. Pide en línea con delivery o retiro en tienda en Santa Cruz, Bolivia.",
+    "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria. Pide en línea con delivery o retiro en tienda en Santa Cruz, Bolivia.",
   keywords: [
     "SantaMaria Fast Food",
     "hamburguesas",
@@ -41,18 +41,18 @@ export const metadata: Metadata = {
   ],
   applicationName: "SantaMaria Fast Food",
   openGraph: {
-    title: "SantaMaria Fast Food | Hamburguesas hechas al momento",
+    title: "SantaMaria Fast Food | Las Santa María hechas a la plancha",
     description:
-      "Cheese burgers, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
+      "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
     type: "website",
     siteName: "SantaMaria Fast Food",
     url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "SantaMaria Fast Food | Hamburguesas hechas al momento",
+    title: "SantaMaria Fast Food | Las Santa María hechas a la plancha",
     description:
-      "Cheese burgers, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
+      "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
   },
 };
 

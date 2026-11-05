@@ -1,8 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useBranchPicker } from "./branch-picker";
+import { distanceKm, formatDistance, getBrowserLocation } from "@/lib/geo";
 
 export type BranchSuggestion = {
   slug: string;
@@ -18,28 +19,16 @@ const MAX_SUGGESTION_KM = 60;
 
 type Phase = "locating" | "found" | "manual";
 
-function distanceKm(aLat: number, aLon: number, bLat: number, bLon: number) {
-  const R = 6371;
-  const rad = (d: number) => (d * Math.PI) / 180;
-  const dLat = rad(bLat - aLat);
-  const dLon = rad(bLon - aLon);
-  const h =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(rad(aLat)) * Math.cos(rad(bLat)) * Math.sin(dLon / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(h));
-}
-
 function nearestBranch(branches: BranchSuggestion[], lat: number, lon: number) {
   let best: { branch: BranchSuggestion; distance: number } | null = null;
   for (const branch of branches) {
-    const distance = distanceKm(lat, lon, branch.latitude, branch.longitude);
+    const distance = distanceKm(
+      { latitude: lat, longitude: lon },
+      { latitude: branch.latitude, longitude: branch.longitude }
+    );
     if (!best || distance < best.distance) best = { branch, distance };
   }
   return best;
-}
-
-function formatDistance(km: number) {
-  return km < 1 ? `${Math.max(50, Math.round((km * 1000) / 50) * 50)} m` : `${km.toFixed(1)} km`;
 }
 
 export function BranchSuggest({
@@ -49,6 +38,7 @@ export function BranchSuggest({
   branches: BranchSuggestion[];
   hasBranch: boolean;
 }) {
+  const picker = useBranchPicker();
   const [open, setOpen] = useState(false);
   const [phase, setPhase] = useState<Phase>("locating");
   const [suggestion, setSuggestion] = useState<{ branch: BranchSuggestion; distance: number } | null>(
@@ -93,37 +83,23 @@ export function BranchSuggest({
     }
 
     let cancelled = false;
-    const fallback = window.setTimeout(() => {
-      if (!cancelled) setPhase("manual");
-    }, 10000);
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        if (cancelled) return;
-        window.clearTimeout(fallback);
-        const found = nearestBranch(
-          branches,
-          position.coords.latitude,
-          position.coords.longitude
-        );
-        if (found && found.distance <= MAX_SUGGESTION_KM) {
-          setSuggestion(found);
-          setPhase("found");
-        } else {
-          setPhase("manual");
-        }
-      },
-      () => {
-        if (cancelled) return;
-        window.clearTimeout(fallback);
+    getBrowserLocation(15000).then((found) => {
+      if (cancelled) return;
+      if (!found) {
         setPhase("manual");
-      },
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 10 * 60 * 1000 }
-    );
+        return;
+      }
+      const nearest = nearestBranch(branches, found.latitude, found.longitude);
+      if (nearest && nearest.distance <= MAX_SUGGESTION_KM) {
+        setSuggestion(nearest);
+        setPhase("found");
+      } else {
+        setPhase("manual");
+      }
+    });
 
     return () => {
       cancelled = true;
-      window.clearTimeout(fallback);
     };
   }, [open, branches]);
 
@@ -226,13 +202,16 @@ export function BranchSuggest({
                   Usar esta sucursal
                 </a>
                 <div className="flex gap-2.5">
-                  <Link
-                    href="/sucursal?next=/"
-                    onClick={dismiss}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      dismiss();
+                      picker.open();
+                    }}
                     className="flex-1 rounded-full border border-[var(--line-strong)] px-5 py-3 text-center text-sm font-semibold text-ink transition hover:border-accent hover:text-accent-strong"
                   >
                     Elegir otra
-                  </Link>
+                  </button>
                   <button
                     type="button"
                     onClick={dismiss}
@@ -243,13 +222,16 @@ export function BranchSuggest({
                 </div>
               </>
             ) : (
-              <Link
-                href="/sucursal?next=/"
-                onClick={dismiss}
+              <button
+                type="button"
+                onClick={() => {
+                  dismiss();
+                  picker.open();
+                }}
                 className="rounded-full bg-accent px-5 py-3 text-center text-sm font-bold text-brand-deep transition hover:bg-accent-soft"
               >
                 Ver sucursales
-              </Link>
+              </button>
             )}
           </div>
         </div>

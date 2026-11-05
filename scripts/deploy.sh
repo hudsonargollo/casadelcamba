@@ -13,6 +13,9 @@ cd "$ROOT"
 echo "==> Installing dependencies"
 npm install --prefer-offline --no-audit --no-fund
 
+echo "==> Generating Prisma client"
+npx prisma generate
+
 echo "==> Applying database migrations"
 npx prisma migrate deploy
 
@@ -20,12 +23,23 @@ echo "==> Building"
 npm run build
 
 echo "==> Syncing build to $DEPLOY_DIR"
-mkdir -p "$DEPLOY_DIR/.next" "$DEPLOY_DIR/node_modules"
-rsync -a --delete "$ROOT/.next/standalone/.next/" "$DEPLOY_DIR/.next/"
-rsync -a --delete "$ROOT/.next/standalone/node_modules/" "$DEPLOY_DIR/node_modules/"
-rsync -a "$ROOT/.next/standalone/server.js" "$ROOT/.next/standalone/package.json" "$DEPLOY_DIR/"
-rsync -a --delete "$ROOT/.next/static/" "$DEPLOY_DIR/.next/static/"
-rsync -a --delete "$ROOT/public/" "$DEPLOY_DIR/public/"
+# Stage the build outside the project first: when building in place, rsync
+# would otherwise copy a tree into a destination that contains its source and
+# delete the static assets it is reading.
+STAGE="$(mktemp -d)"
+trap 'rm -rf "$STAGE"' EXIT
+cp -a "$ROOT/.next/standalone/." "$STAGE/"
+mkdir -p "$STAGE/.next/static"
+cp -a "$ROOT/.next/static/." "$STAGE/.next/static/"
+# node_modules is intentionally NOT synced: the standalone tree only carries the
+# server-side subset, and copying it over the full install breaks later builds
+# (client-only files such as react-dom/client.js go missing).
+mkdir -p "$DEPLOY_DIR/.next"
+rsync -a --delete "$STAGE/.next/" "$DEPLOY_DIR/.next/"
+rsync -a "$STAGE/server.js" "$STAGE/package.json" "$DEPLOY_DIR/"
+if [ "$ROOT" != "$DEPLOY_DIR" ]; then
+  rsync -a --delete "$ROOT/public/" "$DEPLOY_DIR/public/"
+fi
 
 echo "==> Clearing runtime cache"
 rm -rf "$DEPLOY_DIR/.next/cache"

@@ -77,7 +77,7 @@ function shell(title: string, inner: string): string {
     <div style="max-width:560px;margin:0 auto;background:#fbfcfe;border:1px solid #d7e7f7;border-radius:12px;overflow:hidden">
       <div style="background:#0d5aa7;padding:22px;text-align:center">
         <div style="color:#ffc72c;font-size:24px;letter-spacing:6px;font-weight:700">SantaMaria</div>
-        <div style="color:#d6e6f7;font-size:13px;margin-top:4px">Hamburguesas y comida rápida</div>
+        <div style="color:#d6e6f7;font-size:13px;margin-top:4px">Sándwiches y comida rápida</div>
       </div>
       <div style="padding:28px">
         <h1 style="margin:0 0 8px;color:#101820;font-size:22px">${title}</h1>
