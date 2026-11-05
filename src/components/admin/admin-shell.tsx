@@ -73,19 +73,24 @@ export function AdminShell({
         }}
         className="hidden h-full shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-brand text-light md:flex"
       >
-        {/* Brand */}
+        {/* Brand — 3D logo; the square emblem is only for the collapsed rail. */}
         <Link
           href="/admin"
-          style={{ height: 64 }}
-          className="flex shrink-0 items-center gap-3 border-b border-[rgba(141,196,255,0.2)] px-6"
+          aria-label="SantaMaria — panel"
+          className="flex h-16 shrink-0 items-center justify-center border-b border-[rgba(141,196,255,0.2)] px-4 md:h-20"
         >
-          <Emblem size={24} className="shrink-0 text-accent" />
-          <span
-            style={labelStyle}
-            className={`brand-text font-display text-lg font-bold tracking-[0.2em] ${labelCls}`}
-          >
-            SantaMaria
-          </span>
+          {collapsed ? (
+            <Emblem size={34} className="shrink-0 text-accent" />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src="/imgs/logo3d.webp"
+              alt="SantaMaria Fast Food"
+              width={757}
+              height={329}
+              className="h-[68px] w-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
+            />
+          )}
         </Link>
 
         {/* Nav — scrolls vertically, clips labels horizontally */}
@@ -143,10 +148,7 @@ export function AdminShell({
       {/* ── Content column ── */}
       <div className="flex h-full min-w-0 flex-1 flex-col">
         {/* Top bar (fixed height) */}
-        <header
-          style={{ height: 64 }}
-          className="flex shrink-0 items-center justify-between gap-3 border-b border-[var(--line)] bg-brand px-4 text-light"
-        >
+        <header className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-[var(--line)] bg-brand px-4 text-light md:h-20">
           <div className="flex items-center gap-2">
             {/* Desktop sidebar toggle — clear, always visible */}
             <button
@@ -166,11 +168,15 @@ export function AdminShell({
               </svg>
             </button>
             {/* Mobile brand */}
-            <Link
-              href="/admin"
-              className="brand-text font-display text-lg font-bold tracking-[0.2em] md:hidden"
-            >
-              SantaMaria
+            <Link href="/admin" aria-label="SantaMaria — panel" className="md:hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/imgs/logo3d.webp"
+                alt="SantaMaria Fast Food"
+                width={757}
+                height={329}
+                className="h-8 w-auto"
+              />
             </Link>
           </div>
 
