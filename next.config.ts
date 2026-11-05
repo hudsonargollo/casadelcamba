@@ -6,6 +6,12 @@ import path from "node:path";
 const onManagedHost = process.env.NETLIFY === "true" || Boolean(process.env.VERCEL);
 
 const nextConfig: NextConfig = {
+
+  // Product photos are replaced in place on the VPS; keep the optimizer cache
+  // short so swaps propagate to browsers/CDN quickly.
+  images: {
+    minimumCacheTTL: 60,
+  },
   // Self-contained build output for Docker / VPS deployment.
   output: onManagedHost ? undefined : "standalone",
 
