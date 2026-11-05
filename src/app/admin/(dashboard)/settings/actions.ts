@@ -57,7 +57,7 @@ export async function saveContactSettings(_p: SettingsState, fd: FormData): Prom
       whatsapp: z
         .string()
         .transform((v) => v.replace(/[^0-9]/g, ""))
-        .refine((v) => v === "" || (v.length >= 10 && v.length <= 15), "WhatsApp: formato internacional, p. ej. 923001234567"),
+        .refine((v) => v === "" || (v.length >= 10 && v.length <= 15), "WhatsApp: formato internacional, p. ej. 59171234567"),
       city: z.string().max(120),
       hours: z.string().max(120),
     })

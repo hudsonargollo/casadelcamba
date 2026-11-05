@@ -29,7 +29,8 @@ export function aiEnabled(): boolean {
   return Boolean(process.env.ANTHROPIC_API_KEY);
 }
 
-// Legacy catalog field: filler values from the old jewellery seed.
+// Legacy catalog field: `material` now holds the product presentation
+// ("Botella 1 L"); ignore filler values left by the old seed.
 function packOf(p: ProductView): string | null {
   return p.material && !/f[oó]rmula|matem[aá]tica/i.test(p.material) ? p.material : null;
 }

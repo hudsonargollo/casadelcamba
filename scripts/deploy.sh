@@ -6,7 +6,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEPLOY_DIR="${DEPLOY_DIR:-/var/www/santamaria}"
 SERVICE="${SERVICE:-santamaria.service}"
-HEALTH_URL="${HEALTH_URL:-http://127.0.0.1:3003/}"
+HEALTH_URL="${HEALTH_URL:-http://127.0.0.1:3004/}"
 
 cd "$ROOT"
 

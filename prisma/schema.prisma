@@ -37,12 +37,12 @@ model Product {
   name           String
   slug           String      @unique
   description    String?
-  // Price in PKR, stored as Decimal for money-safe math
+  // Price in Bs (bolivianos), stored as Decimal for money-safe math
   price          Decimal     @db.Decimal(10, 2)
   compareAtPrice Decimal?    @db.Decimal(10, 2)
   sku            String?     @unique
   images         String[]    @default([])
-  material       String?     // e.g. "22K Gold", "Sterling Silver"
+  material       String?     // presentation, e.g. "Botella 1 L", "Paquete 6 un."
   specs          String?     // per-product specs, one "Label: Value" per line
   featured       Boolean     @default(false)
   active         Boolean     @default(true)
@@ -166,7 +166,7 @@ model Order {
   customer      Customer?     @relation(fields: [customerId], references: [id])
   customerId    String?
 
-  // Money (PKR)
+  // Money (Bs)
   subtotal      Decimal       @db.Decimal(10, 2)
   shipping      Decimal       @default(0) @db.Decimal(10, 2)
   total         Decimal       @db.Decimal(10, 2)

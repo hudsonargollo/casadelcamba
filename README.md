@@ -131,7 +131,5 @@ npm run db:create-admin
 
 ## Notas
 
-- Guías de despliegue anteriores: [`docs/DEPLOY-VERCEL.md`](docs/DEPLOY-VERCEL.md),
-  [`docs/DEPLOY-NETLIFY.md`](docs/DEPLOY-NETLIFY.md). La referencia técnica
-  histórica está en [`docs/AI-HANDOFF.md`](docs/AI-HANDOFF.md).
+- Despliegue en producción: [`docs/DEPLOY.md`](docs/DEPLOY.md).
 - Datos base del catálogo: [`catalogo-pil.md`](catalogo-pil.md).

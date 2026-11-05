@@ -1,5 +1,5 @@
 # Netlify configuration for the SantaMaria Next.js store
-# Full step-by-step guide: docs/DEPLOY-NETLIFY.md
+# Optional target. Production runs on the VPS — see docs/DEPLOY.md.
 
 [build]
   # 1) apply any pending database migrations to the cloud DB, 2) build the site

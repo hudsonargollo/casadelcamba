@@ -1,18 +1,25 @@
 #!/bin/bash
-# SantaMaria store — Next.js standalone server startup script
+# SantaMaria store — manual fallback for the systemd service.
+#
+# Production is normally managed by systemd (`santamaria.service`), which runs
+# this same server from the deployed directory. Use this script only to run the
+# build by hand (e.g. before the unit exists or for debugging).
+#
+#   systemctl status santamaria.service
+#   systemctl restart santamaria.service
+#
+# Environment (DATABASE_URL, AUTH_SECRET, …) is not read from .env here: export
+# it in the shell first, or point the systemd unit at the file instead.
 set -u
 
-APP_DIR="/root/ClubeMkt/santamaria"
-PORT="${PORT:-3000}"
+APP_DIR="${APP_DIR:-/var/www/santamaria}"
+PORT="${PORT:-3004}"
 HOST="${HOST:-0.0.0.0}"
-LOG="/var/log/santamaria-next.log"
-PIDFILE="/run/santamaria-next.pid"
 
 cd "$APP_DIR" || exit 1
 
-# Use production env (secure defaults). DATABASE_URL / NEXT_PUBLIC_SITE_URL
-# are injected by the platform's environment, never committed.
 export NODE_ENV=production
+export PORT
+export HOSTNAME="$HOST"
 
-# Start the Next.js standalone server
-exec node .next/standalone/server.js
+exec node server.js
