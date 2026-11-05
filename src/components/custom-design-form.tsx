@@ -19,7 +19,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
 
   useEffect(() => {
     if (state.error) toast.error(state.error);
-    else if (state.ok) toast.success("Te contactaremos en 1–2 días hábiles.", { title: "Pedido recibido" });
+    else if (state.ok) toast.success("Nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.", { title: "Pedido recibido" });
   }, [state, toast]);
 
   const bind = (name: string, filter?: (v: string) => string) => bindControl(f, name, filter);
@@ -29,7 +29,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
       <div className="rounded-2xl border border-accent/40 bg-accent/5 px-6 py-12 text-center">
         <h3 className="font-display text-2xl font-semibold text-ink">¡Gracias! Recibimos tu pedido.</h3>
         <p className="mx-auto mt-2 max-w-md text-muted">
-          Nuestro equipo revisará tu pedido y te contactará en 1–2 días hábiles con opciones y precio.
+          Nuestro equipo revisará tu pedido y te contactará lo antes posible para coordinar disponibilidad, opciones y precio.
         </p>
         <Link
           href="/shop"
@@ -101,7 +101,7 @@ export function CustomDesignForm({ whatsappUrl }: { whatsappUrl?: string }) {
       {state.error && <AuthAlert>{state.error}</AuthAlert>}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-muted">Sin pago por ahora — primero te enviamos opciones y precio.</p>
+        <p className="text-xs text-muted">Coordinaremos contigo disponibilidad, opciones y precio.</p>
         <button
           type="submit"
           disabled={pending}

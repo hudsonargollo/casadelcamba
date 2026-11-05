@@ -45,7 +45,7 @@ function buildFaqs(st: StoreSettings): Faq[] {
     id: "location",
     label: "📍 Sucursales y horario",
     keywords: ["ubicación", "ubicacion", "sucursal", "sucursales", "dónde están", "donde estan", "dónde queda", "donde queda", "dirección", "direccion", "santa cruz", "horario", "abierto", "abren"],
-    answer: `Tenemos 13 sucursales en ${st.contact.city}. Atendemos ${st.contact.hours}. Encuentra la más cercana en /sucursal`,
+    answer: `Visita nuestras sucursales en ${st.contact.city}. Atendemos ${st.contact.hours}. Encuentra la más cercana en /sucursal`,
   },
   {
     id: "shipping",
@@ -53,29 +53,29 @@ function buildFaqs(st: StoreSettings): Faq[] {
     keywords: ["envío", "envio", "entrega", "delivery", "demora", "tarda", "llega", "reparto", "moto", "domicilio", "retiro", "pickup", "días", "dias"],
     answer:
       freeThreshold > 0
-        ? `Entregamos ${deliveryTime} en Santa Cruz según tu sucursal. El delivery cuesta ${formatPrice(flatFee)} y es GRATIS en pedidos desde ${formatPrice(freeThreshold)}. También puedes retirar en tienda sin costo.`
-        : `Entregamos ${deliveryTime} en Santa Cruz según tu sucursal. El delivery es GRATIS. También puedes retirar en tienda sin costo.`,
+        ? `Entregamos en Santa Cruz desde tu sucursal. Tiempo estimado de entrega: ${deliveryTime}. Los tiempos dependen de la preparación, la demanda y la distancia. El delivery cuesta ${formatPrice(flatFee)} y es GRATIS en pedidos desde ${formatPrice(freeThreshold)}. También puedes retirar en tienda sin costo.`
+        : `Entregamos en Santa Cruz desde tu sucursal. Tiempo estimado de entrega: ${deliveryTime}. Los tiempos dependen de la preparación, la demanda y la distancia. El delivery es GRATIS. También puedes retirar en tienda sin costo.`,
   },
   {
     id: "payment",
     label: "💵 Pago y contra entrega",
     keywords: ["pago", "pagar", "contra entrega", "cod", "efectivo", "tarjeta", "payment", "cash", "online", "adelanto", "qr"],
     answer:
-      "Puedes pagar contra entrega al recibir tu pedido en tu sucursal SantaMaria — sin adelanto. El pago en línea con tarjeta o billetera aparece al finalizar tu compra cuando está habilitado.",
+      "Puedes pagar contra entrega al recibir tu pedido en tu sucursal SantaMaria. El pago en línea con tarjeta o billetera aparece al finalizar tu compra cuando está habilitado.",
   },
   {
     id: "returns",
     label: "🔄 Cambios en mi pedido",
     keywords: ["devolución", "devolucion", "cambio", "reembolso", "return", "exchange", "refund", "error", "faltó", "falto"],
     answer:
-      "Si algo salió mal con tu pedido, escríbenos dentro de las primeras 2 horas con tu número de pedido y lo resolvemos: reponemos el producto o te devolvemos el monto.",
+      "Si algo salió mal con tu pedido, escríbenos desde /contact con tu número de pedido. Revisaremos tu caso con cuidado para buscar la solución adecuada lo antes posible.",
   },
   {
     id: "custom",
     label: "🎉 Pedidos para eventos",
     keywords: ["especial", "evento", "cumpleaños", "cumpleanos", "por mayor", "volumen", "negocio", "empresa", "custom", "personalizado", "combo"],
     answer:
-      "Armamos combos y pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y te respondemos en 1–2 días hábiles con opciones y precio, sin pago por adelantado.",
+      "Armamos combos y pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.",
   },
   {
     id: "care",

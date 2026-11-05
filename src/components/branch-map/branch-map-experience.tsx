@@ -145,14 +145,16 @@ export function BranchMapExperience({
 
   return (
     <section className="relative isolate h-[calc(100dvh-7rem)] min-h-[340px] overflow-hidden bg-[#051a2f] text-light">
-      <MapStage
-        handle={mapHandle}
-        branches={branches}
-        selectedSlug={selected}
-        nearestSlug={nearest}
-        userLocation={location}
-        onSelect={pick}
-      />
+      {branches.length > 0 && (
+        <MapStage
+          handle={mapHandle}
+          branches={branches}
+          selectedSlug={selected}
+          nearestSlug={nearest}
+          userLocation={location}
+          onSelect={pick}
+        />
+      )}
 
       {/* Vignette + top fade keep the overlays readable over the 3D city */}
       <div

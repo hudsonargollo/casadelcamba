@@ -15,11 +15,13 @@ export function ProductForm({
   categories,
   product,
   submitLabel,
+  isCombo = false,
 }: {
   action: Action;
   categories: { id: string; name: string }[];
   product?: AdminProductDetail;
   submitLabel: string;
+  isCombo?: boolean;
 }) {
   const [state, formAction, pending] = useActionState(action, {});
   const v = state.values; // what the admin typed, kept after a failed save
@@ -37,8 +39,8 @@ export function ProductForm({
       <Row label="Slug" hint="Déjalo en blanco para generarlo automáticamente a partir del nombre">
         <input name="slug" defaultValue={v?.slug ?? product?.slug} className={input} placeholder="automático" />
       </Row>
-      <Row label="Descripción">
-        <textarea name="description" rows={4} defaultValue={v?.description ?? product?.description ?? ""} className={input} />
+      <Row label={isCombo ? "Qué incluye el combo" : "Descripción"} required={isCombo}>
+        <textarea name="description" rows={4} required={isCombo} defaultValue={v?.description ?? product?.description ?? ""} className={input} placeholder={isCombo ? "Ej. 2 Santa María + 2 bebidas de 500 ml" : undefined} />
       </Row>
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -51,21 +53,25 @@ export function ProductForm({
         <Row label="SKU">
           <input name="sku" defaultValue={v?.sku ?? product?.sku ?? ""} className={input} />
         </Row>
-        <Row label="Material">
+        <Row label="Presentación">
           <input name="material" defaultValue={v?.material ?? product?.material ?? ""} className={input} placeholder="Ej. Botella 1 L" />
         </Row>
-        <Row label="Categoría" required>
-          <select key={v?.categoryId ?? "init"} name="categoryId" required defaultValue={v?.categoryId ?? product?.categoryId ?? ""} className={input}>
-            <option value="" disabled>
-              Elige una categoría
-            </option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
+        {isCombo ? (
+          <input type="hidden" name="categoryId" value={product?.categoryId ?? "combos"} />
+        ) : (
+          <Row label="Categoría" required>
+            <select key={v?.categoryId ?? "init"} name="categoryId" required defaultValue={v?.categoryId ?? product?.categoryId ?? ""} className={input}>
+              <option value="" disabled>
+                Elige una categoría
               </option>
-            ))}
-          </select>
-        </Row>
+              {categories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </Row>
+        )}
       </div>
 
       <Row
@@ -77,7 +83,7 @@ export function ProductForm({
           rows={6}
           defaultValue={v?.specs ?? product?.specs ?? ""}
           className={input}
-          placeholder={`Tamaño: 200 ml\nFórmula: Loción ligera\nAroma: Fresco\nEnvase: Botella reciclable`}
+          placeholder={`Presentación: Hamburguesa individual\nIngredientes: Carne, queso y lechuga\nAcompañamiento: Papas fritas\nBebida: 500 ml`}
         />
       </Row>
 
@@ -85,14 +91,23 @@ export function ProductForm({
         <ImageUploader initial={product?.images ?? []} />
       </Row>
 
-      <div className="flex gap-6">
+      {isCombo && !product && (
+        <Row label="Stock inicial por sucursal" hint="Unidades del combo completo en cada sucursal activa. Luego puedes ajustarlas por sucursal en Inventario; no se descuenta stock de sus componentes.">
+          <input name="initialStock" type="number" min="0" max="100000" step="1" defaultValue={v?.initialStock ?? 0} className={input} />
+        </Row>
+      )}
+      {isCombo && product && (
+        <p className="text-sm text-muted">Gestiona las unidades del combo por sucursal desde <Link href="/admin/inventory" className="underline">Inventario</Link>.</p>
+      )}
+
+      <div className="flex flex-wrap gap-6">
         <label className="flex items-center gap-2 text-sm text-ink">
           <input type="checkbox" name="featured" defaultChecked={v ? v.featured === "on" : product?.featured} className="accent-[var(--color-accent-strong)]" />
           Destacado
         </label>
         <label className="flex items-center gap-2 text-sm text-ink">
-          <input type="checkbox" name="active" defaultChecked={v ? v.active === "on" : product?.active ?? true} className="accent-[var(--color-accent-strong)]" />
-          Activo (visible en la tienda)
+          <input type="checkbox" name="active" defaultChecked={v ? v.active === "on" : product?.active ?? !isCombo} className="accent-[var(--color-accent-strong)]" />
+          {isCombo ? "Publicar en el menú" : "Activo (visible en la tienda)"}
         </label>
       </div>
 

@@ -10,5 +10,5 @@ function num(v: string | undefined, fallback: number): number {
 export const FREE_SHIPPING_THRESHOLD = num(process.env.NEXT_PUBLIC_FREE_SHIPPING_THRESHOLD, 0);
 export const FLAT_SHIPPING = num(process.env.NEXT_PUBLIC_FLAT_SHIPPING, 15);
 
-/** Delivery promise shown across the site (product page, FAQ, shipping, chat). */
-export const DELIVERY_TIME = "en 30 a 45 minutos";
+/** Delivery estimate, not a guarantee, shown across the site (product page, FAQ, shipping, chat). */
+export const DELIVERY_TIME = "lo antes posible, según preparación y distancia";

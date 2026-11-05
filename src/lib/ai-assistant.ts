@@ -69,15 +69,15 @@ async function storeKnowledge(): Promise<{
   for (const p of products) counts.set(p.category.slug, (counts.get(p.category.slug) ?? 0) + 1);
 
   const text = `# Tienda
-SantaMaria Fast Food — sándwiches Santa María y comida rápida en Santa Cruz, Bolivia, con 13 sucursales: sándwiches a la plancha, combos, papas, postres y bebidas. Precios en Bs (BOB).
+SantaMaria Fast Food — sándwiches Santa María y comida rápida en nuestras sucursales de Santa Cruz, Bolivia: sándwiches a la plancha, combos, papas, postres y bebidas. Precios en Bs (BOB).
 Páginas del sitio: Menú /shop · Categorías ${categories.map((x) => `/shop/${x.slug}`).join(", ")} · Sucursales /sucursal · Pedidos para eventos /custom · Seguimiento de pedido /account/orders · Delivery y devoluciones /shipping · Ingredientes y cuidado /care · Preguntas frecuentes /faq · Contacto /contact · Cuenta /account (registro /register).
 
 # Categorías
 ${categories.map((x) => `- ${x.name}: ${counts.get(x.slug) ?? 0} productos${(counts.get(x.slug) ?? 0) === 0 ? " (próximamente — el cliente puede tocar 'Avísame' en la página de la categoría)" : ""}`).join("\n")}
 
 # Delivery y retiro
-- Tenemos 13 sucursales en Santa Cruz. El cliente elige su sucursal al empezar el pedido.
-- Delivery en moto, normalmente ${s.deliveryTime}. Los pedidos se preparan al momento.
+- El cliente elige entre nuestras sucursales en Santa Cruz al empezar el pedido.
+- Delivery en moto. Tiempo estimado de entrega: ${s.deliveryTime}. Los pedidos se preparan al momento; los tiempos dependen de la preparación, la demanda y la distancia.
 - ${s.freeThreshold > 0 ? `Costo de delivery ${formatPrice(s.flatFee)}; GRATIS en pedidos desde ${formatPrice(s.freeThreshold)}.` : "Delivery gratis, sin mínimo de compra."}
 - Retiro en tienda sin costo: el cliente elige retiro al finalizar el pedido y le avisamos cuando esté listo.
 - Combos para eventos o pedidos grandes: se coordinan con el equipo por WhatsApp.
@@ -88,13 +88,13 @@ ${categories.map((x) => `- ${x.name}: ${counts.get(x.slug) ?? 0} productos${(cou
 - Se puede comprar como invitado; crear cuenta es opcional.
 
 # Cambios y devoluciones
-- Si el pedido llega incompleto o en mal estado, el cliente debe escribir dentro de las 2 horas con su número de pedido. Reponemos el producto o devolvemos el importe.
+- Si el pedido llega incompleto o en mal estado, el cliente debe contactarnos con su número de pedido. El equipo revisará el caso con cuidado para buscar la solución adecuada lo antes posible.
 
 # Ingredientes y alergias
 - Las burgers se hacen al momento. Trabajamos con pan, lácteos, huevo y sésamo. El cliente debe avisar alergias o restricciones al confirmar el pedido.
 
 # Pedidos para eventos
-- Combos y pedidos por volumen para cumpleaños, eventos y empresas: llena el formulario de /custom (producto, cantidad, fecha). El equipo responde en 1–2 días hábiles con opciones y precio; sin pago por adelantado.
+- Combos y pedidos por volumen para cumpleaños, eventos y empresas: llena el formulario de /custom (producto, cantidad, fecha). El equipo se pondrá en contacto lo antes posible para coordinar disponibilidad, opciones y precio.
 
 # Contacto
 ${[
@@ -113,10 +113,11 @@ ${products.slice(0, 200).map(productLine).join("\n")}`;
   return { text, settings, products, categories };
 }
 
-const INSTRUCTIONS = `You are the online support assistant for SantaMaria Fast Food, a fast-food chain with 13 locations in Santa Cruz, Bolivia that sells burgers, combos, fries, desserts and cold drinks. You chat with customers on the website. The shop delivers by moto in Santa Cruz and offers pickup at any branch; "delivery" always means that local route unless the store information says otherwise.
+const INSTRUCTIONS = `You are the online support assistant for SantaMaria Fast Food, a fast-food chain with branches in Santa Cruz, Bolivia that sells burgers, combos, fries, desserts and cold drinks. You chat with customers on the website. The shop delivers by moto in Santa Cruz and offers pickup at any branch; "delivery" always means that local route unless the store information says otherwise.
 
 How to answer:
 - Answer only from the store information and catalog below, and from track_order results. If something isn't covered (e.g. a policy detail, a product that isn't listed, delivery outside Santa Cruz), say you're not sure and point them to the team (WhatsApp / contact page) instead of guessing.
+- Never guarantee fixed delivery times, response deadlines or resolution times. Treat delivery times as estimates dependent on preparation, demand and distance. For complaints, ask the customer to contact the team with their order number for careful review and the fastest possible appropriate resolution; never promise automatic refunds or replacements. For events, say the team will promptly coordinate availability, options and price; never invent a prepayment policy.
 - Reply in the customer's language and script: Spanish or English — match how they wrote. Default to Spanish.
 - Keep replies short and friendly: 1–4 sentences, plain text, no markdown headings or tables. Use at most a short list of up to 4 items when recommending products.
 - When you mention a product or page, include its site path (e.g. /product/cheese-corazon, /shop/burgers, /account/orders) so it becomes a link.
@@ -251,17 +252,17 @@ function basicReply(
     "Puedes rastrear tu pedido en /account/orders — ingresa tu número de pedido (empieza con SJ-) y el correo usado al pagar. Cuando ya salió, verás si está en preparación, en camino o listo para retiro.";
   if (/\b(?:sj|zr)-[a-z0-9-]+/i.test(q)) return trackAnswer;
   if (has("ubicación", "ubicacion", "dónde están", "donde estan", "dónde queda", "donde queda", "dirección", "direccion", "santa cruz", "sucursal", "horario", "abierto", "abren", "cierran", "atienden"))
-    return `Tenemos 13 sucursales en ${settings.contact.city} y atendemos ${settings.contact.hours}. Encuentra la más cercana en /sucursal o escríbenos por ${contact}.`;
+    return `Visita nuestras sucursales en ${settings.contact.city}; atendemos ${settings.contact.hours}. Encuentra la más cercana en /sucursal o escríbenos por ${contact}.`;
   if (has("rastre", "seguimiento", "estado del pedido", "dónde está mi pedido", "donde esta mi pedido", "track", "order status"))
     return trackAnswer;
   if (has("cod", "contra entrega", "pago", "pagar", "efectivo", "tarjeta", "cash", "payment"))
-    return "Puedes pagar contra entrega al recibir tu pedido en tu sucursal SantaMaria — sin adelanto. El pago en línea con tarjeta aparece al finalizar tu compra cuando está habilitado.";
+    return "Puedes pagar contra entrega al recibir tu pedido en tu sucursal SantaMaria. El pago en línea con tarjeta aparece al finalizar tu compra cuando está habilitado.";
   if (has("devol", "cambio", "reembolso", "return", "refund"))
-    return `Si tu pedido llegó incompleto o en mal estado, escríbenos dentro de las 2 horas por ${contact} con tu número de pedido y lo reponemos o devolvemos el importe.`;
+    return `Si tu pedido llegó incompleto o en mal estado, escríbenos por ${contact} con tu número de pedido. Revisaremos tu caso con cuidado para buscar la solución adecuada lo antes posible.`;
   if (has("pedido especial", "evento", "cumpleaños", "cumpleanos", "por mayor", "volumen", "custom", "personalizado", "empresa", "negocio"))
-    return "¡Claro! Armamos combos y pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y te respondemos en 1–2 días hábiles con opciones y precio (sin pago por adelantado).";
+    return "¡Claro! Armamos combos y pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.";
   if (has("envío", "envio", "entrega", "delivery", "demora", "tarda", "llega", "reparto", "moto", "domicilio", "retiro", "pickup", "shipping"))
-    return `Entregamos con nuestras motos en Santa Cruz, normalmente ${s.deliveryTime}. ${
+    return `Entregamos con nuestras motos en Santa Cruz. Tiempo estimado de entrega: ${s.deliveryTime}. Los tiempos dependen de la preparación, la demanda y la distancia. ${
       s.freeThreshold > 0
         ? `El delivery cuesta ${formatPrice(s.flatFee)} y es GRATIS en pedidos desde ${formatPrice(s.freeThreshold)}.`
         : "El delivery es gratis, sin mínimo de compra."

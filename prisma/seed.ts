@@ -1,5 +1,21 @@
 import { PrismaClient, Prisma } from "@prisma/client";
-import { COMBO_CATEGORY, combos, type SeedProduct } from "./combos";
+
+type SeedProduct = {
+  name: string;
+  slug: string;
+  sku?: string;
+  description: string;
+  price: number;
+  compareAtPrice?: number;
+  material?: string;
+  brand: string;
+  categorySlug: string;
+  contents?: string;
+  details?: string;
+  stock: number;
+  images: string[];
+  featured?: boolean;
+};
 
 const prisma = new PrismaClient();
 
@@ -12,7 +28,6 @@ const categories: { name: string; slug: string; description: string }[] = [
   { name: "Burgers", slug: "burgers", description: "Hamburguesas artesanales SantaMaria." },
   { name: "Postres", slug: "postres", description: "Dulces para cerrar con broche de oro." },
   { name: "Bebidas", slug: "bebidas", description: "Gaseosas, aguas y aguas saborizadas bien frías." },
-  COMBO_CATEGORY,
 ];
 
 const products: SeedProduct[] = [
@@ -43,8 +58,6 @@ const products: SeedProduct[] = [
   { name: "Agua Saborizada Aquarius Pera 500 ml", slug: "aquarius-pera-500ml", description: "Refrescante bebida de pera elaborada con agua y fruta. Ideal para disfrutar en cualquier momento.", price: 10, brand: "Aquarius", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/aquarius-pera-500ml.png"] },
   { name: "Agua Saborizada Aquarius Pomelo 500 ml", slug: "aquarius-pomelo-500ml", description: "Deliciosa bebida sin alcohol con 5% de jugo de frutas, perfecta para disfrutar en un día de campo con familia o amigos.", price: 10, brand: "Aquarius", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/aquarius-pomelo-500ml.png"] },
 
-  // Combos — sandwich + drink bundles built from the menu items above
-  ...combos,
 ];
 
 async function main() {
@@ -168,13 +181,13 @@ async function main() {
     shipping: {
       flatFee: 15.00,
       freeThreshold: 100.00,
-      deliveryTime: "el mismo día",
+      deliveryTime: "lo antes posible, según preparación y distancia",
     },
     announcements: [
-      "Elige tu sucursal SantaMaria y recibe el mismo día",
-      "Envío gratis a partir de Bs 100",
+      "Delivery en moto en Santa Cruz",
+      "Delivery gratis a partir de Bs 100",
       "Retiro en tienda disponible en todas las sucursales",
-      "Calidad certificada · Pago contra entrega",
+      "Hecho al momento · Pago contra entrega",
     ],
     inventory: { lowStockThreshold: 5 },
     notifications: { orderEmail: "ventas@santamaria.com" },

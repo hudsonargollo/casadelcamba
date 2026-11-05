@@ -12,13 +12,6 @@ const SLIDES = [
     href: "#sandwiches",
   },
   {
-    src: "/imgs/slider6.png",
-    focus: "center 55%",
-    tag: "Combos",
-    cta: "Ver combos",
-    href: "#combos",
-  },
-  {
     src: "/imgs/slider4.jpg",
     focus: "center 55%",
     tag: "Corazón · Burger · Filet",
@@ -84,16 +77,15 @@ export function MenuPromoSlider() {
   }, []);
 
   return (
-    <section role="region" aria-roledescription="carrusel" aria-label="Combos y promociones">
+    <section role="region" aria-roledescription="carrusel" aria-label="Promociones">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="max-w-xl">
-          <span className="eyebrow">Combos y promociones</span>
+          <span className="eyebrow">Promociones</span>
           <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
             Lo que hoy está de moda
           </h2>
           <p className="mt-2 text-sm text-muted sm:text-base">
-            Promos de la semana y combos para compartir. Se van rápido, así que no lo pienses
-            mucho.
+            Descubre las Santa María y las promociones de la casa. Elige tu favorita del menú.
           </p>
         </div>
         <div className="flex items-center gap-2">

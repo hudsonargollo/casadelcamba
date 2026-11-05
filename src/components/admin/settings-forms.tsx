@@ -185,7 +185,7 @@ export function StoreSettingsForms({ settings, canEdit }: { settings: StoreSetti
               required
               hint="Usa 0 para envío gratis en todos los pedidos."
             />
-            <Field name="deliveryTime" label="Tiempo de entrega" defaultValue={v(s, "deliveryTime", settings.shipping.deliveryTime)} required />
+            <Field name="deliveryTime" label="Estimación de entrega" hint="Texto orientativo, no una garantía. Depende de la preparación y la distancia; evita plazos fijos (máx. 60 caracteres)." defaultValue={v(s, "deliveryTime", settings.shipping.deliveryTime)} required />
           </div>
         )}
       </Card>

@@ -21,7 +21,7 @@ const faqs = (DELIVERY_TIME: string) => [
   },
   {
     q: "¿Cuánto tarda el delivery?",
-    a: `Tu pedido llega normalmente ${DELIVERY_TIME} en Santa Cruz, según la sucursal que elijas. Si necesitas coordinación especial, te escribimos por WhatsApp.`,
+    a: `Hacemos delivery en Santa Cruz. Entrega estimada: ${DELIVERY_TIME}. El tiempo puede variar según la preparación, la demanda y la distancia. Cuidamos tu pedido desde la cocina hasta tu puerta. Si necesitas coordinar la entrega, escríbenos por WhatsApp.`,
   },
   {
     q: "¿Puedo retirar en tienda?",
@@ -33,7 +33,7 @@ const faqs = (DELIVERY_TIME: string) => [
   },
   {
     q: "¿Cuál es la política de devoluciones?",
-    a: "Si tu pedido llega incompleto o en mal estado, escríbenos dentro de las 2 horas con tu número de pedido y lo cambiamos o reembolsamos. Ver Delivery y devoluciones.",
+    a: "Nos importa que disfrutes tu comida. Si tu pedido llega incompleto o en mal estado, contáctanos con tu número de pedido y cuéntanos qué pasó. Lo revisamos con cuidado y lo más rápido posible para coordinar contigo la solución más adecuada. Consulta Delivery y devoluciones.",
   },
   {
     q: "¿Entregan en mi zona?",

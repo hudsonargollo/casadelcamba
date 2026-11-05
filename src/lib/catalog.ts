@@ -50,7 +50,10 @@ const loadSnapshot = unstable_cache(
         },
         orderBy: { createdAt: "desc" },
       }),
-      prisma.category.findMany({ orderBy: { name: "asc" } }),
+      prisma.category.findMany({
+        where: { OR: [{ slug: { not: "combos" } }, { products: { some: { active: true } } }] },
+        orderBy: { name: "asc" },
+      }),
     ]);
     return {
       products: products.map((p) => {

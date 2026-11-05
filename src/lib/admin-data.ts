@@ -274,10 +274,10 @@ export async function getAdminProduct(id: string): Promise<AdminProductDetail | 
   }
 }
 
-export async function getCategoriesForSelect(): Promise<{ id: string; name: string }[]> {
+export async function getCategoriesForSelect(): Promise<{ id: string; name: string; slug: string }[]> {
   try {
     return await prisma.category.findMany({
-      select: { id: true, name: true },
+      select: { id: true, name: true, slug: true },
       orderBy: { name: "asc" },
     });
   } catch {

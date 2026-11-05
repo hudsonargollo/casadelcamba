@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
     ["Categoría", product.category.name],
     ...(pack ? ([["Presentación", pack]] as [string, string][]) : []),
     ...(attribute ? ([["Tipo", attribute]] as [string, string][]) : []),
-    ["Entrega", DELIVERY_TIME],
+    ["Entrega estimada", DELIVERY_TIME],
   ];
   const highlights = hasCustom ? customSpecs.slice(0, 4) : derivedHighlights;
 
@@ -96,9 +96,9 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
         ...(pack ? ([["Presentación", pack]] as [string, string][]) : []),
         ...(attribute ? ([["Tipo", attribute]] as [string, string][]) : []),
         ["Disponibilidad", inStock ? "En stock" : "Agotado"],
-        ["Entrega", `Delivery ${DELIVERY_TIME}`],
+        ["Entrega estimada", DELIVERY_TIME],
         ["Pago", "Contra entrega en tu sucursal SantaMaria"],
-        ["Devoluciones", "Hasta 2 horas"],
+        ["Atención cuidadosa", "Contáctanos con tu número de pedido"],
       ];
 
   const aboutBullets = [
@@ -199,9 +199,9 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
 
           {/* Delivery & assurance */}
           <div className="mt-6 space-y-2.5 rounded-xl border border-[var(--line)] p-4 text-sm">
-            <Assure icon="scooter">Delivery <b className="font-medium text-ink">{DELIVERY_TIME}</b> en Santa Cruz o retiro en tu sucursal</Assure>
+            <Assure icon="scooter">Delivery en Santa Cruz. Entrega estimada: <b className="font-medium text-ink">{DELIVERY_TIME}</b>. También puedes retirar en tu sucursal.</Assure>
             <Assure icon="cash">Pago contra entrega disponible</Assure>
-            <Assure icon="return">Si algo sale mal, lo resolvemos con <b className="font-medium text-ink">2 horas</b></Assure>
+            <Assure icon="return"><b className="font-medium text-ink">Atención cuidadosa</b>: contáctanos con tu número de pedido y lo revisamos lo más rápido posible</Assure>
             <Assure icon="shield">Compra segura y atención directa</Assure>
           </div>
         </div>
@@ -250,13 +250,15 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
               </ul>
             </Accordion>
 
-            <Accordion title="Delivery y devoluciones">
+            <Accordion title="Delivery y atención cuidadosa">
               <p>
                 Entregamos en moto en Santa Cruz con{" "}
                 <b className="font-medium text-ink">pago contra entrega</b>. Los pedidos se preparan
                 al momento y salen de la sucursal que elegiste.
-                Si tu pedido llega incompleto o en mal estado, escríbenos dentro de las{" "}
-                <b className="font-medium text-ink">2 horas</b> y lo reponemos o devolvemos el importe.
+                Si tu pedido llega incompleto o en mal estado, contáctanos con tu{" "}
+                <b className="font-medium text-ink">número de pedido</b>. Nos importa que disfrutes
+                tu comida. Revisamos lo ocurrido con cuidado y lo más rápido posible para
+                coordinar contigo la solución más adecuada.
               </p>
             </Accordion>
           </div>
@@ -269,7 +271,7 @@ export default async function ProductPage({ params }: PageProps<"/product/[slug]
             <ul className="mt-4 space-y-3 text-sm text-ink/80">
               <li className="flex gap-2.5"><Dot /> Todo se prepara al momento en tu sucursal</li>
               <li className="flex gap-2.5"><Dot /> Pago contra entrega en tu sucursal SantaMaria</li>
-              <li className="flex gap-2.5"><Dot /> Delivery {DELIVERY_TIME} o retiro en tienda</li>
+              <li className="flex gap-2.5"><Dot /> Delivery con entrega estimada: {DELIVERY_TIME}. También puedes retirar en tienda</li>
               <li className="flex gap-2.5"><Dot /> Atención cercana por WhatsApp</li>
             </ul>
           </div>

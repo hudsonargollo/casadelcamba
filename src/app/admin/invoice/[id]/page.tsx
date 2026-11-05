@@ -138,7 +138,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
         )}
 
         <p className="mt-8 text-center text-xs text-[#5b6b7c]">
-          Gracias por pedir en SantaMaria Fast Food ✦ Si algo no está bien, escríbenos dentro de las 2 horas con tu número de pedido.
+          Gracias por pedir en SantaMaria Fast Food. Si algo no está bien, escríbenos con tu número de pedido. Revisaremos tu caso con cuidado para buscar la solución adecuada lo antes posible.
         </p>
 
         {/* Packing slip — cut off and put in / on the parcel */}

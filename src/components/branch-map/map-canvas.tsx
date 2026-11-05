@@ -447,7 +447,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
 
     const camera = new THREE.PerspectiveCamera(42, 1, 1, 2200);
     const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.domElement.style.display = "block";
     renderer.domElement.style.width = "100%";
@@ -461,8 +461,9 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     mount.appendChild(labelRenderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
+    const dampingFactor = 0.075;
     controls.enableDamping = true;
-    controls.dampingFactor = 0.075;
+    controls.dampingFactor = dampingFactor;
     controls.rotateSpeed = 0.55;
     controls.zoomSpeed = 0.85;
     controls.minDistance = 42;
@@ -587,7 +588,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
       const curve = new THREE.CatmullRomCurve3(points, true);
       const major = i === 1 || i === 3 || i === 5 || i === 7;
       const tube = new THREE.Mesh(
-        new THREE.TubeGeometry(curve, 220, major ? 0.2 : 0.12, 6, true),
+        new THREE.TubeGeometry(curve, 128, major ? 0.2 : 0.12, 6, true),
         new THREE.MeshBasicMaterial({
           color: COLORS.accent,
           transparent: true,
@@ -603,7 +604,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
         return new THREE.Vector3(Math.sin(angle) * r, 0.12, -Math.cos(angle) * r);
       });
       const tube = new THREE.Mesh(
-        new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), 40, 0.07, 4, false),
+        new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), 1, 0.07, 4, false),
         new THREE.MeshBasicMaterial({ color: COLORS.brandLight, transparent: true, opacity: 0.25 })
       );
       ringGroup.add(tube);
@@ -683,20 +684,22 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
     let hovered: string | null = null;
-    let pointerDown = { x: 0, y: 0, time: 0 };
+    let pendingHover: { x: number; y: number } | null = null;
+    let pointerDown: { x: number; y: number; time: number; id: number; dragged: boolean } | null = null;
 
-    const pick = (event: PointerEvent) => {
+    const pick = (x: number, y: number) => {
       const rect = renderer.domElement.getBoundingClientRect();
-      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      if (!rect.width || !rect.height) return null;
+      pointer.x = ((x - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((y - rect.top) / rect.height) * 2 + 1;
+      camera.updateMatrixWorld();
+      for (const hit of hits) hit.updateWorldMatrix(true, false);
       raycaster.setFromCamera(pointer, camera);
       const hit = raycaster.intersectObjects(hits, false)[0];
       return hit ? (hit.object.userData.slug as string) : null;
     };
 
-    const onPointerMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
-      const slug = pick(event);
+    const setHovered = (slug: string | null) => {
       if (slug !== hovered) {
         hovered = slug;
         renderer.domElement.style.cursor = hovered ? "pointer" : "grab";
@@ -711,17 +714,38 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
         }
       }
     };
+    const onPointerMove = (event: PointerEvent) => {
+      if (pointerDown?.id === event.pointerId) {
+        pointerDown.dragged ||= Math.hypot(event.clientX - pointerDown.x, event.clientY - pointerDown.y) > 8;
+      }
+      if (event.pointerType === "mouse") pendingHover = { x: event.clientX, y: event.clientY };
+    };
+    const onPointerLeave = () => {
+      pendingHover = null;
+      setHovered(null);
+    };
+    const onPointerCancel = () => {
+      pointerDown = null;
+      onPointerLeave();
+    };
     const onPointerDown = (event: PointerEvent) => {
-      pointerDown = { x: event.clientX, y: event.clientY, time: performance.now() };
+      pointerDown = event.isPrimary
+        ? { x: event.clientX, y: event.clientY, time: performance.now(), id: event.pointerId, dragged: false }
+        : null;
     };
     const onPointerUp = (event: PointerEvent) => {
-      const moved = Math.hypot(event.clientX - pointerDown.x, event.clientY - pointerDown.y);
-      if (moved > 8 || performance.now() - pointerDown.time > 900) return;
-      const slug = pick(event);
+      const down = pointerDown;
+      pointerDown = null;
+      if (!down || down.id !== event.pointerId || down.dragged) return;
+      const moved = Math.hypot(event.clientX - down.x, event.clientY - down.y);
+      if (moved > 8 || performance.now() - down.time > 900) return;
+      const slug = pick(event.clientX, event.clientY);
       if (slug) propsRef.current.onSelect(slug);
     };
     renderer.domElement.style.cursor = "grab";
     renderer.domElement.addEventListener("pointermove", onPointerMove);
+    renderer.domElement.addEventListener("pointerleave", onPointerLeave);
+    renderer.domElement.addEventListener("pointercancel", onPointerCancel);
     renderer.domElement.addEventListener("pointerdown", onPointerDown);
     renderer.domElement.addEventListener("pointerup", onPointerUp);
 
@@ -845,6 +869,11 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     const direction = new THREE.Vector3(0.52, 0.9, 0.66).normalize();
     let cameraGoal: THREE.Vector3 | null = null;
     let targetGoal: THREE.Vector3 | null = null;
+    const cancelFocus = () => {
+      cameraGoal = null;
+      targetGoal = null;
+    };
+    controls.addEventListener("start", cancelFocus);
 
     const fitDistance = () => {
       const width = renderer.domElement.clientWidth || 1;
@@ -857,8 +886,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     };
 
     const reset = () => {
-      cameraGoal = null;
-      targetGoal = null;
+      cancelFocus();
       controls.target.copy(cityTarget);
       camera.position.copy(controls.target).addScaledVector(direction, fitDistance());
       controls.update();
@@ -877,9 +905,9 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     };
 
     const zoom = (factor: number) => {
+      cancelFocus();
       const offset = camera.position.clone().sub(controls.target).multiplyScalar(factor);
       const distance = THREE.MathUtils.clamp(offset.length(), controls.minDistance, controls.maxDistance);
-      cameraGoal = null;
       camera.position.copy(controls.target).addScaledVector(offset.normalize(), distance);
       controls.update();
     };
@@ -907,27 +935,53 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
     observer.observe(mount);
 
     // Animation
-    const clock = new THREE.Clock();
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reducedMotion = motionQuery.matches;
+    const onMotionChange = (event: MediaQueryListEvent) => {
+      reducedMotion = event.matches;
+    };
+    motionQuery.addEventListener("change", onMotionChange);
+    const frameInterval = 1000 / 60;
+    let nextFrameTime: number | null = null;
+    let lastFrameTime: number | null = null;
+    let inView = typeof IntersectionObserver === "undefined";
+    let running = false;
+    let disposed = false;
     let elapsed = 0;
     const circleCenter = cityTarget.clone();
     const circleRadius = kmToUnits(3.6);
 
-    const animate = () => {
-      const delta = Math.min(clock.getDelta(), 0.05);
-      elapsed += delta;
+    const animate = (time: number) => {
+      if (!running || disposed) return;
+      if (nextFrameTime !== null && time + 0.1 < nextFrameTime) return;
+      const delta = lastFrameTime === null ? 0 : Math.min((time - lastFrameTime) / 1000, 0.05);
+      nextFrameTime = nextFrameTime === null
+        ? time + frameInterval
+        : nextFrameTime + Math.max(1, Math.floor((time - nextFrameTime) / frameInterval) + 1) * frameInterval;
+      lastFrameTime = time;
+      const decorativeDelta = reducedMotion ? 0 : delta;
+      elapsed += decorativeDelta;
 
       if (targetGoal) {
-        controls.target.lerp(targetGoal, 0.09);
+        controls.target.lerp(targetGoal, 1 - Math.pow(0.91, delta * 60));
         if (controls.target.distanceTo(targetGoal) < 0.15) targetGoal = null;
       }
       if (cameraGoal) {
-        camera.position.lerp(cameraGoal, 0.08);
+        camera.position.lerp(cameraGoal, 1 - Math.pow(0.92, delta * 60));
         if (camera.position.distanceTo(cameraGoal) < 0.4) cameraGoal = null;
       }
       controls.target.x = THREE.MathUtils.clamp(controls.target.x, -96, 96);
       controls.target.z = THREE.MathUtils.clamp(controls.target.z, -96, 96);
       controls.target.y = 0;
+      controls.dampingFactor = 1 - Math.pow(1 - dampingFactor, delta * 60);
       controls.update();
+      // OrbitControls also updates directly on input events.
+      controls.dampingFactor = dampingFactor;
+
+      if (pendingHover) {
+        if (!pointerDown?.dragged) setHovered(pick(pendingHover.x, pendingHover.y));
+        pendingHover = null;
+      }
 
       // Courier
       if (routeCurve && routeEndpoints) {
@@ -946,7 +1000,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
         courier.group.rotation.y = Math.atan2(-Math.cos(angle), -Math.sin(angle));
       }
       courier.group.rotation.z = Math.sin(elapsed * 1.6) * 0.035;
-      for (const wheel of courier.wheels) wheel.rotation.z -= delta * 7.5;
+      for (const wheel of courier.wheels) wheel.rotation.z -= decorativeDelta * 7.5;
 
       if (userPulse) {
         const scale = 1 + Math.sin(elapsed * 2.4) * 0.18;
@@ -975,14 +1029,40 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
       renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
     };
-    renderer.setAnimationLoop(animate);
+    const updateAnimationState = () => {
+      if (disposed) return;
+      const shouldRun = inView && !document.hidden;
+      if (shouldRun === running) return;
+      running = shouldRun;
+      nextFrameTime = null;
+      lastFrameTime = null;
+      if (!running) onPointerCancel();
+      renderer.setAnimationLoop(running ? animate : null);
+    };
+    const visibilityObserver = typeof IntersectionObserver === "undefined" ? null : new IntersectionObserver((entries) => {
+      if (disposed) return;
+      const entry = entries.find((item) => item.target === mount);
+      if (!entry) return;
+      inView = entry.isIntersecting;
+      updateAnimationState();
+    });
+    visibilityObserver?.observe(mount);
+    document.addEventListener("visibilitychange", updateAnimationState);
+    updateAnimationState();
 
     return () => {
+      disposed = true;
       renderer.setAnimationLoop(null);
+      document.removeEventListener("visibilitychange", updateAnimationState);
+      visibilityObserver?.disconnect();
+      motionQuery.removeEventListener("change", onMotionChange);
       observer.disconnect();
       renderer.domElement.removeEventListener("pointermove", onPointerMove);
+      renderer.domElement.removeEventListener("pointerleave", onPointerLeave);
+      renderer.domElement.removeEventListener("pointercancel", onPointerCancel);
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
       renderer.domElement.removeEventListener("pointerup", onPointerUp);
+      controls.removeEventListener("start", cancelFocus);
       controls.dispose();
       scene.traverse((object) => {
         if (

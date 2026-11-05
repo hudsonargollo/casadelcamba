@@ -35,8 +35,8 @@ export const DEFAULT_SETTINGS: StoreSettings = {
   announcements: [
     "Delivery en moto en Santa Cruz · 13 sucursales",
     "Pago contra entrega al recibir tu pedido",
-    "Combos hechos al momento · Sabor de barrio",
-    "Atención rápida por WhatsApp",
+    "Pedidos hechos al momento · Sabor de barrio",
+    "Atención cuidadosa por WhatsApp",
   ],
   inventory: { lowStockThreshold: 5 },
   notifications: { orderEmail: process.env.ADMIN_NOTIFY_EMAIL || "" },

@@ -16,14 +16,19 @@ export default async function AdminProductsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <h1 className="font-display text-3xl font-semibold text-ink">Productos</h1>
-        <Link
-          href="/admin/products/new"
-          className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-light transition hover:bg-brand-dark"
-        >
-          + Agregar producto
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/admin/products/new?type=combo" className="rounded-full border border-brand px-5 py-2.5 text-sm font-medium text-brand transition hover:bg-brand hover:text-light">
+            + Crear combo
+          </Link>
+          <Link
+            href="/admin/products/new"
+            className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-light transition hover:bg-brand-dark"
+          >
+            + Agregar producto
+          </Link>
+        </div>
       </div>
 
       <div className="mt-6">

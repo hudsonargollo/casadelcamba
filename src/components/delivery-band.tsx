@@ -17,7 +17,7 @@ export function DeliveryBand({
     freeThreshold > 0 ? `Gratis desde ${formatPrice(freeThreshold)}` : "Gratis en tu sucursal SantaMaria";
 
   const steps = [
-    { title: "Eliges tu combo", body: "Desde la web o por WhatsApp, sin llamadas." },
+    { title: "Eliges tu pedido", body: "Desde la web o por WhatsApp, sin llamadas." },
     { title: "Lo hacemos al momento", body: "Carne a la plancha y papas recién hechas." },
     { title: "Pagas al recibir", body: "Efectivo contra entrega, en tu puerta." },
   ];
@@ -61,9 +61,9 @@ export function DeliveryBand({
           </h2>
 
           <p className="mt-5 max-w-lg text-pretty text-lg leading-relaxed text-light/75">
-            Pides en la web o por WhatsApp, lo hacemos al momento y un rider de SantaMaria
-            lo lleva a tu puerta con pago contra entrega. Entrega {deliveryTime} en Santa
-            Cruz, o retiro en tu sucursal recién salido de la plancha.
+            Pides en la web o por WhatsApp y preparamos tu pedido con cuidado para delivery
+            en Santa Cruz con pago contra entrega, o retiro en sucursal. Estimación de entrega:
+            {" "}{deliveryTime}. De nuestra plancha a tu puerta, con atención en cada paso.
           </p>
 
           <ol className="mt-9 grid gap-3 sm:grid-cols-3">
@@ -109,7 +109,7 @@ export function DeliveryBand({
         <div className="relative mx-auto w-full max-w-md">
           {/* Floating chips outside the frame */}
           <span className="absolute -left-4 top-20 z-20 -rotate-3 rounded-2xl bg-accent px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-brand-deep shadow-[0_16px_34px_-14px_rgba(255,199,44,0.9)] sm:-left-6">
-            Mismo día
+            Delivery local
           </span>
           <span className="absolute -bottom-3 right-6 z-20 rotate-2 rounded-2xl border border-brand/15 bg-white px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-brand shadow-[0_16px_34px_-18px_rgba(7,47,87,0.6)]">
             {freeLine}

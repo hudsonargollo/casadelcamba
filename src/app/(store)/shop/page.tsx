@@ -13,27 +13,13 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-const COMBO_SLUGS = new Set(["combos", "plus-days", "imperdibles"]);
-
-function isCombo(product: { category: { slug: string; name: string } }) {
-  return (
-    COMBO_SLUGS.has(product.category.slug) ||
-    /combo/i.test(product.category.slug) ||
-    /combo/i.test(product.category.name)
-  );
-}
-
 export default async function ShopPage() {
   const branch = await getSelectedBranch();
   const products = await getProducts({}, branch?.id);
-
-  const combos = products.filter(isCombo);
   const drinks = products.filter((p) => p.category.slug === "bebidas");
   const desserts = products.filter((p) => p.category.slug === "postres");
   const drinksAndDesserts = new Set([...drinks, ...desserts].map((p) => p.id));
-  const sandwiches = products.filter(
-    (p) => !isCombo(p) && !drinksAndDesserts.has(p.id)
-  );
+  const sandwiches = products.filter((p) => !drinksAndDesserts.has(p.id));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
@@ -44,8 +30,8 @@ export default async function ShopPage() {
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-base text-muted sm:text-lg">
           Acá no se pide una hamburguesa: se pide una Santa María. Pan tostado en la plancha,
-          carne jugosa, queso derretido y todo lo que le quieras poner. Elige la tuya, súmale un
-          combo y bájala con algo bien frío.
+          carne jugosa, queso derretido y todo lo que le quieras poner. Elige la tuya
+          y acompáñala con algo bien frío.
         </p>
       </header>
 
@@ -62,16 +48,6 @@ export default async function ShopPage() {
           href="/shop/burgers"
           linkLabel="Ver sándwiches"
           products={sandwiches}
-        />
-
-        <MenuSection
-          id="combos"
-          eyebrow="Para rendir"
-          title="Combos y promos"
-          description="Las promos del día y los combos de la casa para que no te falte nada. Pídelas en tu sucursal más cercana."
-          href="/shop/plus-days"
-          linkLabel="Ver promos"
-          products={combos}
         />
 
         <MenuSection

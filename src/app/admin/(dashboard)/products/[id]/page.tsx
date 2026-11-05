@@ -17,6 +17,7 @@ export default async function EditProductPage({ params }: PageProps<"/admin/prod
     getCategoriesForSelect(),
   ]);
   if (!product) notFound();
+  const isCombo = categories.find((c) => c.id === product.categoryId)?.slug === "combos";
 
   const action = updateProduct.bind(null, product.id);
 
@@ -25,13 +26,14 @@ export default async function EditProductPage({ params }: PageProps<"/admin/prod
       <Link href="/admin/products" className="text-sm text-muted hover:text-ink">
         ← Volver a productos
       </Link>
-      <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Editar producto</h1>
+      <h1 className="mt-2 font-display text-3xl font-semibold text-ink">{isCombo ? "Editar combo" : "Editar producto"}</h1>
 
       <div className="mt-6">
         <ProductForm
           action={action}
           categories={categories}
           product={product}
+          isCombo={isCombo}
           submitLabel="Guardar cambios"
         />
       </div>

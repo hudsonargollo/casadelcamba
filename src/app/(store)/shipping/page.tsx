@@ -28,7 +28,7 @@ export default async function ShippingPage() {
         <section>
           <h2 className="font-display text-2xl font-bold text-ink">Delivery en moto</h2>
           <ul className="mt-4 space-y-3 text-ink/80">
-            <li>• Entregamos con nuestras motos en Santa Cruz, normalmente {DELIVERY_TIME}.</li>
+            <li>• Delivery en moto en Santa Cruz. Entrega estimada: {DELIVERY_TIME}. El tiempo puede variar según la preparación, la demanda y la distancia.</li>
             <li>
               • Costo de delivery: <strong>{formatPrice(FLAT_SHIPPING)}</strong>
               {FREE_SHIPPING_THRESHOLD > 0 ? (
@@ -45,10 +45,10 @@ export default async function ShippingPage() {
         <section>
           <h2 className="font-display text-2xl font-bold text-ink">Cambios y devoluciones</h2>
           <ul className="mt-4 space-y-3 text-ink/80">
-            <li>• Si tu pedido llega incompleto o en mal estado, avísanos dentro de las <strong>2 horas</strong> con tu número de pedido.</li>
-            <li>• Lo reponemos o te devolvemos el importe del producto.</li>
-            <li>• Adjunta una foto del pedido si puedes: nos ayuda a resolverlo más rápido.</li>
-            <li>• Los reembolsos se procesan por el mismo medio de pago tras la verificación.</li>
+            <li>• Si tu pedido llega incompleto o en mal estado, contáctanos con tu número de pedido y cuéntanos qué pasó.</li>
+            <li>• Nos importa que disfrutes tu comida. Revisamos lo ocurrido con cuidado y lo más rápido posible.</li>
+            <li>• Adjunta una foto del pedido si puedes: nos ayuda a revisar lo ocurrido.</li>
+            <li>• Coordinamos contigo la solución más adecuada para tu pedido.</li>
           </ul>
         </section>
 

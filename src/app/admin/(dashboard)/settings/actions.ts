@@ -93,7 +93,7 @@ export async function saveShippingSettings(_p: SettingsState, fd: FormData): Pro
     .object({
       flatFee: z.coerce.number().int("Solo bolivianos enteros").min(0, "No puede ser negativo").max(100000),
       freeThreshold: z.coerce.number().int("Solo bolivianos enteros").min(0, "No puede ser negativo").max(10_000_000),
-      deliveryTime: z.string().min(2, "Ingresa el tiempo de entrega, p. ej. el mismo día").max(60),
+      deliveryTime: z.string().min(2, "Ingresa una estimación de entrega, no un plazo garantizado").max(60),
     })
     .safeParse(values);
   if (!parsed.success) return { error: parsed.error.issues[0]?.message, values };

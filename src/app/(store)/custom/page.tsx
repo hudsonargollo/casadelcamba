@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const STEPS = [
   { n: "1", title: "Cuéntanos tu evento", body: "Cuántas personas son, qué te gustaría y para qué fecha lo necesitas." },
-  { n: "2", title: "Armamos tu combo", body: "Te enviamos opciones, precio y horario de entrega o retiro." },
-  { n: "3", title: "Lo disfrutan", body: "Preparamos todo al momento y lo entregamos en la fecha acordada." },
+  { n: "2", title: "Armamos tu combo", body: "Coordinamos disponibilidad, opciones, precio y un horario estimado de entrega o retiro." },
+  { n: "3", title: "Lo disfrutan", body: "Preparamos tu pedido según lo coordinado; los tiempos estimados dependen de la preparación, la demanda y la distancia." },
 ];
 
 export default async function CustomPage() {
@@ -40,7 +40,7 @@ export default async function CustomPage() {
             Pedir un combo para mi evento
           </a>
           <p className="mt-3 text-xs text-muted">
-            Rellena un formulario breve — toma 2 minutos, sin pago.
+            Rellena un formulario breve para coordinar tu pedido con nuestro equipo.
           </p>
         </div>
       </OrnateFrame>
@@ -69,7 +69,7 @@ export default async function CustomPage() {
           <span className="eyebrow">Paso 1</span>
           <h2 className="mt-2 font-display text-3xl font-semibold text-ink">Cuéntanos tu evento</h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
-            Completa lo que puedas — te responderemos en 1–2 días hábiles con opciones y un presupuesto.
+            Completa lo que puedas — nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.
           </p>
         </div>
         <div className="mt-8">
