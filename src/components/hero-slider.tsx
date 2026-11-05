@@ -6,10 +6,12 @@ import { RotatingWord, SplitText } from "./text-reveal";
 import { useBranchPicker } from "./branch-picker";
 
 const HERO = "/imgs/kitchen.jpg";
+const LOGO = "/imgs/logo3d.webp";
 
 export function HeroSlider() {
   // The hero photo is the biggest thing above the fold — fetch it straight away.
   preload(HERO, { as: "image", fetchPriority: "high" });
+  preload(LOGO, { as: "image", fetchPriority: "high" });
   const picker = useBranchPicker();
 
   return (
@@ -34,9 +36,18 @@ export function HeroSlider() {
       {/* Content */}
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-36">
         <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-          <span className="inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft">
+          {/* Brand — the 3D logo is the first thing in the hero. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={LOGO}
+            alt="SantaMaria Fast Food"
+            width={757}
+            height={329}
+            className="mx-auto h-24 w-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.55)] sm:h-28 lg:mx-0 lg:h-32"
+          />
+          <span className="mt-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft">
             <span className="h-1.5 w-1.5 rounded-full bg-accent-soft" aria-hidden="true" />
-            SantaMaria Fast Food · Santa Cruz
+            Santa Cruz · 13 sucursales
           </span>
           <h1 className="mt-3 max-w-[19ch] font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-balance sm:text-5xl lg:text-[4rem]">
             <SplitText text="Una Santa María" delay={80} />{" "}
