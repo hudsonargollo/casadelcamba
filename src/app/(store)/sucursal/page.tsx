@@ -6,7 +6,7 @@ import { BranchMapExperience } from "@/components/branch-map/branch-map-experien
 export const metadata: Metadata = {
   title: "Mapa de sucursales",
   description:
-    "Explora las 10 sucursales Casa del Camba en Santa Cruz, ubica la más cercana y elige dónde preparar tu pedido.",
+    "Explora las 14 sucursales Casa del Camba en Santa Cruz, ubica la más cercana y elige dónde preparar tu pedido.",
 };
 
 export const dynamic = "force-dynamic";
