@@ -132,7 +132,7 @@ export function BranchForm({ branch, mode }: { branch?: AdminBranchRow; mode: "c
       <section className="border-t border-[var(--line)] pt-6">
         <h2 className="font-display text-lg font-semibold text-ink">Ubicación y contacto</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field name="address" label="Dirección" required defaultValue={text("address")} placeholder="Av. Cristóbal de Mendoza #1365" />
+          <Field name="address" label="Dirección" required defaultValue={text("address")} placeholder="Avenida Cristóbal de Mendoza #1365" />
           <Field name="city" label="Ciudad" required defaultValue={text("city")} placeholder="Santa Cruz" />
           <Field name="phone" label="Teléfono" defaultValue={text("phone")} placeholder="+591 700 00000" />
           <Field

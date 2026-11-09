@@ -1,7 +1,7 @@
 # Casa del Camba — Tienda en línea (multi-sucursal)
 
 Tienda en línea de **Casa del Camba**, restaurante de comida típica cruceña
-fundado en **1986**, con **14 sucursales** en Santa Cruz, Bolivia. Catálogo
+fundado en **1986**, con **13 sucursales** en Santa Cruz, Bolivia. Catálogo
 compartido con **stock por sucursal**, entrega a domicilio o retiro en tienda,
 y un panel donde cada sucursal gestiona sus propios pedidos con sus propias
 credenciales.
@@ -49,7 +49,7 @@ credenciales.
 | `npm run build` | Build de producción |
 | `npm run db:migrate` | Crea/aplica migraciones en desarrollo |
 | `npm run db:push` | Empuja el esquema sin migración |
-| `npm run db:seed` | Menú (58 platos), 14 sucursales, ajustes y Club Camba |
+| `npm run db:seed` | Menú (58 platos), 13 sucursales, ajustes y Club Camba |
 | `npm run db:studio` | Prisma Studio |
 | `npm run db:create-admin` | Crea/actualiza el administrador desde `ADMIN_EMAIL` / `ADMIN_PASSWORD` |
 | `npm run db:copy` | Copia datos entre dos bases (ver `prisma/copy-data.ts`) |

@@ -38,7 +38,7 @@ const orgJsonLd = {
   priceRange: "Bs 12–330",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Av. Cristóbal de Mendoza #1365",
+    streetAddress: "Avenida Cristóbal de Mendoza #1365",
     addressLocality: "Santa Cruz de la Sierra",
     addressRegion: "Santa Cruz",
     addressCountry: "BO",

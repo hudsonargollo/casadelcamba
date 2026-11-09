@@ -18,7 +18,7 @@ const COMMITMENTS = [
   },
   {
     title: "Cerca de ti",
-    body: "14 sucursales en Santa Cruz y atención directa por WhatsApp.",
+    body: "13 sucursales en Santa Cruz y atención directa por WhatsApp.",
     icon: <ChatIcon />,
   },
 ];
@@ -33,7 +33,7 @@ export function Commitments() {
           Tradición camba, bien servida
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-light/75">
-          Casa del Camba: tradición camba desde 1986, hecha al momento y servida en 14 sucursales
+          Casa del Camba: tradición camba desde 1986, hecha al momento y servida en 13 sucursales
           de Santa Cruz.
         </p>
       </div>

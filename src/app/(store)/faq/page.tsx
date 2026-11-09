@@ -37,7 +37,7 @@ const faqs = (DELIVERY_TIME: string) => [
   },
   {
     q: "¿Entregan en mi zona?",
-    a: "Entregamos en Santa Cruz desde nuestras 14 sucursales. Si tienes dudas sobre tu dirección, consúltanos por WhatsApp antes de pedir.",
+    a: "Entregamos en Santa Cruz desde nuestras 13 sucursales. Si tienes dudas sobre tu dirección, consúltanos por WhatsApp antes de pedir.",
   },
 ];
 

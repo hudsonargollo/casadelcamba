@@ -33,7 +33,7 @@ export const DEFAULT_SETTINGS: StoreSettings = {
     deliveryTime: DELIVERY_TIME,
   },
   announcements: [
-    "Delivery en moto en Santa Cruz · 14 sucursales",
+    "Delivery en moto en Santa Cruz · 13 sucursales",
     "Pago contra entrega al recibir tu pedido",
     "Tradición camba desde 1986 · Hecho al momento",
     "Atención cuidadosa por WhatsApp",

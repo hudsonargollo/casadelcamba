@@ -121,13 +121,13 @@ async function main() {
   }
   console.log(`  ✔ ${categories.length} categories`);
 
-  // The 14 Casa del Camba locations. The seven Express sucursales carry their
+  // The 13 Casa del Camba locations. The seven Express sucursales carry their
   // WhatsApp order line from the official Linktree (linktr.ee/CasadelCambaExpres3);
   // the full-service restaurants and addresses follow their Google Maps listings,
   // and Camba Muerto's phone/WhatsApp come from its official Facebook page.
   // Coordinates are used by the storefront to suggest the closest branch.
   const branches = [
-    { name: "Central", slug: "central", code: "CC01", address: "Av. Cristóbal de Mendoza #1365", city: "Santa Cruz de la Sierra", phone: "+591 3 3427864", whatsapp: "59176003875", hours: "Lun–Dom, 11:00 – 23:00", latitude: -17.7699, longitude: -63.1737, sortOrder: 1 },
+    { name: "Central", slug: "central", code: "CC01", address: "Avenida Cristóbal de Mendoza #1365", city: "Santa Cruz de la Sierra", phone: "+591 3 3427864", whatsapp: "59176003875", hours: "Lun–Dom, 11:00 – 23:00", latitude: -17.7699, longitude: -63.1737, sortOrder: 1 },
     { name: "Urubó", slug: "urubo", code: "CC02", address: "Colinas del Urubó", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 2 },
     { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", whatsapp: "59178002456", latitude: null, longitude: null, sortOrder: 3 },
     { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", whatsapp: "59169061542", latitude: null, longitude: null, sortOrder: 4 },
@@ -139,8 +139,7 @@ async function main() {
     { name: "Patio Belén", slug: "patio-belen", code: "CC10", address: "Patio Belén", city: "Santa Cruz de la Sierra", whatsapp: "59177676009", latitude: null, longitude: null, sortOrder: 10 },
     { name: "Busch", slug: "busch", code: "CC11", address: "Av. Busch", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 11 },
     { name: "Porongo", slug: "porongo", code: "CC12", address: "Porongo", city: "Porongo", latitude: null, longitude: null, sortOrder: 12 },
-    { name: "La Cabaña del Camba", slug: "la-cabana-del-camba", code: "CC13", address: "Av. Escuadrón Velasco", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 13 },
-    { name: "La Casa del Camba Muerto", slug: "la-casa-del-camba-muerto", code: "CC14", address: "Av. Canal Guapilo, 7mo anillo, Calle 3 #7", city: "Santa Cruz de la Sierra", phone: "+591 76012093", whatsapp: "59176012093", latitude: null, longitude: null, sortOrder: 14 },
+    { name: "La Casa del Camba Muerto", slug: "la-casa-del-camba-muerto", code: "CC13", address: "Av. Canal Guapilo, 7mo anillo, Calle 3 #7", city: "Santa Cruz de la Sierra", phone: "+591 76012093", whatsapp: "59176012093", latitude: null, longitude: null, sortOrder: 13 },
   ];
   const branchIds: string[] = [];
   for (const b of branches) {
