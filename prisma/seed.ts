@@ -121,19 +121,21 @@ async function main() {
   }
   console.log(`  ✔ ${categories.length} categories`);
 
-  // The 8 Casa del Camba locations. Only the Central branch publishes a street
-  // address and phone numbers; the mall locations carry their venue name until
-  // the store fills in details from Admin → Sucursales. Coordinates are used by
-  // the storefront to suggest the closest branch.
+  // The 10 Casa del Camba locations. The seven Express sucursales carry their
+  // WhatsApp order line from the official Linktree (linktr.ee/CasadelCambaExpres3);
+  // only Central publishes a street address and landline. Coordinates are used
+  // by the storefront to suggest the closest branch.
   const branches = [
     { name: "Central", slug: "central", code: "CC01", address: "Av. Cristóbal de Mendoza #1365", city: "Santa Cruz de la Sierra", phone: "+591 3 3427864", whatsapp: "59176003875", hours: "Lun–Dom, 11:00 – 23:00", latitude: -17.7699, longitude: -63.1737, sortOrder: 1 },
     { name: "Urubó", slug: "urubo", code: "CC02", address: "Urubó", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 2 },
-    { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 3 },
-    { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 4 },
+    { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", whatsapp: "59178002456", latitude: null, longitude: null, sortOrder: 3 },
+    { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", whatsapp: "59169061542", latitude: null, longitude: null, sortOrder: 4 },
     { name: "Punto Market", slug: "punto-market", code: "CC05", address: "Punto Market", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 5 },
-    { name: "Mega Center", slug: "mega-center", code: "CC06", address: "Mega Center", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 6 },
-    { name: "Ventura Mall", slug: "ventura-mall", code: "CC07", address: "Ventura Mall", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 7 },
-    { name: "Makro Parque", slug: "makro-parque", code: "CC08", address: "Makro Parque", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 8 },
+    { name: "Mega Center", slug: "mega-center", code: "CC06", address: "Mega Center", city: "Santa Cruz de la Sierra", whatsapp: "59169202296", latitude: null, longitude: null, sortOrder: 6 },
+    { name: "Ventura Mall", slug: "ventura-mall", code: "CC07", address: "Ventura Mall", city: "Santa Cruz de la Sierra", whatsapp: "59178511582", latitude: null, longitude: null, sortOrder: 7 },
+    { name: "Makro Parque", slug: "makro-parque", code: "CC08", address: "Makro Parque", city: "Santa Cruz de la Sierra", whatsapp: "59169202586", latitude: null, longitude: null, sortOrder: 8 },
+    { name: "Ice Norte", slug: "ice-norte", code: "CC09", address: "Ice Norte", city: "Santa Cruz de la Sierra", whatsapp: "59162078775", latitude: null, longitude: null, sortOrder: 9 },
+    { name: "Patio Belén", slug: "patio-belen", code: "CC10", address: "Patio Belén", city: "Santa Cruz de la Sierra", whatsapp: "59177676009", latitude: null, longitude: null, sortOrder: 10 },
   ];
   const branchIds: string[] = [];
   for (const b of branches) {
