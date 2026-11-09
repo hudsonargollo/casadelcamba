@@ -12,6 +12,7 @@ import { FeaturedCarousel } from "@/components/featured-carousel";
 import { Commitments } from "@/components/commitments";
 import { Newsletter } from "@/components/newsletter";
 import { DeliveryBand } from "@/components/delivery-band";
+import { ClubBand } from "@/components/loyalty/club-band";
 import { Reveal } from "@/components/reveal";
 import { SplitText } from "@/components/text-reveal";
 import { JsonLd } from "@/components/json-ld";
@@ -252,6 +253,9 @@ export default async function HomePage() {
           <FeaturedCarousel products={featured} />
         </div>
       </section>
+
+      {/* Club Santa María — loyalty programme billboard */}
+      <ClubBand rules={settings.loyalty} />
 
       {/* Same-day local delivery, built around the moto courier illustration */}
       <DeliveryBand

@@ -187,9 +187,21 @@ async function main() {
       "Delivery en moto en Santa Cruz",
       "Delivery gratis a partir de Bs 100",
       "Retiro en tienda disponible en todas las sucursales",
+      "Club Santa María: junta 10 sellos y llévate 1 gratis",
       "Hecho al momento · Pago contra entrega",
     ],
     inventory: { lowStockThreshold: 5 },
+    loyalty: {
+      enabled: true,
+      name: "Club Santa María",
+      stampsToFree: 10,
+      eligible: "all",
+      eligibleSlugs: [],
+      pointsPer: 1,
+      pointsAmount: 10,
+      pointsOnShipping: false,
+      expiryDays: 0,
+    },
     notifications: { orderEmail: "ventas@santamaria.com" },
   };
 
@@ -198,6 +210,24 @@ async function main() {
     update: { value: settings },
     create: { key: "store", value: settings },
   });
+  console.log("  ✔ store settings");
+
+  // Starting rewards shop. Upserted by slug so the owner's edits (name, cost,
+  // stock) survive a re-seed.
+  const rewards = [
+    { slug: "botella-santamaria", name: "Botella squeeze Santa María", description: "Botella reutilizable de la marca.", costPoints: 250, stock: 40, order: 1 },
+    { slug: "bolso-santamaria", name: "Bolso de tela Santa María", description: "Bolso de algodón para el diario.", costPoints: 300, stock: 30, order: 2 },
+    { slug: "juguete-santamaria", name: "Juguete para los más chicos", description: "Sorpresa de la marca para niños.", costPoints: 200, stock: 50, order: 3 },
+    { slug: "gorra-santamaria", name: "Gorra Santa María", description: "Gorra con el logo de Santa María.", costPoints: 400, stock: 20, order: 4 },
+  ];
+  for (const r of rewards) {
+    await prisma.reward.upsert({
+      where: { slug: r.slug },
+      update: { name: r.name, description: r.description, costPoints: r.costPoints, order: r.order },
+      create: r,
+    });
+  }
+  console.log(`  ✔ ${rewards.length} Club Santa María rewards`);
 
   console.log("✅ Seed complete.");
 }
