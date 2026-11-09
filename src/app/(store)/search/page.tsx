@@ -12,7 +12,7 @@ export async function generateMetadata({ searchParams }: PageProps<"/search">): 
   return {
     robots: { index: false, follow: true },
     title: q ? `Buscar: ${q}` : "Buscar",
-    description: "Busca en el menú de SantaMaria Fast Food.",
+    description: "Busca en el menú de Casa del Camba.",
   };
 }
 
@@ -128,7 +128,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
                     Esto se está preparando ahora. Recibe un aviso en cuanto esté disponible — o explora el
                     menú abajo.
                   </p>
-                  <Link href={`/shop/${category.slug}`} className="relative mt-6 inline-flex rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft">
+                  <Link href={`/shop/${category.slug}`} className="relative mt-6 inline-flex rounded-full bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft">
                     Avísame cuando llegue
                   </Link>
                 </>

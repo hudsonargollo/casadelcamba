@@ -7,7 +7,7 @@ import { getStoreSettings } from "@/lib/settings";
 export const metadata: Metadata = {
   alternates: { canonical: "/shipping" },
   title: "Delivery y devoluciones",
-  description: "Delivery en moto y retiro en sucursal en Santa Cruz, Bolivia: costos, tiempos y política de devoluciones de SantaMaria Fast Food.",
+  description: "Delivery en moto y retiro en sucursal en Santa Cruz, Bolivia: costos, tiempos y política de devoluciones de Casa del Camba.",
 };
 
 export default async function ShippingPage() {
@@ -34,7 +34,7 @@ export default async function ShippingPage() {
               {FREE_SHIPPING_THRESHOLD > 0 ? (
                 <> — <strong>gratis</strong> en pedidos desde {formatPrice(FREE_SHIPPING_THRESHOLD)}.</>
               ) : (
-                <> — y <strong>gratis</strong> en todos los pedidos de SantaMaria Fast Food.</>
+                <> — y <strong>gratis</strong> en todos los pedidos de Casa del Camba.</>
               )}
             </li>
             <li>• Preparamos tu pedido al momento y sale directo de la sucursal que elegiste.</li>

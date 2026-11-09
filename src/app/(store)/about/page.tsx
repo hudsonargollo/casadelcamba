@@ -6,13 +6,13 @@ import { SplitText } from "@/components/text-reveal";
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "Nosotros",
-  description: "SantaMaria Fast Food — sándwiches Santa María hechos a la plancha y delivery en Santa Cruz, Bolivia, con 13 sucursales.",
+  description: "Casa del Camba — comida típica cruceña desde 1986. El mejor sabor de Santa Cruz, con delivery y retiro en tienda.",
 };
 
 const PILLARS = [
-  { title: "Hecho al momento", body: "Nada espera bajo una lámpara: tu Santa María se arma cuando confirmas el pedido." },
-  { title: "Precios claros", body: "Combos de barrio y promos reales, sin sorpresas al pagar." },
-  { title: "Delivery y retiro", body: "Te lo llevamos a la puerta o lo recoges en tu sucursal SantaMaria más cercana." },
+  { title: "Hecho al momento", body: "Nada espera bajo una lámpara: tu plato se prepara cuando confirmas el pedido." },
+  { title: "Recetas de siempre", body: "Los sabores cambas que nos hicieron famosos: majao, picantes, empanadas y parrilla." },
+  { title: "Delivery y retiro", body: "Te lo llevamos a la puerta o lo recoges en tu sucursal Casa del Camba más cercana." },
 ];
 
 export default function AboutPage() {
@@ -23,22 +23,24 @@ export default function AboutPage() {
           <Emblem size={52} className="mx-auto text-brand" accent="var(--color-accent)" />
           <span className="eyebrow mt-5 block">Nuestra historia</span>
           <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight text-ink text-balance sm:text-5xl">
-            <SplitText text="Comida rápida" />{" "}
-            <span className="brand-text">de barrio</span>
+            <SplitText text="Tradición camba" />{" "}
+            <span className="brand-text">desde 1986</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-ink/80">
-            SantaMaria nació en Santa Cruz, Bolivia, con una idea simple: que comer rico no
-            tenga que ser complicado. Burgers a la plancha, papas crocantes, postres y bebidas
-            bien frías en un solo menú, con el sabor de siempre y precios de barrio.
+            Casa del Camba abrió sus puertas el 6 de diciembre de 1986, fundada por el
+            ingeniero Juan Carlos Medina Anzoátegui y Rosa Parada de Medina, con una idea
+            clara: rescatar los sabores cambas en una Santa Cruz que empezaba a llenarse
+            de influencias de afuera.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-ink/80">
-            Hoy somos 13 sucursales en la ciudad. Cada pedido se prepara al momento y sale
-            directo a tu puerta en moto o te espera listo para retirar. Pedir es fácil: eliges
-            tu sucursal, armas tu combo y nosotros nos encargamos del resto.
+            Desde entonces cocinamos la comida criolla que nos identifica: majao de pato y
+            charque, picantes, empanadas de keperí, parrilla y los postres de la casa.
+            Cada pedido se prepara al momento y sale directo a tu puerta o te espera listo
+            para retirar en nuestras sucursales.
           </p>
           <Link
             href="/shop"
-            className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+            className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
           >
             Ver el menú
           </Link>

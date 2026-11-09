@@ -80,7 +80,7 @@ export default async function AdminSettingsPage() {
         {/* Team */}
         <section
           id="team"
-          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)] sm:p-6"
+          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
         >
           <h2 className="font-display text-xl font-semibold text-ink">Equipo</h2>
           <p className="mt-1 text-sm text-muted">

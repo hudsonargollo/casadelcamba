@@ -37,7 +37,7 @@ export default async function AnalyticsPage() {
         {kpis.map((k) => (
           <div
             key={k.label}
-            className="rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)]"
+            className="rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)]"
           >
             <p className="text-[0.62rem] font-medium uppercase tracking-[0.16em] text-muted">{k.label}</p>
             <p className="mt-2 font-display text-2xl font-bold text-ink [font-variant-numeric:tabular-nums]">

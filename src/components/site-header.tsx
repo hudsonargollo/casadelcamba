@@ -27,10 +27,10 @@ export function SiteHeader({
   const pathname = usePathname();
   const picker = useBranchPicker();
 
-  // The programme name is owner-editable (Admin → Club Santa María), so the link is
+  // The programme name is owner-editable (Admin → Club Camba), so the link is
   // built from settings instead of hardcoded into NAV.
   const nav = clubName
-    ? [...NAV.slice(0, 2), { label: clubName, href: "/club-santamaria" }, ...NAV.slice(2)]
+    ? [...NAV.slice(0, 2), { label: clubName, href: "/club-camba" }, ...NAV.slice(2)]
     : NAV;
 
   const isActive = (href: string) =>
@@ -42,25 +42,16 @@ export function SiteHeader({
         {/* Brand */}
         <Link
           href="/"
-          aria-label="SantaMaria — inicio"
+          aria-label="Casa del Camba — inicio"
           className="group flex min-w-0 shrink items-center transition-transform duration-300 hover:scale-[1.02] lg:shrink-0 lg:justify-self-start"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/santamaria-logo.webp"
-            alt="SantaMaria Fast Food"
-            width={757}
-            height={329}
-            className="h-8 w-auto dark:hidden sm:h-9 lg:h-10"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/santamaria-logo-dark.webp"
-            alt=""
-            aria-hidden="true"
-            width={757}
-            height={329}
-            className="hidden h-8 w-auto dark:block sm:h-9 lg:h-10"
+            src="/images/casadelcamba-logo.png"
+            alt="Casa del Camba"
+            width={228}
+            height={169}
+            className="h-10 w-auto sm:h-11 lg:h-12"
           />
         </Link>
 
@@ -117,7 +108,7 @@ export function SiteHeader({
       </div>
 
       {/* Accent hairline */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,199,44,0.5)] to-transparent" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,204,4,0.5)] to-transparent" />
     </header>
   );
 }

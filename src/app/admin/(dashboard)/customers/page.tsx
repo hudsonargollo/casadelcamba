@@ -27,7 +27,7 @@ export default async function AdminCustomersPage() {
             </p>
           </div>
         ) : (
-          <div className="rounded-2xl border border-[var(--line)] bg-surface shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)]">
+          <div className="rounded-2xl border border-[var(--line)] bg-surface shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)]">
             {/* Desktop table */}
             <div className="hidden overflow-x-auto sm:block">
               <table className="w-full text-sm">

@@ -6,9 +6,9 @@ import { MenuSection } from "@/components/shop/menu-section";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/shop" },
-  title: "Menú: las Santa María, combos y bebidas",
+  title: "Menú: platos típicos, parrilla y empanadas",
   description:
-    "Sándwiches Santa María hechos a la plancha, combos, promos y bebidas bien frías. Pide online en tus 13 sucursales de Santa Cruz.",
+    "Majao de pato, picante de pollo, empanadas de keperí, parrilla y postres cambas. Pide online con delivery o retiro en nuestras sucursales de Santa Cruz.",
 };
 
 export const dynamic = "force-dynamic";
@@ -19,19 +19,19 @@ export default async function ShopPage() {
   const drinks = products.filter((p) => p.category.slug === "bebidas");
   const desserts = products.filter((p) => p.category.slug === "postres");
   const drinksAndDesserts = new Set([...drinks, ...desserts].map((p) => p.id));
-  const sandwiches = products.filter((p) => !drinksAndDesserts.has(p.id));
+  const mains = products.filter((p) => !drinksAndDesserts.has(p.id));
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
       <header className="max-w-3xl">
         <span className="eyebrow">El menú</span>
         <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl">
-          Una Santa María, por favor
+          El mejor sabor de Santa Cruz
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-base text-muted sm:text-lg">
-          Acá no se pide una hamburguesa: se pide una Santa María. Pan tostado en la plancha,
-          carne jugosa, queso derretido y todo lo que le quieras poner. Elige la tuya
-          y acompáñala con algo bien frío.
+          Cocina criolla de verdad: majao de pato, picante de lengua, empanadas de keperí
+          y parrilla con arroz con queso y yuca frita. Elige tu plato y acompáñalo
+          con algo bien frío.
         </p>
       </header>
 
@@ -41,20 +41,20 @@ export default async function ShopPage() {
 
       <div className="mt-14 space-y-14 sm:mt-16 sm:space-y-16">
         <MenuSection
-          id="sandwiches"
+          id="platos"
           eyebrow="Las clásicas"
-          title="Todas las Santa María"
-          description="Sándwiches armados al momento, con pan dorado en la plancha y carne al jugo. Estas son las que nunca fallan."
-          href="/shop/burgers"
-          linkLabel="Ver sándwiches"
-          products={sandwiches}
+          title="Platos típicos y parrilla"
+          description="Los sabores cambas de siempre, preparados al momento con las guarniciones de la casa: arroz, yuca frita, plátano y llajua."
+          href="/shop/platos-tipicos-y-combinados"
+          linkLabel="Ver platos típicos"
+          products={mains}
         />
 
         <MenuSection
           id="bebidas"
           eyebrow="Bien frías"
           title="Bebidas"
-          description="Gaseosas, aguas y aguas saborizadas de 500 ml para acompañar la Santa María."
+          description="Gaseosas de 500 ml bien frías para acompañar tu pedido."
           href="/shop/bebidas"
           linkLabel="Ver bebidas"
           products={drinks}

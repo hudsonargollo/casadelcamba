@@ -21,7 +21,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try {
-      localStorage.setItem("santamaria-theme", next);
+      localStorage.setItem("casadelcamba-theme", next);
     } catch {
       /* storage unavailable — non-fatal */
     }

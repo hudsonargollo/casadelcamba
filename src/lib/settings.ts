@@ -33,15 +33,15 @@ export const DEFAULT_SETTINGS: StoreSettings = {
     deliveryTime: DELIVERY_TIME,
   },
   announcements: [
-    "Delivery en moto en Santa Cruz · 13 sucursales",
+    "Delivery en moto en Santa Cruz · 8 sucursales",
     "Pago contra entrega al recibir tu pedido",
-    "Pedidos hechos al momento · Sabor de barrio",
+    "Tradición camba desde 1986 · Hecho al momento",
     "Atención cuidadosa por WhatsApp",
   ],
   inventory: { lowStockThreshold: 5 },
   loyalty: {
     enabled: true,
-    name: "Club Santa María",
+    name: "Club Camba",
     stampsToFree: 10,
     eligible: "all",
     eligibleSlugs: [],

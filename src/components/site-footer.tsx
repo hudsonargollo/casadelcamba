@@ -25,7 +25,7 @@ const TRUST = [
   "Hecho al momento",
   "Delivery y retiro",
   "Pago contra entrega",
-  "13 sucursales en Santa Cruz",
+  "Tradición camba desde 1986",
 ];
 
 export function SiteFooter({ settings }: { settings: StoreSettings }) {
@@ -35,14 +35,14 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
     whatsappUrl: whatsappUrl(settings),
     phoneHref: phoneHref(settings),
   };
-  // The programme name (and whether it exists at all) comes from Admin → Club Santa María.
+  // The programme name (and whether it exists at all) comes from Admin → Club Camba.
   const help = settings.loyalty.enabled
-    ? [{ label: settings.loyalty.name, href: "/club-santamaria" }, ...HELP]
+    ? [{ label: settings.loyalty.name, href: "/club-camba" }, ...HELP]
     : HELP;
   return (
     <footer
       className="relative overflow-hidden text-light/80"
-      style={{ background: "linear-gradient(180deg, #0a4682 0%, #072f57 100%)" }}
+      style={{ background: "linear-gradient(180deg, #3c6e1b 0%, #1d3a0e 100%)" }}
     >
       {/* accent top line + soft glow */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgba(255,216,102,0.7)] to-transparent" />
@@ -54,19 +54,19 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-12 md:gap-10">
         {/* Brand + socials */}
         <div className="flex flex-col items-center text-center md:col-span-4 md:items-start md:text-left">
-          <Link href="/" aria-label="SantaMaria — inicio" className="inline-flex">
+          <Link href="/" aria-label="Casa del Camba — inicio" className="inline-flex">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/santamaria-logo-dark.webp"
-              alt="SantaMaria Fast Food"
-              width={757}
-              height={329}
-              className="h-12 w-auto"
+              src="/images/casadelcamba-logo.png"
+              alt="Casa del Camba"
+              width={228}
+              height={169}
+              className="h-14 w-auto"
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-light/60">
-            Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías
-            en tus 13 sucursales SantaMaria — con delivery y retiro en tienda.
+            Comida típica cruceña desde 1986: majao, picantes, empanadas de keperí y
+            parrilla — con delivery y retiro en tienda.
           </p>
           <div className="mt-6 flex gap-3">
             {CONTACT.instagram && (
@@ -157,8 +157,8 @@ export function SiteFooter({ settings }: { settings: StoreSettings }) {
       {/* Bottom bar */}
       <div className="relative border-t border-[rgba(255,216,102,0.18)]">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-5 text-center text-xs text-light/45 sm:flex-row sm:text-left">
-          <span>© {new Date().getFullYear()} SantaMaria Fast Food. Todos los derechos reservados.</span>
-          <span>Hecho en Santa Cruz, Bolivia · Sabor de barrio</span>
+          <span>© {new Date().getFullYear()} Casa del Camba. Todos los derechos reservados.</span>
+          <span>Hecho en Santa Cruz, Bolivia · El mejor sabor de Santa Cruz</span>
         </div>
       </div>
     </footer>

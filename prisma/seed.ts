@@ -19,49 +19,95 @@ type SeedProduct = {
 
 const prisma = new PrismaClient();
 
-// SantaMaria — catalog taken from the store's printed menu (public/imgs/menuitens.png).
+// Casa del Camba — menu taken from the chain's PedidosYa listing (Central).
 // Categories are auto-created from the product data; duplicates are skipped.
 
 const categories: { name: string; slug: string; description: string }[] = [
-  { name: "Imperdibles", slug: "imperdibles", description: "Los favoritos de SantaMaria, los que no puedes dejar pasar." },
-  { name: "Plus Days", slug: "plus-days", description: "Promociones especiales del día." },
-  { name: "Burgers", slug: "burgers", description: "Hamburguesas artesanales SantaMaria." },
-  { name: "Postres", slug: "postres", description: "Dulces para cerrar con broche de oro." },
-  { name: "Bebidas", slug: "bebidas", description: "Gaseosas, aguas y aguas saborizadas bien frías." },
+  { name: "Entradas", slug: "entrada", description: "Para abrir el apetito, al estilo camba." },
+  { name: "Empanadas", slug: "empanadas", description: "Las infaltables: de carne de res y de keperí, con salsa tártara." },
+  { name: "Sopas", slug: "sopas", description: "Sopa de maní y locro: tradición en cada cucharada." },
+  { name: "Platos típicos y combinados", slug: "platos-tipicos-y-combinados", description: "Majao, picantes, silpancho y buffets: el corazón de la cocina cruceña." },
+  { name: "Parrilla", slug: "parrilla", description: "Cortes a la parrilla con las guarniciones de la casa." },
+  { name: "Plato vegetariano", slug: "plato-vegetariano", description: "Una opción fresca y sin carne." },
+  { name: "Menú de niños", slug: "menu-de-ninos", description: "Porciones pensadas para los más chicos de la casa." },
+  { name: "Agregados", slug: "agregados", description: "Guarniciones para acompañar tu plato." },
+  { name: "Bebidas", slug: "bebidas", description: "Gaseosas bien frías de 500 ml." },
+  { name: "Postres", slug: "postres", description: "Los dulces de la casa: leche crema, arroz con leche y manjar blanco." },
 ];
 
 const products: SeedProduct[] = [
-  // Imperdibles
-  { name: "Cheese Corazón", slug: "cheese-corazon-imperdible", description: "Hamburguesa con corazones de pollo, choclo, queso, huevo, tomate y lechuga.", price: 31, brand: "SantaMaria", categorySlug: "imperdibles", stock: 40, images: ["/imgs/menu/cheese-corazon-imperdible.png"], featured: true },
-
-  // Plus Days
-  { name: "Cheese Burger", slug: "cheese-burger-plus-days", description: "Hamburguesa con carne, choclo, queso, huevo, tomate y lechuga.", price: 32, brand: "SantaMaria", categorySlug: "plus-days", stock: 40, images: ["/imgs/menu/cheese-burger-plus-days.png"], featured: true },
-
-  // Burgers
-  { name: "Cheese Filet", slug: "cheese-filet", description: "Hamburguesa con filet, choclo, queso, huevo, tomate y lechuga.", price: 32, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/cheese-filet.png"], featured: true },
-  { name: "Cheese Pollo con Tocino", slug: "cheese-pollo-tocino", description: "Hamburguesa con pollo, tocino, choclo, queso, huevo, tomate y lechuga.", price: 29, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/cheese-pollo-tocino.png"], featured: true },
-  { name: "Cheese Corazón", slug: "cheese-corazon-burger", description: "Hamburguesa con corazones de pollo, choclo, queso, huevo, tomate y lechuga.", price: 31, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/cheese-corazon-burger.png"], featured: true },
-  { name: "Cheese Burger", slug: "cheese-burger", description: "Hamburguesa con carne, choclo, queso, huevo, tomate y lechuga.", price: 32, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/cheese-burger.png"], featured: true },
-  { name: "Burger Vegetariana", slug: "burger-vegetariana", description: "Mix de legumbres y especias.", price: 28, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/burger-vegetariana.png"], featured: true },
-  { name: "Burger Calabresa", slug: "burger-calabresa", description: "Hamburguesa de salchicha brasileira calabresa, choclo, queso, huevo, tomate, lechuga y la salsa de la casa.", price: 28, brand: "SantaMaria", categorySlug: "burgers", stock: 40, images: ["/imgs/menu/burger-calabresa.png"], featured: true },
-
-  // Postres
-  { name: "Postre 3 Leches", slug: "postre-3-leches", description: "Postre de tres leches, suave y dulce.", price: 17, brand: "SantaMaria", categorySlug: "postres", stock: 30, images: ["/imgs/menu/postre-3-leches.png"] },
-
+  // Entradas
+  { name: "Ceviche De Lagarto", slug: "ceviche-de-lagarto", description: "Ceviche de Lagarto acompañado con camote y chipilo.", price: 79, brand: "Casa del Camba", categorySlug: "entrada", stock: 40, images: ["/imgs/menu/ceviche-de-lagarto.jpeg"] },
+  // Empanadas
+  { name: "Empanadas de carne (6 unid)", slug: "empanadas-de-carne-6-unid", description: "6 Empanadas de carne de Res acompañadas con salsa Tártara", price: 42, material: "6 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/empanadas-de-carne-6-unid.jpeg"], featured: true },
+  { name: "Empanadas de Keperi (6 unid.)", slug: "empanadas-de-keperi-6-unid", description: "6 Empanadas de carne de Keperi acompañadas con salsa Tártara", price: 49, material: "6 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/empanadas-de-keperi-6-unid.jpeg"] },
+  { name: "Pack camba de empanadas", slug: "pack-camba-de-empanadas", description: "Delicioso pack de empandas de carne molida (3 unidades) y keperí (3 unidades)", price: 49, material: "6 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/pack-camba-de-empanadas.jpeg"] },
+  { name: "Dúo de empandas de keperí", slug: "duo-de-empandas-de-keperi", description: "Deliciosas empanadas de keperí", price: 14, material: "2 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/duo-de-empandas-de-keperi.jpeg"] },
+  { name: "Dúo de empanadas de carne", slug: "duo-de-empanadas-de-carne", description: "Deliciosas empanadas de carne", price: 12, material: "2 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/duo-de-empanadas-de-carne.jpeg"] },
+  { name: "Dúo mixto de empanadas", slug: "duo-mixto-de-empanadas", description: "Empanada de keperí y carne", price: 14, material: "2 unidades", brand: "Casa del Camba", categorySlug: "empanadas", stock: 40, images: ["/imgs/menu/duo-mixto-de-empanadas.jpeg"] },
+  // Sopas
+  { name: "Sopa de Maní", slug: "sopa-de-mani", description: "Sopa cremosa de maní con costilla de res, churiqui y papa fritas acompañada de yuca.", price: 36, brand: "Casa del Camba", categorySlug: "sopas", stock: 40, images: ["/imgs/menu/sopa-de-mani.jpeg"] },
+  { name: "Locro", slug: "locro", description: "Madio locro pollo con una presa de pierna.", price: 36, brand: "Casa del Camba", categorySlug: "sopas", stock: 40, images: ["/imgs/menu/locro.jpeg"] },
+  // Platos típicos y combinados
+  { name: "Majao de pato", slug: "majao-de-pato", description: "Arroz batido con pato desmenuzado y urucú acompañado con huevo, plátano y yuca frita.", price: 55, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/majao-de-pato.jpeg"], featured: true },
+  { name: "Majao de charque", slug: "majao-de-charque", description: "Arroz tostado con charque y urucú acompañado con huevo, plátano y yuca frita.", price: 48, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/majao-de-charque.jpeg"] },
+  { name: "Majao mixto / charque y pato", slug: "majao-mixto-charque-y-pato", description: "Majao mixto de charque tostado y pato", price: 56, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/majao-mixto-charque-y-pato.jpeg"] },
+  { name: "Silpancho", slug: "silpancho", description: "Carne apanada acompañada de arroz, papas, huevo y ensalada de tomate y cebolla.", price: 65, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/silpancho.jpeg"], featured: true },
+  { name: "Picante Mixto Lengua-Pollo", slug: "picante-mixto-lengua-pollo", description: "Cuarto pollo pechuga y porción de lengua de res con jugo de picante acompañado con arroz primavera y chuño.", price: 89, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/picante-mixto-lengua-pollo.jpeg"], featured: true },
+  { name: "Picante De Pollo", slug: "picante-de-pollo", description: "Cuarto de pollo pechuga con jugo picante acompañada con arroz primavera y chuño.", price: 68, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/picante-de-pollo.jpeg"] },
+  { name: "Picante de Lengua", slug: "picante-de-lengua", description: "2 porciones de lengua de res con jugo picante acompañado con arroz primavera y chuño.", price: 85, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/picante-de-lengua.jpeg"] },
+  { name: "Chancho al horno crocante", slug: "chancho-al-horno-crocante", description: "Cerdo crocante acompañado arroz primavera y ensalada", price: 90, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/chancho-al-horno-crocante.jpeg"] },
+  { name: "Medio Keperi", slug: "medio-keperi", description: "Keperi con Arroz primavera , yuca frita , ensalada lechuga y tomate.", price: 77, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/medio-keperi.jpeg"], featured: true },
+  { name: "Platango", slug: "platango", description: "Incluye Picante de pollo, Silpancho, Majao de charque, chuño, plátano frito, yuca frita y huevo frito para 1 persona.", price: 90, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/platango.jpeg"], featured: true },
+  { name: "Rapii Al Jugo", slug: "rapii-al-jugo", description: "Jugosa carne acompañada con arroz con queso y yuca.", price: 77, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/rapii-al-jugo.jpeg"] },
+  { name: "Rapii con majao de charque", slug: "rapii-con-majao-de-charque", description: "Deliciosa carne jugosa acompañada con Majao de charque tostado, huevo, plátano y yuca.", price: 90, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/rapii-con-majao-de-charque.jpeg"] },
+  { name: "Churrasco Con Majao De Charque", slug: "churrasco-con-majao-de-charque", description: "Delicioso churrasco acompañado con Majao de charque, huevo y plátano.", price: 90, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/churrasco-con-majao-de-charque.jpeg"] },
+  { name: "Mini buffet de la casa p/2 per", slug: "mini-buffet-de-la-casa-p2-per", description: "Majao de charque tostado, Majao de charque batido, Picante de lengua y Rapii, acompañado por la ensalada del día , arroz primavera, yuca frita, plátano frito, chuño, huevo frito y llajua.", price: 180, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/mini-buffet-de-la-casa-p2-per.jpeg"] },
+  { name: "Mini Buffet para 2 personas", slug: "mini-buffet-para-2-personas", description: "Majao de Pato + Majao de Charque + Keperí + Picante Pollo acompañado con arroz primavera, chuño, ensalada del día y yuca frita.", price: 180, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/mini-buffet-para-2-personas.jpeg"] },
+  { name: "Buffet Típico Para 4 Personas", slug: "buffet-tipico-para-4-personas", description: "Incluye: Majao de Charque Tostado, Majao de Pato, Picante de Pollo y Keperí al horno, estos platos son acompañados con Ensalada del día, arroz primavera, plátano frito, chuño, huevo frito y llajua.", price: 330, material: "Para 4 personas", brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: ["/imgs/menu/buffet-tipico-para-4-personas.jpeg"] },
+  { name: "Picante de pollo con majao de charque", slug: "picante-de-pollo-con-majao-de-charque", description: "Picante de pollo con majao de charque batido o tostado acompañado con huevo frito, plátano y chuño", price: 85, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: [] },
+  { name: "Picante de lengua con majao de charque", slug: "picante-de-lengua-con-majao-de-charque", description: "Picante de lengua con majao de charque batido o tostado acompañado con huevo, plátano y chuño", price: 90, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: [] },
+  { name: "Tres tiempos/ empanadas -buffet típico-postre", slug: "tres-tiempos-empanadas-buffet-tipico-postre", description: "4 empanadas ( keperí y carne) + buffet típico ( picante de pollo + keperí + majao de pato + majao de charque tostado) + postre tres cambitas ( arroz con leche, leche crema y manjar blanco)", price: 235, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: [] },
+  { name: "Tres pasos / empanadas,buffet de casa, postre", slug: "tres-pasos-empanadasbuffet-de-casa-postre", description: "4 empanadas ( keperí y carne) + buffet de la casa ( majao de charque tostado y batido), picante de lengua y rapii + tric (arroz con leche, leche crema y manjar blanco)", price: 235, brand: "Casa del Camba", categorySlug: "platos-tipicos-y-combinados", stock: 40, images: [] },
+  // Parrilla
+  { name: "Bife De Chorizo Jr", slug: "bife-de-chorizo-jr", description: "Deliciosa carne de parrilla, acompañada de arroz con queso, yuca y ensalada del día.", price: 80, brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/bife-de-chorizo-jr.jpeg"] },
+  { name: "Churrasco", slug: "churrasco", description: "Deliciosa carne a la parrilla acompañado con arroz con queso, ensalada del día, yuca frita y llajua.", price: 105, brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/churrasco.jpeg"], featured: true },
+  { name: "Bife de chorizo para 2 personas", slug: "bife-de-chorizo-para-2-personas", description: "Deliciosa carne de res a la parrilla acompañado de dos chorizos, arroz con queso o graneado, ensalada del día, yuca frita y llajua", price: 195, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/bife-de-chorizo-para-2-personas.jpeg"] },
+  { name: "Pollo deshuesado", slug: "pollo-deshuesado", description: "1/2 Pollo deshuesado acompañado con arroz con primavera, papas fritas y ensalada del dia.", price: 100, brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/pollo-deshuesado.jpeg"] },
+  { name: "Parrilla Carnívora para 2 personas", slug: "parrilla-carnivora-para-2-personas", description: "Carne de Lomo de Res, Chuleta de Cerdo, Filete de Pollo y Chorizo acompañado de arroz con queso, yuca frita y ensalada de lechuga y tomate para 2 personas.", price: 200, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/parrilla-carnivora-para-2-personas.jpeg"] },
+  { name: "Parrilla tradicional p/2 personas", slug: "parrilla-tradicional-p2-personas", description: "Carne de Lomo de Res, Filete de Pollo, Corazón, Riñón, Chinchulí, Tripa, Chorizo y Morcilla acompañado de Arroz con Queso,Yuca frita y Ensalada de Lechuga y Tomate para 2 personas.", price: 200, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: ["/imgs/menu/parrilla-tradicional-p2-personas.jpeg"] },
+  { name: "Bife de chorizo", slug: "bife-de-chorizo", description: "Deliciosa carne a parrilla acompañado con chorizo, arroz con queso o primavera, ensalada del día, yuca frita o llajua", price: 115, brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: [] },
+  { name: "Empanadas,parrilla carnívora y postre p/2 per", slug: "empanadasparrilla-carnivora-y-postre-p2-per", description: "Tres pasos: 2 empanadas de keperí + 2 empanadas de carne + parrilla carnívoras con guarniciones y postre tres cambitas (arroz con leche, leche crema y manjar blanco)", price: 250, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: [] },
+  { name: "Empanadas, parr. tradicional, postre p/2 pers", slug: "empanadas-parr-tradicional-postre-p2-pers", description: "Tres pasos: 2 empanadas de keperí + 2 empanadas de carne + parrilla tradicional con guarniciones y postre tres cambitas (arroz con leche, leche crema y manjar blanco)", price: 250, material: "Para 2 personas", brand: "Casa del Camba", categorySlug: "parrilla", stock: 40, images: [] },
+  // Plato vegetariano
+  { name: "Plato Vegetariano", slug: "plato-vegetariano", description: "Ensalada Rusa, Palmito, Huevo, Tomate, Queso y Pepinillos.", price: 40, brand: "Casa del Camba", categorySlug: "plato-vegetariano", stock: 40, images: ["/imgs/menu/plato-vegetariano.jpeg"] },
+  // Menú de niños
+  { name: "Casita -plato+jugo+juguete", slug: "casita-platojugojuguete", description: "Combo para que los niños disfruten de un delicioso plato acompañado del un jugo del Valle y hermoso Juguete.", price: 60, material: "Plato + jugo + juguete", brand: "Casa del Camba", categorySlug: "menu-de-ninos", stock: 40, images: ["/imgs/menu/casita-platojugojuguete.jpeg"] },
+  { name: "Majadito velatacú", slug: "majadito-velatacu", description: "Delicioso plato, arroz con charque y urucú acompañado de huevo y plátano.", price: 35, brand: "Casa del Camba", categorySlug: "menu-de-ninos", stock: 40, images: ["/imgs/menu/majadito-velatacu.jpg"] },
+  { name: "Nuggets De Pollo", slug: "nuggets-de-pollo", description: "Deliciosos Nuggets de pollo acompañada com papas fritas y salsa golf.", price: 40, brand: "Casa del Camba", categorySlug: "menu-de-ninos", stock: 40, images: ["/imgs/menu/nuggets-de-pollo.jpeg"] },
+  { name: "Milanesa De Pollo Picada", slug: "milanesa-de-pollo-picada", description: "Milanesa de Pollo Picada con papas fritas y salsa golf.", price: 38, brand: "Casa del Camba", categorySlug: "menu-de-ninos", stock: 40, images: ["/imgs/menu/milanesa-de-pollo-picada.jpeg"] },
+  // Agregados
+  { name: "Arroz con queso", slug: "arroz-con-queso", description: "Arroz con queso.", price: 15, brand: "Casa del Camba", categorySlug: "agregados", stock: 50, images: ["/imgs/menu/arroz-con-queso.jpeg"] },
+  { name: "Arroz primavera", slug: "arroz-primavera", description: "Arroz primavera.", price: 15, brand: "Casa del Camba", categorySlug: "agregados", stock: 50, images: ["/imgs/menu/arroz-primavera.jpeg"] },
+  { name: "Yuca frita", slug: "yuca-frita", description: "Yuca frita.", price: 15, brand: "Casa del Camba", categorySlug: "agregados", stock: 50, images: ["/imgs/menu/yuca-frita.jpeg"] },
+  { name: "Plátano frito", slug: "platano-frito", description: "Plátano frito.", price: 15, brand: "Casa del Camba", categorySlug: "agregados", stock: 50, images: ["/imgs/menu/platano-frito.jpg"] },
+  { name: "Chorizo", slug: "chorizo", description: "Unidad de chorizo.", price: 15, brand: "Casa del Camba", categorySlug: "agregados", stock: 50, images: ["/imgs/menu/chorizo.jpg"] },
   // Bebidas
-  { name: "Agua Vital sin Gas 600 ml", slug: "agua-vital-600ml", description: "Disfruta del sabor puro y natural del agua. Ideal para mantenerte hidratado en cualquier momento del día.", price: 10, brand: "Vital", categorySlug: "bebidas", contents: "600 ml", stock: 60, images: ["/imgs/menu/agua-vital-600ml.png"] },
-  { name: "Gaseosa Fanta Sabor Naranja 500 ml", slug: "fanta-naranja-500ml", description: "Bebida carbonatada sabor naranja que intensifica la diversión con amigos a través de su sabor superior, frutal e intenso.", price: 10, brand: "Fanta", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/fanta-naranja-500ml.png"] },
-  { name: "Gaseosa Fanta Guaraná 500 ml", slug: "fanta-guarana-500ml", description: "Refrescante bebida gasificada con un increíble sabor que alegrará tus días. ¡Dale color a la vida y vence al gris!", price: 10, brand: "Fanta", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/fanta-guarana-500ml.png"] },
-  { name: "Gaseosa Fanta Sabor Papaya 500 ml", slug: "fanta-papaya-500ml", description: "Bebida gasificada con el exótico sabor de la papaya, perfecta para refrescarte.", price: 10, brand: "Fanta", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/fanta-papaya-500ml.png"] },
-  { name: "Gaseosa Coca-Cola 500 ml", slug: "coca-cola-500ml", description: "Diseñada para acompañar cada momento, el sabor de la cola es un clásico que perdura desde hace más de 130 años. Deliciosa y refrescante.", price: 10, brand: "Coca-Cola", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/coca-cola-500ml.png"] },
-  { name: "Sprite Lima Limón 500 ml", slug: "sprite-lima-limon-500ml", description: "Bebida sin alcohol gasificada con 5% de jugo de limón, ideal para compartir con amigos.", price: 10, brand: "Sprite", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/sprite-lima-limon-500ml.png"] },
-  { name: "Agua Saborizada Aquarius Pera 500 ml", slug: "aquarius-pera-500ml", description: "Refrescante bebida de pera elaborada con agua y fruta. Ideal para disfrutar en cualquier momento.", price: 10, brand: "Aquarius", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/aquarius-pera-500ml.png"] },
-  { name: "Agua Saborizada Aquarius Pomelo 500 ml", slug: "aquarius-pomelo-500ml", description: "Deliciosa bebida sin alcohol con 5% de jugo de frutas, perfecta para disfrutar en un día de campo con familia o amigos.", price: 10, brand: "Aquarius", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/aquarius-pomelo-500ml.png"] },
-
+  { name: "Gaseosa Coca-Cola 500 ml", slug: "gaseosa-coca-cola-500-ml", description: "Coca cola", price: 15, material: "500 ml", brand: "Coca-Cola", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/gaseosa-coca-cola-500-ml.jpg"] },
+  { name: "Coca-Cola Sin Azúcar 500 ml", slug: "coca-cola-sin-azucar-500-ml", description: "Coca cola sin azúcar", price: 15, material: "500 ml", brand: "Coca-Cola", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/coca-cola-sin-azucar-500-ml.jpg"] },
+  { name: "Gaseosa Fanta Naranja 500 ml", slug: "gaseosa-fanta-naranja-500-ml", description: "Fanta 500 ml.", price: 15, material: "500 ml", brand: "Fanta", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/gaseosa-fanta-naranja-500-ml.jpg"] },
+  { name: "Guarana Antartica 500 Ml", slug: "guarana-antartica-500-ml", description: "Gaseosa de 500 ml.", price: 15, material: "500 ml", brand: "Guaraná Antarctica", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/guarana-antartica-500-ml.jpg"] },
+  { name: "Gaseosa Pepsi 500 ml", slug: "gaseosa-pepsi-500-ml", description: "Bebida refrescante aromatizada. Endulzada con azúcar y edulcorantes.", price: 15, material: "500 ml", brand: "Pepsi", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/gaseosa-pepsi-500-ml.jpg"] },
+  { name: "Gaseosa Sprite 500 ml", slug: "gaseosa-sprite-500-ml", description: "Sprite", price: 15, material: "500 ml", brand: "Sprite", categorySlug: "bebidas", contents: "500 ml", stock: 60, images: ["/imgs/menu/gaseosa-sprite-500-ml.jpg"] },
+  // Postres
+  { name: "Leche crema", slug: "leche-crema", description: "Flan casero tradicional.", price: 18, brand: "Casa del Camba", categorySlug: "postres", stock: 30, images: ["/imgs/menu/leche-crema.jpg"] },
+  { name: "Arroz con leche", slug: "arroz-con-leche", description: "Arroz con leche.", price: 18, brand: "Casa del Camba", categorySlug: "postres", stock: 30, images: ["/imgs/menu/arroz-con-leche.jpg"] },
+  { name: "Manjar Blanco", slug: "manjar-blanco", description: "Delicioso manjar blanco con queso criollo.", price: 20, brand: "Casa del Camba", categorySlug: "postres", stock: 30, images: ["/imgs/menu/manjar-blanco.jpeg"] },
+  { name: "Tres Cambitas", slug: "tres-cambitas", description: "Leche crema, arroz con leche y manjar blanco.", price: 40, brand: "Casa del Camba", categorySlug: "postres", stock: 30, images: ["/imgs/menu/tres-cambitas.jpeg"], featured: true },
 ];
 
 async function main() {
-  console.log("🌱 Seeding SantaMaria database...");
+  console.log("🌱 Seeding Casa del Camba database...");
 
   // Categories
   const categoryIdBySlug = new Map<string, string>();
@@ -75,28 +121,20 @@ async function main() {
   }
   console.log(`  ✔ ${categories.length} categories`);
 
-  // The 13 SantaMaria locations, WhatsApp numbers (from the Taplink page) and
-  // street references (from the chain's own listing). Coordinates are used by
-  // the storefront to suggest the closest branch; they can be refined from
-  // Admin → Sucursales.
+  // The 8 Casa del Camba locations. Only the Central branch publishes a street
+  // address and phone numbers; the mall locations carry their venue name until
+  // the store fills in details from Admin → Sucursales. Coordinates are used by
+  // the storefront to suggest the closest branch.
   const branches = [
-    { name: "Santos Dumont 2do Anillo", slug: "santos-dumont-2do-anillo", code: "SM01", address: "Av. Santos Dumont, entre 2do y 3er anillo", city: "Santa Cruz", phone: "+591 62100074", whatsapp: "59162100074", latitude: -17.8030, longitude: -63.1810, sortOrder: 1 },
-    { name: "Santos Dumont 5to Anillo", slug: "santos-dumont-5to-anillo", code: "SM02", address: "Av. Santos Dumont, 5to anillo", city: "Santa Cruz", phone: "+591 77712831", whatsapp: "59177712831", latitude: -17.8331, longitude: -63.1851, sortOrder: 2 },
-    { name: "Trompillo", slug: "trompillo", code: "SM03", address: "Av. Trompillo, sobre el 2do anillo", city: "Santa Cruz", phone: "+591 62100077", whatsapp: "59162100077", latitude: -17.79966, longitude: -63.18219, sortOrder: 3 },
-    { name: "Doble Vía Km6", slug: "doble-via-km6", code: "SM04", address: "Doble Vía a La Guardia, Km 6", city: "Santa Cruz", phone: "+591 62100073", whatsapp: "59162100073", latitude: -17.8183, longitude: -63.2155, sortOrder: 4 },
-    { name: "Nueva Equipetrol", slug: "nueva-equipetrol", code: "SM05", address: "Av. San Martín, 3er anillo externo", city: "Santa Cruz", phone: "+591 77810058", whatsapp: "59177810058", latitude: -17.7630, longitude: -63.1965, sortOrder: 5 },
-    { name: "Radial 27 4to Anillo", slug: "radial-27-4to-anillo", code: "SM06", address: "Radial 27, 4to anillo", city: "Santa Cruz", phone: "+591 62236094", whatsapp: "59162236094", latitude: -17.7495, longitude: -63.1807, sortOrder: 6 },
-    { name: "Alemana 2do Anillo", slug: "alemana-2do-anillo", code: "SM07", address: "Entre Av. Beni y Av. Alemana, 2do anillo", city: "Santa Cruz", phone: "+591 62100078", whatsapp: "59162100078", latitude: -17.77060, longitude: -63.17340, sortOrder: 7 },
-    { name: "Alemana 5to Anillo", slug: "alemana-5to-anillo", code: "SM08", address: "Av. Alemana, 5to anillo", city: "Santa Cruz", phone: "+591 77712831", whatsapp: "59177712831", latitude: -17.7444, longitude: -63.1611, sortOrder: 8 },
-    { name: "Remanso", slug: "remanso", code: "SM09", address: "Remanso, 8vo anillo", city: "Santa Cruz", phone: "+591 76667055", whatsapp: "59176667055", latitude: -17.7146, longitude: -63.1694, sortOrder: 9 },
-    { name: "Cambódromo", slug: "cambodromo", code: "SM10", address: "Cambódromo, 6to anillo", city: "Santa Cruz", phone: "+591 62400075", whatsapp: "59162400075", latitude: -17.7540, longitude: -63.1533, sortOrder: 10 },
-    { name: "Pampa de la Isla", slug: "pampa-de-la-isla", code: "SM11", address: "Pampa de la Isla, entre 7mo y 8vo anillo", city: "Santa Cruz", phone: "+591 62100081", whatsapp: "59162100081", latitude: -17.7595, longitude: -63.1158, sortOrder: 11 },
-    { name: "Villa 1ro de Mayo", slug: "villa-1ro-de-mayo", code: "SM12", address: "Villa Primero de Mayo", city: "Santa Cruz", phone: "+591 69202944", whatsapp: "59169202944", latitude: -17.7944, longitude: -63.1340, sortOrder: 12 },
-    { name: "Piraí", slug: "pirai", code: "SM13", address: "Av. Piraí, entre 2do y 3er anillo", city: "Santa Cruz", phone: "+591 78555564", whatsapp: "59178555564", latitude: -17.7905, longitude: -63.1995, sortOrder: 13 },
+    { name: "Central", slug: "central", code: "CC01", address: "Av. Cristóbal de Mendoza #1365", city: "Santa Cruz de la Sierra", phone: "+591 3 3427864", whatsapp: "59176003875", hours: "Lun–Dom, 11:00 – 23:00", latitude: -17.7699, longitude: -63.1737, sortOrder: 1 },
+    { name: "Urubó", slug: "urubo", code: "CC02", address: "Urubó", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 2 },
+    { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 3 },
+    { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 4 },
+    { name: "Punto Market", slug: "punto-market", code: "CC05", address: "Punto Market", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 5 },
+    { name: "Mega Center", slug: "mega-center", code: "CC06", address: "Mega Center", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 6 },
+    { name: "Ventura Mall", slug: "ventura-mall", code: "CC07", address: "Ventura Mall", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 7 },
+    { name: "Makro Parque", slug: "makro-parque", code: "CC08", address: "Makro Parque", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 8 },
   ];
-  // The first deploy created a single placeholder branch; rename it in place so
-  // its per-branch stock rows carry over to the first real location.
-  await prisma.branch.updateMany({ where: { slug: "principal" }, data: branches[0] });
   const branchIds: string[] = [];
   for (const b of branches) {
     const row = await prisma.branch.upsert({
@@ -107,7 +145,7 @@ async function main() {
     });
     // Branches seeded before coordinates existed get them once, without
     // touching anything the store may have edited afterwards.
-    if (row.latitude == null) {
+    if (row.latitude == null && b.latitude != null) {
       await prisma.branch.update({
         where: { id: row.id },
         data: { address: b.address, latitude: b.latitude, longitude: b.longitude },
@@ -167,15 +205,15 @@ async function main() {
   // Seed settings
   const settings = {
     contact: {
-      email: "ventas@santamaria.com",
-      phone: "",
-      whatsapp: "",
+      email: "eventos@casadelcamba.com",
+      phone: "+591 3 3427864",
+      whatsapp: "59176003875",
       city: "Santa Cruz, Bolivia",
-      hours: "Lun–Sáb, 8:00 – 20:00",
+      hours: "Lun–Dom, 11:00 – 23:00",
     },
     social: {
       instagram: "",
-      facebook: "",
+      facebook: "https://www.facebook.com/CasaDelCamba/",
       tiktok: "",
     },
     shipping: {
@@ -187,13 +225,13 @@ async function main() {
       "Delivery en moto en Santa Cruz",
       "Delivery gratis a partir de Bs 100",
       "Retiro en tienda disponible en todas las sucursales",
-      "Club Santa María: junta 10 sellos y llévate 1 gratis",
-      "Hecho al momento · Pago contra entrega",
+      "Club Camba: junta puntos y canjéalos por postres",
+      "Tradición camba desde 1986 · Pago contra entrega",
     ],
     inventory: { lowStockThreshold: 5 },
     loyalty: {
       enabled: true,
-      name: "Club Santa María",
+      name: "Club Camba",
       stampsToFree: 10,
       eligible: "all",
       eligibleSlugs: [],
@@ -202,7 +240,7 @@ async function main() {
       pointsOnShipping: false,
       expiryDays: 0,
     },
-    notifications: { orderEmail: "ventas@santamaria.com" },
+    notifications: { orderEmail: "eventos@casadelcamba.com" },
   };
 
   await prisma.setting.upsert({
@@ -215,10 +253,10 @@ async function main() {
   // Starting rewards shop. Upserted by slug so the owner's edits (name, cost,
   // stock) survive a re-seed.
   const rewards = [
-    { slug: "botella-santamaria", name: "Botella squeeze Santa María", description: "Botella reutilizable de la marca.", costPoints: 250, stock: 40, order: 1 },
-    { slug: "bolso-santamaria", name: "Bolso de tela Santa María", description: "Bolso de algodón para el diario.", costPoints: 300, stock: 30, order: 2 },
-    { slug: "juguete-santamaria", name: "Juguete para los más chicos", description: "Sorpresa de la marca para niños.", costPoints: 200, stock: 50, order: 3 },
-    { slug: "gorra-santamaria", name: "Gorra Santa María", description: "Gorra con el logo de Santa María.", costPoints: 400, stock: 20, order: 4 },
+    { slug: "postre-tres-cambitas", name: "Postre Tres Cambitas", description: "Leche crema, arroz con leche y manjar blanco.", costPoints: 250, stock: 40, order: 1 },
+    { slug: "duo-empanadas-keperi", name: "Dúo de empanadas de keperí", description: "Dos empanadas de keperí con salsa tártara.", costPoints: 200, stock: 50, order: 2 },
+    { slug: "gaseosa-500ml", name: "Gaseosa 500 ml", description: "La bebida que prefieras, bien fría.", costPoints: 150, stock: 60, order: 3 },
+    { slug: "majadito-velatacu", name: "Majadito velatacú", description: "Arroz con charque y urucú, huevo y plátano.", costPoints: 300, stock: 30, order: 4 },
   ];
   for (const r of rewards) {
     await prisma.reward.upsert({
@@ -227,7 +265,7 @@ async function main() {
       create: r,
     });
   }
-  console.log(`  ✔ ${rewards.length} Club Santa María rewards`);
+  console.log(`  ✔ ${rewards.length} Club Camba rewards`);
 
   console.log("✅ Seed complete.");
 }

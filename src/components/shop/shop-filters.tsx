@@ -9,9 +9,6 @@ import { PriceRange } from "./price-range";
 // Params owned by the sidebar; "Clear all" removes exactly these.
 export const FILTER_KEYS = ["material", "minPrice", "maxPrice", "sale", "stock"] as const;
 
-// The catalog slug still says "burgers"; the menu calls them Santa María.
-const CATEGORY_LABEL: Record<string, string> = { burgers: "Sándwiches" };
-
 /** Read / update the shop's URL search params (filters live in the URL). */
 export function useShopQuery() {
   const router = useRouter();
@@ -133,7 +130,7 @@ export function ShopFilters({ facets }: { facets: ShopFacets }) {
                   }`}
                 >
                   {active && <span className="absolute inset-y-1.5 left-0 w-[3px] rounded-full bg-accent" />}
-                  {CATEGORY_LABEL[c.slug] ?? c.name}
+                  {c.name}
                   {c.count > 0 ? (
                     <Count n={c.count} />
                   ) : (

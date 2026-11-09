@@ -4,7 +4,7 @@ import { OrderLookup } from "@/components/order-lookup";
 
 export const metadata: Metadata = {
   title: "Estado del pedido",
-  description: "Rastrea tu pedido de SantaMaria Fast Food — ingresa tu número de pedido y correo.",
+  description: "Rastrea tu pedido de Casa del Camba — ingresa tu número de pedido y correo.",
   alternates: { canonical: "/account/orders" },
 };
 

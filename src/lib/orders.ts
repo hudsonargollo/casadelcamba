@@ -43,7 +43,7 @@ export type CreateOrderResult =
       ok: true;
       orderNumber: string;
       total: number;
-      /** What Club Santa María gave this order (0 when the shopper isn't signed in). */
+      /** What Club Camba gave this order (0 when the shopper isn't signed in). */
       loyalty: { stamps: number; points: number; redeemedProduct: string | null };
     }
   | { ok: false; error: string };
@@ -199,7 +199,7 @@ export async function createOrder(
       safeCustomerId = customer?.id ?? null;
     }
 
-    // ---- Club Santa María -------------------------------------------------------
+    // ---- Club Camba -------------------------------------------------------
     // A full stamp card makes one unit of *that same product* free. The free
     // unit is priced at 0 as its own line instead of discounting the total, so
     // stock, the receipt and the confirmation email all agree.

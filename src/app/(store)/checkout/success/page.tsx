@@ -64,7 +64,7 @@ export default async function SuccessPage({
   }
   const awaitingPayment = online && order.paymentStatus !== "PAID";
 
-  // What the order moved on the Club Santa María ledger (account orders only).
+  // What the order moved on the Club Camba ledger (account orders only).
   const settings = await getStoreSettings();
   const club =
     settings.loyalty.enabled && order.customerId ? await orderLoyalty(order.id) : null;
@@ -81,7 +81,7 @@ export default async function SuccessPage({
     <div className="mx-auto max-w-2xl px-5 py-24 text-center">
       <ClearCart productIds={order.productIds} />
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-accent-soft to-accent">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0a4682" strokeWidth="2.6">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3c6e1b" strokeWidth="2.6">
           <path d="M5 12l5 5L20 6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
@@ -142,7 +142,7 @@ export default async function SuccessPage({
             )}
           </p>
           <Link
-            href="/club-santamaria"
+            href="/club-camba"
             className="mt-3 inline-block rounded-full border border-[var(--line-strong)] px-6 py-2 text-xs font-medium uppercase tracking-[0.12em] text-ink transition hover:border-accent hover:text-accent-strong"
           >
             Ver mi tarjeta

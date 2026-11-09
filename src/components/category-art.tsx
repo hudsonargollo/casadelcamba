@@ -1,22 +1,65 @@
-/** Line icons for fast-food category tiles. */
+/** Line icons for menu category tiles. */
 
 type Props = { className?: string };
 
-function Burger({ className = "" }: Props) {
+function Plate({ className = "" }: Props) {
   return (
     <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
-      {/* top bun */}
-      <path d="M28 54c0-16 14-27 32-27s32 11 32 27" strokeLinejoin="round" />
-      {/* cheese */}
-      <path d="M26 64c8 5 16 2 22 6s14 2 22-2 16 0 24-4" strokeLinejoin="round" opacity="0.8" />
-      {/* patty */}
-      <path d="M28 74h64" strokeLinecap="round" strokeWidth="7" opacity="0.85" />
-      {/* lettuce */}
-      <path d="M26 88c6-4 12 4 18 0s12-4 18 0 12 4 18 0 10 4 14 0" strokeLinecap="round" opacity="0.7" />
-      {/* bottom bun */}
-      <path d="M28 88c0 6 14 10 32 10s32-4 32-10" strokeLinejoin="round" />
-      {/* sesame */}
-      <path d="M44 46h1M58 40h1M72 46h1" strokeLinecap="round" opacity="0.6" />
+      {/* plate */}
+      <ellipse cx="60" cy="74" rx="38" ry="14" />
+      <ellipse cx="60" cy="72" rx="26" ry="8" strokeWidth="1.5" opacity="0.55" />
+      {/* rice mound */}
+      <path d="M44 68c0-9 7-15 16-15s16 6 16 15" strokeLinejoin="round" />
+      <path d="M53 60h1M61 56h1M69 60h1" strokeLinecap="round" opacity="0.6" />
+    </svg>
+  );
+}
+
+function Grill({ className = "" }: Props) {
+  return (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      {/* steak */}
+      <path d="M32 60c0-14 12-24 28-24s28 10 28 24-12 24-28 24-28-10-28-24z" strokeLinejoin="round" />
+      {/* grill marks */}
+      <path d="M46 50l8 18M60 46l8 24M74 50l8 14" strokeLinecap="round" opacity="0.7" />
+      {/* heat */}
+      <path d="M48 26c0-4 4-4 4-8M60 26c0-4 4-4 4-8M72 26c0-4 4-4 4-8" strokeLinecap="round" opacity="0.5" />
+    </svg>
+  );
+}
+
+function Empanada({ className = "" }: Props) {
+  return (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      {/* turnover */}
+      <path d="M28 74c0-20 14-34 32-34s32 14 32 34H28z" strokeLinejoin="round" />
+      {/* crimped edge */}
+      <path d="M34 74l4-6M44 74l4-6M54 74l4-6M64 74l4-6M74 74l4-6M84 74l4-6" strokeLinecap="round" opacity="0.65" />
+      {/* steam */}
+      <path d="M50 30c0-4 4-4 4-8M62 30c0-4 4-4 4-8" strokeLinecap="round" opacity="0.5" />
+    </svg>
+  );
+}
+
+function Bowl({ className = "" }: Props) {
+  return (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      {/* bowl */}
+      <path d="M28 64h64c0 16-12 28-32 28S28 80 28 64z" strokeLinejoin="round" />
+      <path d="M24 64h72" strokeLinecap="round" />
+      {/* steam */}
+      <path d="M48 48c0-5 4-5 4-10M60 48c0-5 4-5 4-10M72 48c0-5 4-5 4-10" strokeLinecap="round" opacity="0.6" />
+      {/* base */}
+      <path d="M48 96h24" strokeLinecap="round" opacity="0.7" />
+    </svg>
+  );
+}
+
+function Leaf({ className = "" }: Props) {
+  return (
+    <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      <path d="M38 84c0-26 17-43 46-47-2 29-19 47-46 47z" strokeLinejoin="round" />
+      <path d="M44 78c9-13 20-24 32-32" strokeLinecap="round" opacity="0.7" />
     </svg>
   );
 }
@@ -84,13 +127,18 @@ function Star({ className = "" }: Props) {
 }
 
 function Fallback({ className = "" }: Props) {
-  return <Burger className={className} />;
+  return <Plate className={className} />;
 }
 
 const MAP: Record<string, (p: Props) => React.ReactElement> = {
-  imperdibles: Star,
-  "plus-days": Fries,
-  burgers: Burger,
+  entrada: Star,
+  empanadas: Empanada,
+  sopas: Bowl,
+  "platos-tipicos-y-combinados": Plate,
+  parrilla: Grill,
+  "plato-vegetariano": Leaf,
+  "menu-de-ninos": Star,
+  agregados: Fries,
   postres: Dessert,
   bebidas: Drink,
 };

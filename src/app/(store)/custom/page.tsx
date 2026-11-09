@@ -8,12 +8,12 @@ import { whatsappUrl } from "@/lib/settings-shared";
 export const metadata: Metadata = {
   alternates: { canonical: "/custom" },
   title: "Pedidos para eventos",
-  description: "Combos y pedidos por volumen para cumpleaños, eventos y empresas en SantaMaria Fast Food.",
+  description: "Platos típicos y pedidos por volumen para cumpleaños, eventos y empresas en Casa del Camba.",
 };
 
 const STEPS = [
   { n: "1", title: "Cuéntanos tu evento", body: "Cuántas personas son, qué te gustaría y para qué fecha lo necesitas." },
-  { n: "2", title: "Armamos tu combo", body: "Coordinamos disponibilidad, opciones, precio y un horario estimado de entrega o retiro." },
+  { n: "2", title: "Armamos tu pedido", body: "Coordinamos disponibilidad, opciones, precio y un horario estimado de entrega o retiro." },
   { n: "3", title: "Lo disfrutan", body: "Preparamos tu pedido según lo coordinado; los tiempos estimados dependen de la preparación, la demanda y la distancia." },
 ];
 
@@ -29,15 +29,16 @@ export default async function CustomPage() {
             Pedidos para eventos
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-ink/80">
-            ¿Organizas un cumpleaños, una reunión o un pedido grande para tu equipo? Armamos
-            combos a tu medida, con burgers, papas, postres y bebidas listos para compartir.
+            ¿Organizas un cumpleaños, una reunión o un pedido grande para tu equipo? Preparamos
+            pedidos a tu medida, con platos típicos, empanadas, parrilla, postres y bebidas
+            listos para compartir.
           </p>
           {/* Jumps to the request form further down this page */}
           <a
             href="#design-request"
-            className="mt-9 inline-block rounded-full bg-accent px-9 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+            className="mt-9 inline-block rounded-full bg-accent px-9 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
           >
-            Pedir un combo para mi evento
+            Pedir para mi evento
           </a>
           <p className="mt-3 text-xs text-muted">
             Rellena un formulario breve para coordinar tu pedido con nuestro equipo.

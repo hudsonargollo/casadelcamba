@@ -1,4 +1,4 @@
-# Despliegue en producción — SantaMaria
+# Despliegue en producción — Casa del Camba
 
 Producción corre en un **VPS propio (Ubuntu) con systemd + nginx**. Netlify, Vercel y
 Cloudflare no se usan para el sitio en vivo.
@@ -7,14 +7,14 @@ Cloudflare no se usan para el sitio en vivo.
 
 | Elemento | Valor |
 | -------- | ----- |
-| URL pública | <https://santamaria.clubemkt.digital> |
-| Código fuente | `/root/ClubeMkt/santamaria` |
-| Build desplegado | `/var/www/santamaria` (`server.js`, `.next/`, `public/`) |
-| Servicio | `santamaria.service` (systemd) |
+| URL pública | <https://casadelcamba.clubemkt.digital> |
+| Código fuente | `/root/ClubeMkt/casadelcamba` |
+| Build desplegado | `/var/www/casadelcamba` (`server.js`, `.next/`, `public/`) |
+| Servicio | `casadelcamba.service` (systemd) |
 | Puerto interno | `3004` (`PORT` en la unit) |
-| Proxy | nginx `sites-enabled/santamaria` → `http://172.17.0.1:3004` |
-| Variables de entorno | `EnvironmentFile=/root/ClubeMkt/santamaria/.env` |
-| Uploads | `UPLOAD_DIR=/var/www/santamaria-data/uploads` |
+| Proxy | nginx `sites-enabled/casadelcamba` → `http://172.17.0.1:3004` |
+| Variables de entorno | `EnvironmentFile=/root/ClubeMkt/casadelcamba/.env` |
+| Uploads | `UPLOAD_DIR=/var/www/casadelcamba-data/uploads` |
 | Base de datos | PostgreSQL (`DATABASE_URL` / `DIRECT_URL` en `.env`) |
 
 `next.config.ts` genera `output: "standalone"` en el VPS (en Netlify/Vercel se
@@ -26,7 +26,7 @@ desactiva porque esas plataformas empaquetan la app por su cuenta).
 ## Desplegar
 
 ```bash
-cd /root/ClubeMkt/santamaria
+cd /root/ClubeMkt/casadelcamba
 git pull
 bash scripts/deploy.sh
 ```
@@ -36,17 +36,17 @@ El script:
 1. `npm install` y `npx prisma generate`.
 2. `npx prisma migrate deploy`.
 3. `npm run build`.
-4. Copia el build standalone a `/var/www/santamaria` (sin `node_modules`) y
+4. Copia el build standalone a `/var/www/casadelcamba` (sin `node_modules`) y
    sincroniza `public/`.
-5. Limpia `.next/cache` y reinicia `santamaria.service`.
+5. Limpia `.next/cache` y reinicia `casadelcamba.service`.
 6. Comprueba `http://127.0.0.1:3004/` hasta obtener `200`.
 
 ## Operación
 
 ```bash
-systemctl status santamaria.service
-systemctl restart santamaria.service
-journalctl -u santamaria.service -f
+systemctl status casadelcamba.service
+systemctl restart casadelcamba.service
+journalctl -u casadelcamba.service -f
 curl -I http://127.0.0.1:3004/
 curl -s http://127.0.0.1:3004/api/health
 ```
@@ -65,7 +65,7 @@ lo normal es usar systemd.
 Las imágenes subidas desde el panel se guardan **fuera** del build, en
 `UPLOAD_DIR`, y se sirven por `/uploads/products/[file]` y
 `/uploads/references/[file]`. El despliegue no toca esa carpeta. Respalda
-`/var/www/santamaria-data/uploads`.
+`/var/www/casadelcamba-data/uploads`.
 
 ## Rollback
 

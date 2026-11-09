@@ -7,17 +7,17 @@ import { AccordionItem } from "@/components/ui/accordion-item";
 export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
   title: "Preguntas frecuentes",
-  description: "Respuestas sobre pedidos, combos, delivery, retiro y pagos en SantaMaria Fast Food, Santa Cruz, Bolivia.",
+  description: "Respuestas sobre pedidos, platos, delivery, retiro y pagos en Casa del Camba, Santa Cruz, Bolivia.",
 };
 
 const faqs = (DELIVERY_TIME: string) => [
   {
     q: "¿Cómo hago un pedido?",
-    a: "Elige tu sucursal, arma tu combo desde el menú y confirma el pedido. Puedes pagar contra entrega o de forma segura en línea.",
+    a: "Elige tu sucursal, arma tu pedido desde el menú y confirma el pedido. Puedes pagar contra entrega o de forma segura en línea.",
   },
   {
     q: "¿Qué métodos de pago aceptan?",
-    a: "Pago contra entrega en tu sucursal SantaMaria, y pagos en línea con tarjeta o billetera a través de nuestras pasarelas.",
+    a: "Pago contra entrega en tu sucursal Casa del Camba, y pagos en línea con tarjeta o billetera a través de nuestras pasarelas.",
   },
   {
     q: "¿Cuánto tarda el delivery?",
@@ -29,7 +29,7 @@ const faqs = (DELIVERY_TIME: string) => [
   },
   {
     q: "¿Tienen opciones para compartir?",
-    a: "Sí. Los combos y promos están pensados para compartir. Échale un ojo a la sección Imperdibles y a los Plus Days del menú.",
+    a: "Sí. Los buffets y parrillas para 2 o 4 personas están pensados para compartir. Mira los platos típicos y la parrilla del menú.",
   },
   {
     q: "¿Cuál es la política de devoluciones?",
@@ -37,7 +37,7 @@ const faqs = (DELIVERY_TIME: string) => [
   },
   {
     q: "¿Entregan en mi zona?",
-    a: "Entregamos en Santa Cruz desde nuestras 13 sucursales. Si tienes dudas sobre tu dirección, consúltanos por WhatsApp antes de pedir.",
+    a: "Entregamos en Santa Cruz desde nuestras 8 sucursales. Si tienes dudas sobre tu dirección, consúltanos por WhatsApp antes de pedir.",
   },
 ];
 

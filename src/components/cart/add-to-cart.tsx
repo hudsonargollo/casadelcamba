@@ -88,8 +88,8 @@ export function AddToCart({ product }: { product: Omit<CartItem, "quantity"> }) 
           onClick={handleAdd}
           className={`flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.06em] transition duration-200 active:scale-[0.98] sm:px-7 ${
             added
-              ? "bg-accent text-brand-deep shadow-[0_16px_34px_-16px_rgba(255,199,44,0.95)]"
-              : "bg-brand text-light shadow-[0_16px_34px_-16px_rgba(13,90,167,0.8)] hover:bg-brand-deep"
+              ? "bg-accent text-brand-deep shadow-[0_16px_34px_-16px_rgba(255,204,4,0.95)]"
+              : "bg-brand text-light shadow-[0_16px_34px_-16px_rgba(76,138,35,0.8)] hover:bg-brand-deep"
           }`}
         >
           {added ? <CheckIcon /> : <CartIcon />}
@@ -105,7 +105,7 @@ export function AddToCart({ product }: { product: Omit<CartItem, "quantity"> }) 
       <button
         type="button"
         onClick={handleBuyNow}
-        className="w-full rounded-full bg-gradient-to-r from-accent-soft to-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] text-brand shadow-[0_14px_34px_-14px_rgba(255,199,44,0.7)] transition hover:opacity-90"
+        className="w-full rounded-full bg-gradient-to-r from-accent-soft to-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] text-brand shadow-[0_14px_34px_-14px_rgba(255,204,4,0.7)] transition hover:opacity-90"
       >
         Comprar ahora
       </button>

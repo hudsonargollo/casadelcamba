@@ -149,7 +149,7 @@ export default async function AdminLoyaltyPage({ searchParams }: PageProps<"/adm
         {/* Rewards catalogue */}
         <section
           id="regalos"
-          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)] sm:p-6"
+          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
         >
           <h2 className="font-display text-xl font-semibold text-ink">Regalos canjeables</h2>
           <p className="mt-1 text-sm text-muted">
@@ -194,7 +194,7 @@ export default async function AdminLoyaltyPage({ searchParams }: PageProps<"/adm
         {/* Redemption counter */}
         <section
           id="canjes"
-          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)] sm:p-6"
+          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
         >
           <h2 className="font-display text-xl font-semibold text-ink">Canjes para entregar</h2>
           <p className="mt-1 text-sm text-muted">
@@ -250,7 +250,7 @@ export default async function AdminLoyaltyPage({ searchParams }: PageProps<"/adm
         {/* Customers */}
         <section
           id="clientes"
-          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)] sm:p-6"
+          className="scroll-mt-24 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
         >
           <h2 className="font-display text-xl font-semibold text-ink">Saldos por cliente</h2>
           <p className="mt-1 text-sm text-muted">

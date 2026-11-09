@@ -13,7 +13,7 @@ export type BranchSuggestion = {
   longitude: number;
 };
 
-const DISMISS_KEY = "sm_branch_prompt_dismissed_at";
+const DISMISS_KEY = "cc_branch_prompt_dismissed_at";
 const DISMISS_MS = 24 * 60 * 60 * 1000;
 const MAX_SUGGESTION_KM = 60;
 
@@ -109,12 +109,12 @@ export function BranchSuggest({
     phase === "found"
       ? "Esta es tu sucursal más cercana"
       : phase === "locating"
-        ? "Buscando SantaMaria cerca de ti"
-        : "Elige tu sucursal SantaMaria";
+        ? "Buscando Casa del Camba cerca de ti"
+        : "Elige tu sucursal Casa del Camba";
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end justify-center bg-[rgba(7,47,87,0.5)] p-4 backdrop-blur-sm sm:items-center"
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-[rgba(29,58,14,0.5)] p-4 backdrop-blur-sm sm:items-center"
       role="presentation"
       onClick={dismiss}
     >
@@ -126,7 +126,7 @@ export function BranchSuggest({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.28, ease: "easeOut" }}
         onClick={(event) => event.stopPropagation()}
-        className="relative w-full max-w-md overflow-hidden rounded-3xl border border-[var(--line)] bg-surface shadow-[0_30px_80px_-30px_rgba(7,47,87,0.7)]"
+        className="relative w-full max-w-md overflow-hidden rounded-3xl border border-[var(--line)] bg-surface shadow-[0_30px_80px_-30px_rgba(29,58,14,0.7)]"
       >
         <div className="bg-brand px-6 pb-7 pt-6 text-light">
           <button
@@ -140,7 +140,7 @@ export function BranchSuggest({
             </svg>
           </button>
 
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(141,196,255,0.45)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-accent-soft">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(163,212,120,0.45)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-accent-soft">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" />
               <circle cx="12" cy="10" r="2.5" />
@@ -197,7 +197,7 @@ export function BranchSuggest({
               <>
                 <a
                   href={`/api/branch?slug=${encodeURIComponent(suggestion.branch.slug)}&next=/`}
-                  className="rounded-full bg-accent px-5 py-3 text-center text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(255,199,44,0.9)] transition hover:bg-accent-soft"
+                  className="rounded-full bg-accent px-5 py-3 text-center text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(255,204,4,0.9)] transition hover:bg-accent-soft"
                 >
                   Usar esta sucursal
                 </a>

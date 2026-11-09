@@ -140,7 +140,7 @@ function BranchPickerDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end justify-center bg-[rgba(7,47,87,0.55)] p-0 backdrop-blur-sm sm:items-center sm:p-4"
+      className="fixed inset-0 z-[100] flex items-end justify-center bg-[rgba(29,58,14,0.55)] p-0 backdrop-blur-sm sm:items-center sm:p-4"
       role="presentation"
       onClick={onClose}
     >
@@ -149,7 +149,7 @@ function BranchPickerDialog({
         aria-modal="true"
         aria-labelledby="branch-picker-title"
         onClick={(event) => event.stopPropagation()}
-        className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl border border-[var(--line)] bg-surface shadow-[0_30px_90px_-30px_rgba(7,47,87,0.75)] sm:rounded-3xl"
+        className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl border border-[var(--line)] bg-surface shadow-[0_30px_90px_-30px_rgba(29,58,14,0.75)] sm:rounded-3xl"
       >
         {/* Header */}
         <div className="relative bg-brand px-6 pb-6 pt-6 text-light">
@@ -163,7 +163,7 @@ function BranchPickerDialog({
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(141,196,255,0.45)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-accent-soft">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(163,212,120,0.45)] px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-accent-soft">
             <PinIcon />
             Dónde te atendemos
           </span>

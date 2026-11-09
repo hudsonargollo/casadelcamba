@@ -20,7 +20,7 @@ export type CheckoutDefaults = {
 };
 
 const inputCls =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-[rgba(255,199,44,0.22)]";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-4 py-3 text-sm text-ink outline-none transition placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.22)]";
 const labelCls = "mb-1.5 block text-xs font-medium uppercase tracking-[0.1em] text-muted";
 
 const NOTICES = {
@@ -74,7 +74,7 @@ export function CheckoutForm({
   const isPickup = fulfillment === "PICKUP";
   const baseShipping = isPickup ? 0 : shippingFor(subtotal, shippingRules);
 
-  // ---- Club Santa María: what this cart earns, and any full card to spend ----
+  // ---- Club Camba: what this cart earns, and any full card to spend ----
   const [loyalty, setLoyalty] = useState<LoyaltyCartPreview | null>(null);
   const [redeemId, setRedeemId] = useState<string | null>(null);
   const cartKey = items.map((i) => `${i.id}:${i.quantity}`).join(",");
@@ -336,7 +336,7 @@ export function CheckoutForm({
 
         {/* Order summary — sticky/locked on desktop */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-[var(--line-strong)] bg-surface/80 p-6 shadow-[0_24px_60px_-40px_rgba(7,47,87,0.5)]">
+          <div className="rounded-2xl border border-[var(--line-strong)] bg-surface/80 p-6 shadow-[0_24px_60px_-40px_rgba(29,58,14,0.5)]">
             <h2 className="font-display text-xl font-semibold text-ink">Resumen del pedido</h2>
 
             <ul className="mt-5 max-h-72 space-y-4 overflow-y-auto border-b border-[var(--line)] pb-5 pr-1 text-sm">
@@ -444,7 +444,7 @@ export function CheckoutForm({
                 {loyalty.stamps > 0 && loyalty.points > 0 && " y "}
                 {loyalty.points > 0 && <span className="text-ink">{loyalty.points} puntos</span>}
                 {" · "}
-                <Link href="/club-santamaria" className="underline underline-offset-2 hover:text-ink">
+                <Link href="/club-camba" className="underline underline-offset-2 hover:text-ink">
                   {loyalty.name}
                 </Link>
               </p>
@@ -462,7 +462,7 @@ export function CheckoutForm({
               {submitting ? "Procesando pedido…" : "Confirmar pedido"}
             </button>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-muted">
-              <LockIcon /> Pago seguro y encriptado · SantaMaria Fast Food
+              <LockIcon /> Pago seguro y encriptado · Casa del Camba
             </p>
           </div>
         </aside>

@@ -34,7 +34,7 @@ function linkify(text: string): ReactNode[] {
   return out;
 }
 
-const STORAGE_KEY = "santamaria-chat-v1";
+const STORAGE_KEY = "casadelcamba-chat-v1";
 
 type Faq = { id: string; label: string; answer: string; keywords: string[] };
 
@@ -61,7 +61,7 @@ function buildFaqs(st: StoreSettings): Faq[] {
     label: "💵 Pago y contra entrega",
     keywords: ["pago", "pagar", "contra entrega", "cod", "efectivo", "tarjeta", "payment", "cash", "online", "adelanto", "qr"],
     answer:
-      "Puedes pagar contra entrega al recibir tu pedido en tu sucursal SantaMaria. El pago en línea con tarjeta o billetera aparece al finalizar tu compra cuando está habilitado.",
+      "Puedes pagar contra entrega al recibir tu pedido en tu sucursal Casa del Camba. El pago en línea con tarjeta o billetera aparece al finalizar tu compra cuando está habilitado.",
   },
   {
     id: "returns",
@@ -75,14 +75,14 @@ function buildFaqs(st: StoreSettings): Faq[] {
     label: "🎉 Pedidos para eventos",
     keywords: ["especial", "evento", "cumpleaños", "cumpleanos", "por mayor", "volumen", "negocio", "empresa", "custom", "personalizado", "combo"],
     answer:
-      "Armamos combos y pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.",
+      "Preparamos pedidos por volumen para cumpleaños, eventos y empresas. Llena el formulario de /custom y nuestro equipo te contactará lo antes posible para coordinar disponibilidad, opciones y precio.",
   },
   {
     id: "care",
-    label: "🍔 Ingredientes y alergias",
+    label: "🍽️ Ingredientes y alergias",
     keywords: ["ingrediente", "alergia", "alérgico", "alergico", "gluten", "lácteo", "lacteo", "picante", "veggie", "vegetariano", "care"],
     answer:
-      "Todas nuestras burgers se hacen al momento. Si tienes alguna alergia o restricción, avísanos al confirmar tu pedido y te contamos los ingredientes de cada combo. Más detalles en /care.",
+      "Todos nuestros platos se preparan al momento. Si tienes alguna alergia o restricción, avísanos al confirmar tu pedido y te contamos los ingredientes de cada plato. Más detalles en /care.",
   },
   {
     id: "track",
@@ -109,7 +109,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
   const [input, setInput] = useState("");
   const greeting: Msg = {
     from: "bot",
-    text: "¡Hola! 👋 Soy el asistente de SantaMaria Fast Food. Pregúntame por el menú, combos, delivery, retiro en tienda, formas de pago o el estado de tu pedido.",
+    text: "¡Hola! 👋 Soy el asistente de Casa del Camba. Pregúntame por el menú, platos, delivery, retiro en tienda, formas de pago o el estado de tu pedido.",
   };
   const [msgs, setMsgs] = useState<Msg[]>([greeting]);
   const [typing, setTyping] = useState(false);
@@ -203,14 +203,14 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
       <div className="group/launch fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-[70] flex items-center gap-3 sm:bottom-5 sm:right-5">
         {/* hover label (desktop) */}
         {!open && (
-          <span className="pointer-events-none hidden translate-x-2 items-center rounded-full border border-[var(--line)] bg-surface px-3.5 py-2 text-sm font-medium text-ink opacity-0 shadow-[0_10px_30px_-12px_rgba(7,47,87,0.4)] transition-all duration-300 group-hover/launch:translate-x-0 group-hover/launch:opacity-100 md:flex">
+          <span className="pointer-events-none hidden translate-x-2 items-center rounded-full border border-[var(--line)] bg-surface px-3.5 py-2 text-sm font-medium text-ink opacity-0 shadow-[0_10px_30px_-12px_rgba(29,58,14,0.4)] transition-all duration-300 group-hover/launch:translate-x-0 group-hover/launch:opacity-100 md:flex">
             ¿Necesitas ayuda? Escríbenos
           </span>
         )}
         <button
           onClick={toggleOpen}
           aria-label={open ? "Cerrar chat" : "Abrir chat"}
-          className={`relative flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14 bg-gradient-to-br from-accent-soft via-accent to-accent-strong text-brand shadow-[0_16px_40px_-12px_rgba(255,199,44,0.75)] ring-1 ring-[rgba(141,196,255,0.6)] transition-transform duration-300 hover:scale-110 active:scale-95 ${
+          className={`relative flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14 bg-gradient-to-br from-accent-soft via-accent to-accent-strong text-brand shadow-[0_16px_40px_-12px_rgba(255,204,4,0.75)] ring-1 ring-[rgba(163,212,120,0.6)] transition-transform duration-300 hover:scale-110 active:scale-95 ${
             open ? "" : "animate-chatpulse"
           }`}
         >
@@ -237,7 +237,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
 
       {/* ── Panel ── */}
       {open && (
-        <div className="animate-chatin fixed bottom-20 right-4 z-[70] sm:bottom-24 sm:right-5 flex h-[32rem] max-h-[calc(100dvh-7.5rem)] w-[23rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-[rgba(141,196,255,0.35)] bg-surface shadow-[0_40px_90px_-30px_rgba(7,47,87,0.7)]">
+        <div className="animate-chatin fixed bottom-20 right-4 z-[70] sm:bottom-24 sm:right-5 flex h-[32rem] max-h-[calc(100dvh-7.5rem)] w-[23rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-[rgba(163,212,120,0.35)] bg-surface shadow-[0_40px_90px_-30px_rgba(29,58,14,0.7)]">
           {/* Header */}
           <div className="relative overflow-hidden bg-gradient-to-br from-brand via-brand-dark to-brand-deep px-5 pb-5 pt-4 text-light">
             <div
@@ -245,13 +245,13 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
               style={{ background: "radial-gradient(120px 80px at 85% 0%, #ffd866, transparent 70%)" }}
             />
             <div className="relative flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(141,196,255,0.16)] text-accent ring-1 ring-[rgba(141,196,255,0.4)]">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(163,212,120,0.16)] text-accent ring-1 ring-[rgba(163,212,120,0.4)]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.5A8 8 0 1 1 21 12z" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
               <div className="min-w-0 flex-1">
-                <p className="font-display text-lg font-semibold leading-tight">SantaMaria Fast Food</p>
+                <p className="font-display text-lg font-semibold leading-tight">Casa del Camba</p>
                 <p className="mt-0.5 flex items-center gap-1.5 text-xs text-light/75">
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                   Santa Cruz, Bolivia · {CONTACT.hours}
@@ -284,7 +284,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
                   </span>
                 )}
                 <div
-                  className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed shadow-[0_6px_18px_-10px_rgba(7,47,87,0.35)] ${
+                  className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed shadow-[0_6px_18px_-10px_rgba(29,58,14,0.35)] ${
                     m.from === "user"
                       ? "rounded-br-md bg-gradient-to-br from-accent-soft to-accent text-brand"
                       : "rounded-bl-md border border-[var(--line)] bg-surface text-ink"
@@ -331,7 +331,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
                   <button
                     key={f.id}
                     onClick={() => answer(f)}
-                    className="rounded-full border border-[var(--line-strong)] bg-surface px-3 py-1.5 text-xs font-medium text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:text-accent-strong hover:shadow-[0_8px_20px_-10px_rgba(255,199,44,0.6)]"
+                    className="rounded-full border border-[var(--line-strong)] bg-surface px-3 py-1.5 text-xs font-medium text-ink shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:text-accent-strong hover:shadow-[0_8px_20px_-10px_rgba(255,204,4,0.6)]"
                   >
                     {f.label}
                   </button>
@@ -342,7 +342,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
 
           {/* WhatsApp CTA (or contact page when no number is configured) */}
           <a
-            href={HAS_WHATSAPP ? waLink("¡Hola SantaMaria Fast Food! Quiero hacer un pedido 😊") : "/contact"}
+            href={HAS_WHATSAPP ? waLink("¡Hola Casa del Camba! Quiero hacer un pedido 😊") : "/contact"}
             target={HAS_WHATSAPP ? "_blank" : undefined}
             rel={HAS_WHATSAPP ? "noopener noreferrer" : undefined}
             className="flex items-center justify-center gap-2 bg-[#25D366] py-2.5 text-sm font-semibold text-white transition hover:brightness-105"
@@ -366,7 +366,7 @@ export function SupportChat({ settings }: { settings: StoreSettings }) {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pregunta lo que quieras…"
               maxLength={600}
-              className="min-w-0 flex-1 rounded-full border border-[var(--line-strong)] bg-cream-soft px-4 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,199,44,0.22)]"
+              className="min-w-0 flex-1 rounded-full border border-[var(--line-strong)] bg-cream-soft px-4 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.22)]"
             />
             <button
               type="submit"

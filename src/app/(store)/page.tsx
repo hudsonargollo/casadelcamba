@@ -28,21 +28,22 @@ export const metadata: Metadata = {
 
 const orgJsonLd = {
   "@context": "https://schema.org",
-  "@type": "FastFoodRestaurant",
-  name: "SantaMaria Fast Food",
+  "@type": "Restaurant",
+  name: "Casa del Camba",
   url: siteUrl,
-  slogan: "Las Santa María hechas a la plancha, sabor de barrio",
+  slogan: "El mejor sabor de Santa Cruz",
   description:
-    "SantaMaria Fast Food — sándwiches Santa María, combos y bebidas en 13 sucursales de Santa Cruz, Bolivia. Delivery y retiro en tienda con pago contra entrega.",
-  servesCuisine: ["Sándwiches", "Comida rápida", "Combos"],
-  priceRange: "Bs 10–35",
+    "Casa del Camba — comida típica cruceña desde 1986: majao de pato, picantes, empanadas de keperí y parrilla en Santa Cruz, Bolivia. Delivery y retiro en tienda con pago contra entrega.",
+  servesCuisine: ["Comida típica cruceña", "Comida criolla", "Parrilla"],
+  priceRange: "Bs 12–330",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Santa Cruz",
+    streetAddress: "Av. Cristóbal de Mendoza #1365",
+    addressLocality: "Santa Cruz de la Sierra",
     addressRegion: "Santa Cruz",
     addressCountry: "BO",
   },
-  areaServed: "todas nuestras sucursales en Santa Cruz",
+  areaServed: "Santa Cruz de la Sierra",
   currenciesAccepted: "BOB",
   paymentAccepted: "Efectivo",
 };
@@ -50,7 +51,7 @@ const orgJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "SantaMaria Fast Food",
+  name: "Casa del Camba",
   url: siteUrl,
   potentialAction: {
     "@type": "SearchAction",
@@ -60,25 +61,25 @@ const websiteJsonLd = {
 };
 
 const trustBadges = (freeThreshold: number) => [
-  { title: "Hecho al momento", body: "Carne a la plancha y pan tostado en cada pedido." },
+  { title: "Hecho al momento", body: "Cocina criolla preparada cuando confirmas tu pedido." },
   { title: "Delivery y retiro", body: "Recíbelo en tu puerta o retíralo en tienda." },
   {
     title: "Delivery gratis",
     body:
       freeThreshold > 0
         ? `En pedidos desde ${formatPrice(freeThreshold)}.`
-        : "En todos los pedidos de SantaMaria.",
+        : "En todos los pedidos de Casa del Camba.",
   },
-  { title: "13 sucursales", body: "Encuentra la SantaMaria más cercana en Santa Cruz." },
+  { title: "Desde 1986", body: "El sabor camba de siempre, en el corazón de Santa Cruz." },
 ];
 
 // Category covers from the brand photo set (fallback: first product photo).
 const COVER_BY_SLUG: Record<string, string> = {
-  imperdibles: "/imgs/promotional1.jpeg",
-  "plus-days": "/imgs/promotional4.jpeg",
-  burgers: "/imgs/promotional3.jpeg",
-  postres: "/imgs/menu/postre-3-leches.png",
-  bebidas: "/imgs/menu/coca-cola-500ml.png",
+  "platos-tipicos-y-combinados": "/imgs/menu/majao-de-pato.jpeg",
+  parrilla: "/imgs/menu/churrasco.jpeg",
+  empanadas: "/imgs/menu/empanadas-de-carne-6-unid.jpeg",
+  postres: "/imgs/menu/tres-cambitas.jpeg",
+  bebidas: "/imgs/menu/gaseosa-coca-cola-500-ml.jpg",
 };
 
 export const revalidate = 300;
@@ -146,7 +147,7 @@ export default async function HomePage() {
                 i > 0 ? "lg:border-l lg:border-[var(--line)]" : ""
               }`}
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(255,199,44,0.35)] bg-[radial-gradient(circle,rgba(255,216,102,0.18),transparent_70%)] text-accent-strong">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(255,204,4,0.35)] bg-[radial-gradient(circle,rgba(255,216,102,0.18),transparent_70%)] text-accent-strong">
                 <TrustIcon i={i} />
               </span>
               <p className="mt-3.5 font-display text-lg font-bold text-ink">{t.title}</p>
@@ -165,8 +166,8 @@ export default async function HomePage() {
               <SplitText text="Elige tu antojo" />
             </h2>
             <p className="mx-auto mt-4 max-w-md text-pretty text-muted">
-              Burgers, combos, postres y bebidas bien frías. Todo lo que se te antoja, en un
-              mismo pedido.
+              Platos típicos, parrilla, empanadas, postres y bebidas bien frías. Todo el
+              sabor camba, en un mismo pedido.
             </p>
           </div>
         </Reveal>
@@ -176,14 +177,14 @@ export default async function HomePage() {
             const comingSoon = count === 0;
             const img = COVER_BY_SLUG[c.slug] ?? imageBySlug[c.slug];
             const cardCls =
-              "group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-[var(--line)] transition-all duration-500 hover:-translate-y-1 hover:border-accent hover:shadow-[0_28px_55px_-28px_rgba(7,47,87,0.55)]";
+              "group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-[var(--line)] transition-all duration-500 hover:-translate-y-1 hover:border-accent hover:shadow-[0_28px_55px_-28px_rgba(29,58,14,0.55)]";
 
             const body =
               comingSoon || !img ? (
-                // No products / no photo yet → blue card with a menu icon
+                // No products / no photo yet → green card with a menu icon
                 <div
                   className="relative flex h-full flex-col items-center justify-center gap-3 p-6 text-center"
-                  style={{ background: "linear-gradient(160deg, #0a4682, #072f57)" }}
+                  style={{ background: "linear-gradient(160deg, #3c6e1b, #1d3a0e)" }}
                 >
                   <div className="pointer-events-none absolute inset-3 rounded-xl border border-[rgba(255,216,102,0.25)]" />
                   <CategoryArt slug={c.slug} className="h-20 w-20 text-accent-soft transition duration-500 group-hover:scale-105" />
@@ -206,7 +207,7 @@ export default async function HomePage() {
                   </div>
                   <div
                     className="absolute inset-0"
-                    style={{ background: "linear-gradient(180deg, rgba(7,47,87,0) 35%, rgba(7,47,87,0.55) 68%, rgba(7,47,87,0.88) 100%)" }}
+                    style={{ background: "linear-gradient(180deg, rgba(29,58,14,0) 35%, rgba(29,58,14,0.55) 68%, rgba(29,58,14,0.88) 100%)" }}
                   />
                   <div className="pointer-events-none absolute inset-3 rounded-xl border border-[rgba(255,255,255,0.16)]" />
                   <div className="relative flex h-full flex-col items-center justify-end p-5 text-center">
@@ -231,7 +232,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Promo band — cross-fading offer slider */}
+      {/* Favourites band — cross-fading dish slider */}
       <PromoSlider />
 
       {/* Destacado carousel */}
@@ -254,7 +255,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Club Santa María — loyalty programme billboard */}
+      {/* Club Camba — loyalty programme billboard */}
       <ClubBand rules={settings.loyalty} />
 
       {/* Same-day local delivery, built around the moto courier illustration */}
@@ -271,8 +272,8 @@ export default async function HomePage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-panel">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/imgs/counter.jpg"
-                alt="Atendiendo un pedido en SantaMaria Fast Food"
+                src="/images/hero-casadelcamba.webp"
+                alt="El patio de Casa del Camba en Santa Cruz"
                 className="h-full w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-3 rounded-xl border border-[rgba(246,243,232,0.6)]" />
@@ -282,23 +283,24 @@ export default async function HomePage() {
             <div>
               <span className="eyebrow">Nuestra historia</span>
               <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink text-balance sm:text-5xl">
-                <SplitText text="Tu SantaMaria" />{" "}
-                <span className="brand-text">de barrio</span>
+                <SplitText text="La casa del" />{" "}
+                <span className="brand-text">sabor camba</span>
               </h2>
               <p className="mt-5 text-pretty leading-relaxed text-ink/80">
-                En SantaMaria Fast Food armamos Santa Marías como nos gustan: carne a la
-                plancha, pan tostado y queso que se derrite. Sin vueltas y con el sabor de
-                siempre.
+                Desde el 6 de diciembre de 1986, Casa del Camba cocina los sabores criollos
+                de Santa Cruz: majao de pato, picante de lengua, empanadas de keperí y
+                parrilla, como se han hecho siempre.
               </p>
               <p className="mt-4 text-pretty leading-relaxed text-ink/80">
-                Nacimos en Santa Cruz y hoy tenemos 13 sucursales para estar cerca de ti.
-                Pide en línea con delivery o retira en tienda, con pago contra entrega.
+                Fundada por Juan Carlos Medina y Rosa Parada de Medina, hoy somos la
+                referencia de la comida camba en la ciudad. Pide en línea con delivery o
+                retira en tienda, con pago contra entrega.
               </p>
               <Link
                 href="/about"
-                className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_16px_36px_-18px_rgba(255,199,44,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+                className="mt-7 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_16px_36px_-18px_rgba(255,204,4,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
               >
-                Conoce SantaMaria
+                Conoce nuestra historia
               </Link>
             </div>
           </Reveal>
@@ -311,7 +313,7 @@ export default async function HomePage() {
       {/* Product gallery */}
       <section className="relative overflow-hidden bg-cream-soft px-5 py-24">
         {/* accent hairline + soft glow */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,199,44,0.4)] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,204,4,0.4)] to-transparent" />
         <div
           className="pointer-events-none absolute left-1/2 top-0 h-72 w-[60rem] -translate-x-1/2"
           style={{ background: "radial-gradient(50% 60% at 50% 0%, rgba(255,216,102,0.16), transparent 70%)" }}
@@ -327,7 +329,7 @@ export default async function HomePage() {
           </h2>
           <p className="mt-3 text-pretty text-muted">
             Un vistazo a lo que más piden nuestros clientes — compártelo con{" "}
-            <span className="font-semibold text-accent-strong">#SantaMariaFastFood</span>
+            <span className="font-semibold text-accent-strong">#CasaDelCamba</span>
           </p>
 
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
@@ -336,7 +338,7 @@ export default async function HomePage() {
                 key={p.id}
                 href={`/product/${p.slug}`}
                 aria-label={p.name}
-                className="group relative block aspect-square overflow-hidden rounded-xl ring-1 ring-[var(--line)] transition-all duration-500 hover:-translate-y-1 hover:ring-2 hover:ring-accent hover:shadow-[0_24px_48px_-24px_rgba(7,47,87,0.5)]"
+                className="group relative block aspect-square overflow-hidden rounded-xl ring-1 ring-[var(--line)] transition-all duration-500 hover:-translate-y-1 hover:ring-2 hover:ring-accent hover:shadow-[0_24px_48px_-24px_rgba(29,58,14,0.5)]"
               >
                 <div className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110">
                   <ProductImage src={p.images[0]} alt={p.name} seed={p.slug} />
@@ -361,7 +363,7 @@ export default async function HomePage() {
                 href={CONTACT.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-brand-deep shadow-[0_16px_36px_-18px_rgba(255,199,44,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-brand-deep shadow-[0_16px_36px_-18px_rgba(255,204,4,0.95)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
               >
                 <InstagramIcon size={18} />
                 Síguenos en Instagram
@@ -385,14 +387,15 @@ export default async function HomePage() {
 
 function TrustIcon({ i }: { i: number }) {
   const p = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
-  // 0 Hecho al momento · 1 Delivery y retiro · 2 Delivery gratis · 3 13 sucursales
+  // 0 Hecho al momento · 1 Delivery y retiro · 2 Delivery gratis · 3 Desde 1986
   if (i === 0)
     return (
       <svg {...p}>
-        <path d="M4 9c0-3 3.6-5 8-5s8 2 8 5" />
-        <path d="M4 12.5h16" />
-        <path d="M4.5 16h15" />
-        <path d="M4.5 19.5h15a1 1 0 0 0 0-2h-15a1 1 0 0 0 0 2z" />
+        <path d="M4 17h16" />
+        <path d="M5 17a7 7 0 0 1 14 0" />
+        <path d="M12 10V8" />
+        <path d="M10.5 8h3" />
+        <path d="M3 20h18" />
       </svg>
     );
   if (i === 1)

@@ -8,13 +8,22 @@ import { parseProductFilters } from "@/lib/filters";
 import { ShopBrowser } from "@/components/shop/shop-browser";
 import { Emblem } from "@/components/brand/emblem";
 
-// The category slug stays "burgers" for URLs; storefront copy speaks
-// "sándwich / Santa María", which is what people actually order.
+// Storefront copy overrides where the category name alone doesn't sell the dish.
 const CATEGORY_COPY: Record<string, { title: string; description: string }> = {
-  burgers: {
-    title: "Sándwiches",
+  "platos-tipicos-y-combinados": {
+    title: "Platos típicos y Combinados",
     description:
-      "Las Santa María de la casa: pan tostado a la plancha, carne al jugo y queso derretido.",
+      "Majao de pato y charque, picantes, silpancho y los buffets de la casa con todas las guarniciones cambas.",
+  },
+  parrilla: {
+    title: "Parrilla",
+    description:
+      "Bife de chorizo, churrasco y parrillas para compartir, con arroz con queso, yuca frita y llajua.",
+  },
+  empanadas: {
+    title: "Empanadas",
+    description:
+      "De carne y de keperí, recién hechas y acompañadas con salsa tártara. El clásico camba.",
   },
 };
 
@@ -28,7 +37,7 @@ export async function generateMetadata({
   return {
     title: copy?.title ?? cat.name,
     description:
-      copy?.description ?? cat.description ?? `Pide ${cat.name.toLowerCase()} en SantaMaria Fast Food.`,
+      copy?.description ?? cat.description ?? `Pide ${cat.name.toLowerCase()} en Casa del Camba.`,
     alternates: { canonical: `/shop/${cat.slug}` },
   };
 }
@@ -70,7 +79,7 @@ export default async function CategoryPage({
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-brand-deep shadow-[0_14px_32px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
           >
             Ver el menú
           </Link>

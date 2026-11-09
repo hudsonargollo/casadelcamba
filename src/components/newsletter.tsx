@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect } from "react";
-import { BurgerMark, Emblem } from "./brand/emblem";
+import { SunMark, Emblem } from "./brand/emblem";
 import { useToast } from "@/components/ui/toast";
 import { subscribe, type InboundState } from "@/app/(store)/inbound-actions";
 
@@ -14,15 +14,15 @@ export function Newsletter() {
 
   useEffect(() => {
     if (state.error) toast.error(state.error);
-    else if (state.ok) toast.success("Ya estás en la lista — gracias por sumarte a SantaMaria.", { title: "Suscrito" });
+    else if (state.ok) toast.success("Ya estás en la lista — gracias por sumarte a Casa del Camba.", { title: "Suscrito" });
   }, [state, toast]);
 
   return (
     <section className="bg-panel px-5 py-20">
-      {/* Deep-blue card floating on the light panel */}
+      {/* Deep-green card floating on the light panel */}
       <div
         className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-[rgba(255,216,102,0.4)] px-6 py-12 text-center shadow-[0_40px_90px_-40px_rgba(0,0,0,0.5)] sm:px-14 sm:py-14"
-        style={{ background: "linear-gradient(160deg, #072f57 0%, #0a4682 55%, #0d5aa7 100%)" }}
+        style={{ background: "linear-gradient(160deg, #1d3a0e 0%, #3c6e1b 55%, #4c8a23 100%)" }}
       >
         {/* accent glow */}
         <div
@@ -35,7 +35,7 @@ export function Newsletter() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent" />
         <div className="pointer-events-none absolute inset-4 rounded-xl border border-[rgba(255,216,102,0.2)]" />
         {/* faint watermark */}
-        <BurgerMark
+        <SunMark
           size={320}
           accent="transparent"
           className="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 text-light/[0.06]"
@@ -49,11 +49,11 @@ export function Newsletter() {
             Novedades
           </span>
           <h2 className="mt-2 font-display text-3xl font-extrabold text-light sm:text-4xl">
-            Promos y novedades en tu correo
+            Novedades de la casa en tu correo
           </h2>
           <p className="mx-auto mt-3 max-w-md text-light/70">
-            Recibe primero las promos de la semana, los combos nuevos y los cupones de
-            SantaMaria Fast Food.
+            Recibe primero las novedades del menú, los platos de temporada y los beneficios
+            del Club Camba.
           </p>
 
           {sent ? (
@@ -85,7 +85,7 @@ export function Newsletter() {
             </form>
           )}
 
-          <p className="mt-4 text-xs text-light/45">Sin spam. Solo promos ricas y novedades de la tienda.</p>
+          <p className="mt-4 text-xs text-light/45">Sin spam. Solo novedades y beneficios de la casa.</p>
         </div>
       </div>
     </section>

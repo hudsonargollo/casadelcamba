@@ -8,14 +8,6 @@ import { QuickAdd } from "./quick-add";
 /** Simple product icon (package + label) used in the category label row. */
 const LOW_STOCK = 5;
 
-const CATEGORY_LABEL: Record<string, string> = {
-  burgers: "Sándwich",
-  imperdibles: "Imperdible",
-  "plus-days": "Plus Days",
-  bebidas: "Bebida",
-  postres: "Postre",
-};
-
 /** "In stock" / "Only 3 left" / "Out of stock" under a regular price. */
 function Availability({ stock }: { stock: number }) {
   const [dot, text, label] =
@@ -39,7 +31,7 @@ export function ProductCard({ product }: { product: ProductView }) {
 
   return (
     <div
-      className={`group flex h-full flex-col overflow-hidden rounded-xl border transition hover:border-accent hover:shadow-[0_18px_40px_-24px_rgba(7,47,87,0.5)] ${
+      className={`group flex h-full flex-col overflow-hidden rounded-xl border transition hover:border-accent hover:shadow-[0_18px_40px_-24px_rgba(29,58,14,0.5)] ${
         off ? "border-accent/55 bg-surface/70" : "border-[var(--line)] bg-gradient-to-b from-surface/80 to-cream-soft/60"
       }`}
     >
@@ -50,7 +42,7 @@ export function ProductCard({ product }: { product: ProductView }) {
         {/* keeps packshots on white while the card around them stays brand-warm */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_70%_at_50%_42%,transparent_58%,rgba(7,47,87,0.06)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_70%_at_50%_42%,transparent_58%,rgba(29,58,14,0.06)_100%)]"
         />
         {off ? <SaleRibbon percent={off} /> : null}
         {soldOut && (
@@ -65,7 +57,7 @@ export function ProductCard({ product }: { product: ProductView }) {
         <span className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" aria-hidden="true" />
 
         <p className="text-[0.68rem] uppercase tracking-[0.18em] text-muted">
-          {CATEGORY_LABEL[product.category.slug] ?? product.category.name}
+          {product.category.name}
         </p>
         <Link href={`/product/${product.slug}`}>
           <h3 className="mt-1 line-clamp-2 font-display text-lg leading-snug text-ink transition-colors group-hover:text-accent-strong">

@@ -58,7 +58,7 @@ const schema = z
     code: z
       .string()
       .trim()
-      .regex(/^[A-Za-z0-9]{2,8}$/, "El código debe tener de 2 a 8 letras o números (p. ej. SM01)")
+      .regex(/^[A-Za-z0-9]{2,8}$/, "El código debe tener de 2 a 8 letras o números (p. ej. CC01)")
       .transform((v) => v.toUpperCase()),
     slug: z.string().trim().max(120),
     address: z.string().trim().min(3, "Ingresa la dirección").max(200),

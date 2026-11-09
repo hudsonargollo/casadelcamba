@@ -8,7 +8,7 @@ import { AdminMobileNav } from "./admin-mobile-nav";
 import { OrderNotifications } from "./order-notifications";
 import { logoutAction } from "@/app/admin/login/actions";
 
-const STORAGE_KEY = "santamaria-admin-collapsed";
+const STORAGE_KEY = "casadelcamba-admin-collapsed";
 
 // Sidebar collapsed state persisted in localStorage (tiny external store).
 const collapseListeners = new Set<() => void>();
@@ -73,21 +73,21 @@ export function AdminShell({
         }}
         className="hidden h-full shrink-0 flex-col overflow-hidden border-r border-[var(--line)] bg-brand text-light md:flex"
       >
-        {/* Brand — 3D logo; the square emblem is only for the collapsed rail. */}
+        {/* Brand — full logo; the square emblem is only for the collapsed rail. */}
         <Link
           href="/admin"
-          aria-label="SantaMaria — panel"
-          className="flex h-16 shrink-0 items-center justify-center border-b border-[rgba(141,196,255,0.2)] px-4 md:h-20"
+          aria-label="Casa del Camba — panel"
+          className="flex h-16 shrink-0 items-center justify-center border-b border-[rgba(163,212,120,0.2)] px-4 md:h-20"
         >
           {collapsed ? (
             <Emblem size={34} className="shrink-0 text-accent" />
           ) : (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src="/imgs/logo3d.webp"
-              alt="SantaMaria Fast Food"
-              width={757}
-              height={329}
+              src="/images/casadelcamba-logo.png"
+              alt="Casa del Camba"
+              width={228}
+              height={169}
               className="h-[68px] w-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
             />
           )}
@@ -99,7 +99,7 @@ export function AdminShell({
         </div>
 
         {/* Footer — consistent icon+label rows so nothing jumps on collapse */}
-        <div className="shrink-0 border-t border-[rgba(141,196,255,0.2)] p-3">
+        <div className="shrink-0 border-t border-[rgba(163,212,120,0.2)] p-3">
           <p
             style={labelStyle}
             className={`truncate px-3 pb-1 text-xs text-light/70 ${collapsed ? "opacity-0" : "opacity-100"}`}
@@ -168,13 +168,13 @@ export function AdminShell({
               </svg>
             </button>
             {/* Mobile brand */}
-            <Link href="/admin" aria-label="SantaMaria — panel" className="md:hidden">
+            <Link href="/admin" aria-label="Casa del Camba — panel" className="md:hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/imgs/logo3d.webp"
-                alt="SantaMaria Fast Food"
-                width={757}
-                height={329}
+                src="/images/casadelcamba-logo.png"
+                alt="Casa del Camba"
+                width={228}
+                height={169}
                 className="h-8 w-auto"
               />
             </Link>

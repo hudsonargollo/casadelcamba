@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { AdminShell } from "@/components/admin/admin-shell";
 
 export const metadata: Metadata = {
-  title: { default: "Panel", template: "%s · SantaMaria" },
+  title: { default: "Panel", template: "%s · Casa del Camba" },
   robots: { index: false, follow: false },
 };
 

@@ -1,17 +1,17 @@
 import type { CategoryView, ProductView } from "./types";
 
 // Storefront search: typo-tolerant, plural-aware, understands everyday Spanish
-// words ("hamburguesa", "papas", "gaseosa"), price phrases ("hasta 50") and
+// words ("empanada", "majao", "gaseosa"), price phrases ("hasta 50") and
 // offer words ("oferta"). Pure — runs on the product list in memory, which is
-// fine for a fast-food menu.
+// fine for a restaurant menu.
 
 export type SearchCategory = CategoryView & { count: number };
 
 export type SearchResult = {
   products: ProductView[];
-  /** Category the query asked for (e.g. "hamburguesa", "papas" → Burgers). */
+  /** Category the query asked for (e.g. "empanadas", "sopa" → Empanadas / Sopas). */
   category: SearchCategory | null;
-  /** Typos we read past: "hamburgesa" → "hamburguesa". */
+  /** Typos we read past: "empananda" → "empanada". */
   corrections: { from: string; to: string }[];
   minPrice: number | null;
   maxPrice: number | null;
@@ -26,23 +26,27 @@ const STOP = new Set(
 
 /** Everyday / colloquial words → the word the menu uses. */
 const ALIASES: Record<string, string> = {
-  hamburguesas: "burger", hamburguesa: "burger", burgers: "burger", burguer: "burger", burguers: "burger",
-  cheese: "cheese", queso: "cheese",
   papas: "papa", papafrita: "papa", papafritas: "papa", fritas: "papa",
-  postres: "postre", helado: "postre", torta: "postre",
+  postres: "postre", helado: "postre", torta: "postre", dulce: "postre", dulces: "postre",
   gaseosa: "bebida", refresco: "bebida", soda: "bebida", jugo: "bebida", agua: "bebida",
-  combo: "combo", combos: "combo", menu: "combo", promocion: "promo", promociones: "promo",
+  guarnicion: "agregado", guarniciones: "agregado", acompanamiento: "agregado",
+  infantil: "nino", kids: "nino",
+  combo: "combo", combos: "combo",
 };
 
 /** Words that point at a category even when the product name doesn't use them. */
 const CATEGORY_HINTS: Record<string, string> = {
-  burger: "burger",
-  cheese: "burger",
-  papa: "plus",
+  entrada: "entrada",
+  empanada: "empanada",
+  sopa: "sopa",
+  plato: "plato",
+  tipico: "tipico",
+  parrilla: "parrilla",
+  vegetariano: "vegetariano",
+  nino: "nino",
+  agregado: "agregado",
   postre: "postre",
   bebida: "bebida",
-  promo: "imperdible",
-  imperdible: "imperdible",
 };
 
 const SALE_WORDS = new Set([
@@ -54,7 +58,7 @@ function fold(s: string): string {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
-/** burgers → burger, papas → papa, combos → combo. */
+/** empanadas → empanada, papas → papa, combos → combo. */
 function singular(w: string): string {
   if (w.length > 3 && w.endsWith("s") && !w.endsWith("ss")) return w.slice(0, -1);
   return w;
@@ -172,7 +176,7 @@ export function searchCatalog(
     return t;
   });
 
-  // A word that names a category ("burger", "papas", "postres").
+  // A word that names a category ("empanada", "sopa", "postres").
   let category: SearchCategory | null = null;
   for (const t of fixed) {
     const target = CATEGORY_HINTS[t] ?? t;
@@ -195,7 +199,7 @@ export function searchCatalog(
     let matched = 0;
     for (const t of fixed) {
       const isCategoryWord = (CATEGORY_HINTS[t] ?? t) === categoryWord;
-      // "papa" shouldn't pull in a burger whose description mentions papas.
+      // "papa" shouldn't pull in a plato whose description mentions papas.
       const usable = isCategoryWord && p.category.slug !== category!.slug ? fields.slice(0, 3) : fields;
       let best = 0;
       for (const f of usable) for (const w of f.words) best = Math.max(best, similarity(t, w) * f.weight);

@@ -32,7 +32,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
   const c = settings.contact;
 
   return (
-    <div className="min-h-screen bg-[#e9f2fb] py-8 print:bg-white print:py-0">
+    <div className="min-h-screen bg-[#eef6e4] py-8 print:bg-white print:py-0">
       <div className="mx-auto mb-5 flex max-w-[800px] items-center justify-between px-4 print:hidden">
         <Link href={`/admin/orders/${order.id}`} className="text-sm text-[#5b6b7c] hover:underline">
           ← Volver al pedido
@@ -42,11 +42,11 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
 
       <article className="mx-auto max-w-[800px] bg-white p-10 text-[13px] leading-relaxed text-[#101820] shadow-sm print:max-w-none print:p-0 print:shadow-none">
         {/* Header */}
-        <header className="flex items-start justify-between border-b-2 border-[#0d5aa7] pb-5">
+        <header className="flex items-start justify-between border-b-2 border-[#4c8a23] pb-5">
           <div>
-            <p className="font-display text-3xl font-bold tracking-[0.25em] text-[#0d5aa7]">SantaMaria</p>
-            <p className="mt-1 text-xs italic text-[#5b6b7c]">Sándwiches y comida rápida</p>
-            <p className="mt-2 text-xs font-medium text-[#0d5aa7]">
+            <p className="font-display text-3xl font-bold tracking-[0.25em] text-[#4c8a23]">Casa del Camba</p>
+            <p className="mt-1 text-xs italic text-[#5b6b7c]">Comida típica cruceña · Desde 1986</p>
+            <p className="mt-2 text-xs font-medium text-[#4c8a23]">
               Sucursal: {order.branch.name} · {order.branch.code}
             </p>
             <p className="mt-3 text-xs text-[#5b6b7c]">{[c.city, c.phone, c.email].filter(Boolean).join(" · ")}</p>
@@ -89,7 +89,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
         {/* Items */}
         <table className="mt-7 w-full border-collapse">
           <thead>
-            <tr className="border-b border-[#d7e7f7] text-left text-[11px] uppercase tracking-[0.12em] text-[#5b6b7c]">
+            <tr className="border-b border-[#dcecc6] text-left text-[11px] uppercase tracking-[0.12em] text-[#5b6b7c]">
               <th className="py-2 font-semibold">Producto</th>
               <th className="py-2 text-center font-semibold">Cant.</th>
               <th className="py-2 text-right font-semibold">Precio</th>
@@ -125,7 +125,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
             <span>{formatPrice(order.total)}</span>
           </div>
           {codDue > 0 && (
-            <div className="mt-2 rounded border-2 border-[#0d5aa7] px-3 py-2 text-center font-semibold text-[#0d5aa7]">
+            <div className="mt-2 rounded border-2 border-[#4c8a23] px-3 py-2 text-center font-semibold text-[#4c8a23]">
               Efectivo a cobrar: {formatPrice(codDue)}
             </div>
           )}
@@ -138,7 +138,7 @@ export default async function InvoicePage({ params }: PageProps<"/admin/invoice/
         )}
 
         <p className="mt-8 text-center text-xs text-[#5b6b7c]">
-          Gracias por pedir en SantaMaria Fast Food. Si algo no está bien, escríbenos con tu número de pedido. Revisaremos tu caso con cuidado para buscar la solución adecuada lo antes posible.
+          Gracias por pedir en Casa del Camba. Si algo no está bien, escríbenos con tu número de pedido. Revisaremos tu caso con cuidado para buscar la solución adecuada lo antes posible.
         </p>
 
         {/* Packing slip — cut off and put in / on the parcel */}

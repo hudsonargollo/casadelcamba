@@ -5,39 +5,39 @@ import Link from "next/link";
 
 const SLIDES = [
   {
-    src: "/imgs/slider1.jpeg",
+    src: "/imgs/menu/majao-de-pato.jpeg",
     focus: "center 55%",
-    tag: "Sándwiches",
-    cta: "Ver las Santa María",
-    href: "#sandwiches",
+    tag: "Platos típicos",
+    cta: "Ver los platos",
+    href: "#platos",
   },
   {
-    src: "/imgs/slider4.jpg",
+    src: "/imgs/menu/churrasco.jpeg",
     focus: "center 55%",
-    tag: "Corazón · Burger · Filet",
-    cta: "Elegir la mía",
-    href: "#sandwiches",
+    tag: "Parrilla",
+    cta: "Ver parrilla",
+    href: "/shop/parrilla",
   },
   {
-    src: "/imgs/slider3.jpg",
+    src: "/imgs/menu/empanadas-de-keperi-6-unid.jpeg",
     focus: "center 55%",
-    tag: "A la plancha",
-    cta: "Ver el menú",
-    href: "#sandwiches",
+    tag: "Empanadas",
+    cta: "Ver empanadas",
+    href: "/shop/empanadas",
   },
   {
-    src: "/imgs/slider5.png",
+    src: "/imgs/menu/tres-cambitas.jpeg",
     focus: "center 55%",
-    tag: "La de siempre",
-    cta: "Pedir ahora",
-    href: "#sandwiches",
+    tag: "Postres",
+    cta: "Ver postres",
+    href: "#postres",
   },
   {
-    src: "/imgs/slider2.jpeg",
+    src: "/imgs/menu/gaseosa-coca-cola-500-ml.jpg",
     focus: "center 50%",
-    tag: "Promos",
-    cta: "Ver promos",
-    href: "/shop/plus-days",
+    tag: "Bebidas",
+    cta: "Ver bebidas",
+    href: "#bebidas",
   },
 ];
 
@@ -77,22 +77,22 @@ export function MenuPromoSlider() {
   }, []);
 
   return (
-    <section role="region" aria-roledescription="carrusel" aria-label="Promociones">
+    <section role="region" aria-roledescription="carrusel" aria-label="Favoritos de la casa">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div className="max-w-xl">
-          <span className="eyebrow">Promociones</span>
+          <span className="eyebrow">De la casa</span>
           <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Lo que hoy está de moda
+            Los favoritos de la casa
           </h2>
           <p className="mt-2 text-sm text-muted sm:text-base">
-            Descubre las Santa María y las promociones de la casa. Elige tu favorita del menú.
+            Descubre los platos de siempre y los favoritos de la casa. Elige el tuyo del menú.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => step(-1)}
-            aria-label="Promoción anterior"
+            aria-label="Favorito anterior"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] text-brand transition hover:border-accent hover:bg-accent hover:text-brand-deep"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -102,7 +102,7 @@ export function MenuPromoSlider() {
           <button
             type="button"
             onClick={() => step(1)}
-            aria-label="Promoción siguiente"
+            aria-label="Favorito siguiente"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line-strong)] text-brand transition hover:border-accent hover:bg-accent hover:text-brand-deep"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -152,7 +152,7 @@ export function MenuPromoSlider() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, rgba(7,47,87,0) 45%, rgba(7,47,87,0.55) 100%)",
+                      "linear-gradient(180deg, rgba(29,58,14,0) 45%, rgba(29,58,14,0.55) 100%)",
                   }}
                 />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-6">
@@ -161,7 +161,7 @@ export function MenuPromoSlider() {
                   </span>
                   <Link
                     href={slide.href}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs font-bold text-brand-deep shadow-[0_12px_28px_-14px_rgba(255,199,44,0.9)] transition hover:bg-accent-soft sm:px-5 sm:py-2.5 sm:text-sm"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-xs font-bold text-brand-deep shadow-[0_12px_28px_-14px_rgba(255,204,4,0.9)] transition hover:bg-accent-soft sm:px-5 sm:py-2.5 sm:text-sm"
                   >
                     {slide.cta}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
@@ -180,7 +180,7 @@ export function MenuPromoSlider() {
               key={slide.src}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`Ir a la promoción ${i + 1}`}
+              aria-label={`Ir al favorito ${i + 1}`}
               aria-current={i === index}
               className={`h-1.5 rounded-full transition-all ${
                 i === index ? "w-6 bg-accent" : "w-1.5 bg-light/50 hover:bg-light/80"

@@ -4,7 +4,7 @@ import { prisma } from "./prisma";
 import type { LoyaltySettings } from "./settings-shared";
 import { previewLoyalty, stampCard, type LoyaltyLine } from "./loyalty-shared";
 
-// Server side of Club Santa María. The ledger (LoyaltyEntry) is append-only and holds
+// Server side of Club Camba. The ledger (LoyaltyEntry) is append-only and holds
 // signed deltas, so a balance is always the sum of its rows: earning, spending,
 // refunds and manual corrections are all just new rows. Nothing is ever
 // rewritten, which keeps customer disputes answerable.

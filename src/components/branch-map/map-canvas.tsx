@@ -288,7 +288,7 @@ function createCourier() {
   handlebar.position.set(0.71, 1.58, 0);
   group.add(handlebar);
 
-  // Delivery box with a SantaMaria yellow band
+  // Delivery box with a Casa del Camba yellow band
   const box = new THREE.Mesh(new THREE.BoxGeometry(0.64, 0.64, 0.66), yellow);
   box.position.set(-0.98, 1.86, 0);
   group.add(box);
@@ -399,7 +399,7 @@ function createPin(branch: MapBranch) {
 
   const labelEl = document.createElement("div");
   labelEl.className =
-    "pointer-events-none rounded-full border border-[rgba(255,199,44,0.45)] bg-[rgba(7,47,87,0.92)] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-light shadow-[0_6px_18px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-opacity duration-200";
+    "pointer-events-none rounded-full border border-[rgba(255,204,4,0.45)] bg-[rgba(29,58,14,0.92)] px-2.5 py-1 text-[10px] font-semibold tracking-wide text-light shadow-[0_6px_18px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-opacity duration-200";
   labelEl.style.opacity = "0";
   const label = new CSS2DObject(labelEl);
   label.position.set(0, 7.9, 0);
@@ -634,7 +634,7 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
         if (isNearest) {
           const tag = document.createElement("span");
           tag.textContent = " · más cercana";
-          tag.style.color = "#ffe08a";
+          tag.style.color = "#ffe066";
           pin.labelEl.appendChild(tag);
         }
       }
@@ -654,9 +654,9 @@ export const MapCanvas = forwardRef<MapHandle, Props>(function MapCanvas(
         pin.halo.opacity = isSelected ? 0.7 : isNearest ? 0.48 : 0.26;
         const scale = isSelected ? 1.95 : isNearest ? 1.72 : 1.55;
         pin.group.scale.setScalar(scale);
-        pin.labelEl.style.background = isSelected ? "#ffc72c" : "rgba(7,47,87,0.92)";
-        pin.labelEl.style.color = isSelected ? "#072f57" : "#f7f9fc";
-        pin.labelEl.style.borderColor = isSelected || isNearest ? "rgba(255,199,44,0.85)" : "rgba(255,199,44,0.35)";
+        pin.labelEl.style.background = isSelected ? "#ffcc04" : "rgba(29,58,14,0.92)";
+        pin.labelEl.style.color = isSelected ? "#1d3a0e" : "#f7f9fc";
+        pin.labelEl.style.borderColor = isSelected || isNearest ? "rgba(255,204,4,0.85)" : "rgba(255,204,4,0.35)";
       }
       updateLabels();
     };

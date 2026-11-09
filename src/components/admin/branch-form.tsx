@@ -8,7 +8,7 @@ import type { AdminBranchRow } from "@/lib/admin-data";
 import { createBranch, updateBranch } from "@/app/admin/(dashboard)/branches/actions";
 
 const input =
-  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,199,44,0.2)] disabled:opacity-60";
+  "w-full rounded-lg border border-[var(--line-strong)] bg-surface px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-[rgba(255,204,4,0.2)] disabled:opacity-60";
 const labelCls = "mb-1.5 block text-xs font-medium uppercase tracking-[0.1em] text-muted";
 
 function Field({
@@ -110,19 +110,19 @@ export function BranchForm({ branch, mode }: { branch?: AdminBranchRow; mode: "c
     <form
       key={state.values ? "error" : "initial"}
       action={formAction}
-      className="space-y-6 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)] sm:p-6"
+      className="space-y-6 rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)] sm:p-6"
     >
       <section>
         <h2 className="font-display text-lg font-semibold text-ink">Identificación</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field name="name" label="Nombre de la sucursal" required defaultValue={text("name")} placeholder="SantaMaria · Equipetrol" />
+          <Field name="name" label="Nombre de la sucursal" required defaultValue={text("name")} placeholder="Casa del Camba · Equipetrol" />
           <Field
             name="code"
             label="Código"
             required
             defaultValue={text("code")}
-            placeholder="SM01"
-            hint="Se usa al inicio del número de pedido (p. ej. SM01-241105-1234)."
+            placeholder="CC09"
+            hint="Se usa al inicio del número de pedido (p. ej. CC01-241105-A1B2C3D4)."
           />
           <Field name="slug" label="Slug (opcional)" defaultValue={text("slug")} placeholder="automático" />
           <Field name="sortOrder" label="Orden en la lista" type="number" defaultValue={text("sortOrder", "0")} hint="Menor número = aparece primero." />
@@ -132,7 +132,7 @@ export function BranchForm({ branch, mode }: { branch?: AdminBranchRow; mode: "c
       <section className="border-t border-[var(--line)] pt-6">
         <h2 className="font-display text-lg font-semibold text-ink">Ubicación y contacto</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field name="address" label="Dirección" required defaultValue={text("address")} placeholder="Av. San Martín #123" />
+          <Field name="address" label="Dirección" required defaultValue={text("address")} placeholder="Av. Cristóbal de Mendoza #1365" />
           <Field name="city" label="Ciudad" required defaultValue={text("city")} placeholder="Santa Cruz" />
           <Field name="phone" label="Teléfono" defaultValue={text("phone")} placeholder="+591 700 00000" />
           <Field
@@ -142,12 +142,12 @@ export function BranchForm({ branch, mode }: { branch?: AdminBranchRow; mode: "c
             placeholder="59170000000"
             hint="Solo dígitos, formato internacional."
           />
-          <Field name="hours" label="Horario" defaultValue={text("hours")} placeholder="Lunes a sábado · 8:00 a 22:00" span />
+          <Field name="hours" label="Horario" defaultValue={text("hours")} placeholder="Lunes a domingo · 11:00 a 23:00" span />
           <Field
             name="image"
             label="Foto de la sucursal"
             defaultValue={text("image")}
-            placeholder="https://… o /imgs/sucursal.jpg"
+            placeholder="https://…"
             hint="Enlace https:// o ruta local que empiece por /."
             span
           />

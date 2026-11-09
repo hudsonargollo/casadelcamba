@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Build the store and deploy the standalone output to /var/www/santamaria.
+# Build the store and deploy the standalone output to /var/www/casadelcamba.
 # Production data in <deploy>/uploads is never touched.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DEPLOY_DIR="${DEPLOY_DIR:-/var/www/santamaria}"
-SERVICE="${SERVICE:-santamaria.service}"
+DEPLOY_DIR="${DEPLOY_DIR:-/var/www/casadelcamba}"
+SERVICE="${SERVICE:-casadelcamba.service}"
 HEALTH_URL="${HEALTH_URL:-http://127.0.0.1:3004/}"
 
 cd "$ROOT"

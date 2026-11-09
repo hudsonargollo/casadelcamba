@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Emblem } from "./brand/emblem";
 
-// Weekly-offer carousel: the copy and the photography rotate together like a
+// Favourites carousel: the copy and the photography rotate together like a
 // slideshow (seamless two-way loop, arrows, dots, autoplay progress, pause).
 const SLIDES: {
   src: string;
@@ -16,38 +16,38 @@ const SLIDES: {
   href: string;
 }[] = [
   {
-    src: "/imgs/promotional1.jpeg",
+    src: "/imgs/menu/majao-de-pato.jpeg",
     focus: "center 55%",
-    label: "Imperdibles",
-    title: "El Cheese Corazón a Bs 20",
-    copy: "Doble carne, queso fundido y pan tostado al momento. La promo que todos piden, solo en SantaMaria.",
-    cta: "Ver imperdibles",
-    href: "/shop/imperdibles",
+    label: "Platos típicos",
+    title: "Majao de pato, el clásico",
+    copy: "Arroz batido con pato desmenuzado y urucú, huevo, plátano y yuca frita. El sabor camba de siempre, a Bs 55.",
+    cta: "Ver platos típicos",
+    href: "/shop/platos-tipicos-y-combinados",
   },
   {
-    src: "/imgs/promotional4.jpeg",
+    src: "/imgs/menu/empanadas-de-carne-6-unid.jpeg",
     focus: "center 50%",
-    label: "Plus Days",
-    title: "Martes de promo",
-    copy: "Cheese Pollo con Tocino a Bs 20. Combos que rinden, saben a barrio y llegan calientes a tu puerta.",
-    cta: "Ver Plus Days",
-    href: "/shop/plus-days",
+    label: "Empanadas",
+    title: "De carne y de keperí",
+    copy: "Seis empanadas recién hechas con salsa tártara para compartir. Las infaltables de la mesa camba.",
+    cta: "Ver empanadas",
+    href: "/shop/empanadas",
   },
   {
-    src: "/imgs/promotional3.jpeg",
+    src: "/imgs/menu/churrasco.jpeg",
     focus: "center 55%",
-    label: "Burgers",
-    title: "Hechas en la plancha",
-    copy: "Carne jugosa, queso derretido y pan recién tostado. Elige tu favorita y pídela sin salir de casa.",
-    cta: "Ver burgers",
-    href: "/shop/burgers",
+    label: "Parrilla",
+    title: "Churrasco a la parrilla",
+    copy: "Carne jugosa con arroz con queso, ensalada del día, yuca frita y llajua. Directo de la parrilla a tu mesa.",
+    cta: "Ver parrilla",
+    href: "/shop/parrilla",
   },
   {
-    src: "/imgs/menu/coca-cola-500ml.png",
+    src: "/imgs/menu/gaseosa-coca-cola-500-ml.jpg",
     focus: "center 50%",
     label: "Bebidas",
     title: "Bien frías, siempre",
-    copy: "Coca-Cola, Sprite, Fanta y Aquarius de 500 ml para completar tu combo. Delivery o retiro en tienda.",
+    copy: "Coca-Cola, Sprite, Fanta, Pepsi y Guaraná de 500 ml para acompañar tu pedido. Delivery o retiro en tienda.",
     cta: "Ver bebidas",
     href: "/shop/bebidas",
   },
@@ -117,7 +117,7 @@ export function PromoSlider() {
 
           <div key={activeDot} className="contents">
             <span className="slide-text-in eyebrow mt-4 block text-accent-soft">
-              Ofertas de la semana
+              Los favoritos de la casa
             </span>
             <h2
               className="slide-text-in mt-3 max-w-[16ch] font-display text-4xl font-extrabold tracking-tight text-balance sm:text-5xl"
@@ -134,7 +134,7 @@ export function PromoSlider() {
 
             <Link
               href={slide.href}
-              className="slide-text-in mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-9 py-3.5 text-sm font-bold text-brand-deep shadow-[0_18px_40px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+              className="slide-text-in mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-9 py-3.5 text-sm font-bold text-brand-deep shadow-[0_18px_40px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
               style={{ animationDelay: "200ms" }}
             >
               {slide.cta}
@@ -190,7 +190,7 @@ export function PromoSlider() {
             <button
               type="button"
               onClick={() => setPlaying((p) => !p)}
-              aria-label={playing ? "Pausar las ofertas" : "Reproducir las ofertas"}
+              aria-label={playing ? "Pausar el carrusel" : "Reproducir el carrusel"}
               aria-pressed={!playing}
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-light/70 transition hover:bg-light/10 hover:text-accent-soft"
             >
@@ -251,7 +251,7 @@ export function PromoSlider() {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "linear-gradient(90deg, rgba(7,47,87,0.65) 0%, rgba(7,47,87,0.15) 24%, rgba(7,47,87,0) 48%), linear-gradient(180deg, rgba(7,47,87,0.10) 0%, rgba(7,47,87,0.30) 100%)",
+                "linear-gradient(90deg, rgba(29,58,14,0.65) 0%, rgba(29,58,14,0.15) 24%, rgba(29,58,14,0) 48%), linear-gradient(180deg, rgba(29,58,14,0.10) 0%, rgba(29,58,14,0.30) 100%)",
             }}
           />
           <span className="absolute bottom-6 right-6 rounded-full bg-cream/90 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-deep">
@@ -271,7 +271,7 @@ function ArrowButton({ dir, onClick }: { dir: "prev" | "next"; onClick: () => vo
     <button
       type="button"
       onClick={onClick}
-      aria-label={dir === "prev" ? "Oferta anterior" : "Oferta siguiente"}
+      aria-label={dir === "prev" ? "Diapositiva anterior" : "Diapositiva siguiente"}
       className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[rgba(255,216,102,0.5)] text-accent-soft transition hover:border-accent hover:bg-accent hover:text-brand-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

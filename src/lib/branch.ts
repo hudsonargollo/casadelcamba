@@ -6,7 +6,7 @@ import type { StoreSettings } from "./settings-shared";
 // The branch a shopper picked is kept in a long-lived cookie. Browsing works
 // without one (the storefront shows availability across the chain); it becomes
 // mandatory the moment an order is started.
-export const BRANCH_COOKIE = "sm_branch";
+export const BRANCH_COOKIE = "cc_branch";
 
 export type BranchView = {
   id: string;

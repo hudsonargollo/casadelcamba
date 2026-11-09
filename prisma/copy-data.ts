@@ -35,7 +35,7 @@ async function copy<T>(label: string, rows: T[], insert: (data: T[]) => Promise<
 }
 
 async function main() {
-  console.log("Copying SantaMaria data…");
+  console.log("Copying Casa del Camba data…");
   // Order matters: parents before children (foreign keys).
   await copy("categories", await src.category.findMany(), (data) =>
     dst.category.createMany({ data, skipDuplicates: true })

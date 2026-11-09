@@ -176,7 +176,7 @@ export function BranchMapExperience({
         <h1 className="mt-2 font-display text-2xl font-extrabold leading-[1.05] tracking-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-3xl lg:text-4xl">
           Toda la ciudad,
           <br />
-          <span className="text-accent-soft">a un clic de tu burger.</span>
+          <span className="text-accent-soft">a un clic de tu pedido.</span>
         </h1>
         <p className="mt-2 hidden max-w-xs text-sm leading-relaxed text-light/70 sm:block">
           Gira el mapa, toca un pin y elige la sucursal que prepara tu pedido. El
@@ -490,7 +490,7 @@ function BranchDetail({
         <div className="mt-3 flex items-center gap-2">
           <a
             href={href}
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(255,199,44,0.9)] transition hover:bg-accent-soft"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-brand-deep shadow-[0_14px_30px_-16px_rgba(255,204,4,0.9)] transition hover:bg-accent-soft"
           >
             {ctaLabel}
             <ArrowIcon className="h-4 w-4" />

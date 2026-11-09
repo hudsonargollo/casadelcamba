@@ -5,8 +5,8 @@ import Link from "next/link";
 import { RotatingWord, SplitText } from "./text-reveal";
 import { useBranchPicker } from "./branch-picker";
 
-const HERO = "/imgs/kitchen.jpg";
-const LOGO = "/imgs/logo3d.webp";
+const HERO = "/images/hero-casadelcamba.webp";
+const LOGO = "/images/casadelcamba-logo.png";
 
 export function HeroSlider() {
   // The hero photo is the biggest thing above the fold — fetch it straight away.
@@ -22,13 +22,13 @@ export function HeroSlider() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${HERO})` }}
       />
-      {/* Readability overlay: deep brand blue on the left, clearing toward the grill */}
+      {/* Readability overlay: deep brand green on the left, clearing toward the patio */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(7,47,87,0.95) 0%, rgba(7,47,87,0.8) 40%, rgba(7,47,87,0.35) 68%, rgba(7,47,87,0.12) 100%)",
+            "linear-gradient(90deg, rgba(29,58,14,0.95) 0%, rgba(29,58,14,0.8) 40%, rgba(29,58,14,0.35) 68%, rgba(29,58,14,0.12) 100%)",
         }}
       />
       <div aria-hidden="true" className="absolute inset-0 bg-brand/55 lg:hidden" />
@@ -36,35 +36,35 @@ export function HeroSlider() {
       {/* Content */}
       <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-36">
         <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-          {/* Brand — the 3D logo is the first thing in the hero. */}
+          {/* Brand — the logo is the first thing in the hero. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={LOGO}
-            alt="SantaMaria Fast Food"
-            width={757}
-            height={329}
+            alt="Casa del Camba"
+            width={228}
+            height={169}
             className="mx-auto h-24 w-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.55)] sm:h-28 lg:mx-0 lg:h-32"
           />
           <span className="mt-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-soft">
             <span className="h-1.5 w-1.5 rounded-full bg-accent-soft" aria-hidden="true" />
-            Santa Cruz · 13 sucursales
+            Santa Cruz · Desde 1986
           </span>
           <h1 className="mt-3 max-w-[19ch] font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-balance sm:text-5xl lg:text-[4rem]">
-            <SplitText text="Una Santa María" delay={80} />{" "}
+            <SplitText text="El mejor sabor" delay={80} />{" "}
             <RotatingWord
-              words={["a la plancha", "a tu gusto", "para compartir"]}
+              words={["de Santa Cruz", "camba de verdad", "para compartir"]}
               className="text-accent-soft"
             />
           </h1>
           <p className="mt-5 max-w-md text-pretty text-lg leading-relaxed text-light/85">
-            Sándwiches Santa María, combos y bebidas bien frías en tus 13 sucursales.
-            Pide en línea y recíbelo en tu puerta o retíralo en tienda.
+            Majao de pato, picantes, empanadas de keperí y parrilla con el sabor criollo
+            de siempre. Pide en línea y recíbelo en tu puerta o retíralo en tienda.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <Link
               href="/shop"
-              className="inline-block rounded-full bg-accent px-8 py-3.5 text-sm font-bold text-brand-deep shadow-[0_18px_40px_-16px_rgba(255,199,44,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
+              className="inline-block rounded-full bg-accent px-8 py-3.5 text-sm font-bold text-brand-deep shadow-[0_18px_40px_-16px_rgba(255,204,4,0.9)] transition duration-300 hover:-translate-y-0.5 hover:bg-accent-soft"
             >
               Ver el menú
             </Link>

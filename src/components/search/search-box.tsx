@@ -27,7 +27,7 @@ type Suggest = {
   }[];
 };
 
-const EXAMPLES = ["cheese", "combo", "papas", "postre", "coca-cola", "promo"];
+const EXAMPLES = ["majao", "empanadas", "silpancho", "postre", "coca-cola", "parrilla"];
 
 export function BuscarBox({ initial = "", autoFocus = false }: { initial?: string; autoFocus?: boolean }) {
   const router = useRouter();
@@ -137,7 +137,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
           if (term) go(`/search?q=${encodeURIComponent(term)}`);
           else inputRef.current?.focus();
         }}
-        className="group relative flex items-center rounded-full border border-[var(--line-strong)] bg-surface p-1.5 pl-5 shadow-[0_18px_44px_-28px_rgba(7,47,87,0.55)] transition focus-within:border-accent focus-within:ring-4 focus-within:ring-[rgba(255,199,44,0.18)]"
+        className="group relative flex items-center rounded-full border border-[var(--line-strong)] bg-surface p-1.5 pl-5 shadow-[0_18px_44px_-28px_rgba(29,58,14,0.55)] transition focus-within:border-accent focus-within:ring-4 focus-within:ring-[rgba(255,204,4,0.18)]"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" className="h-5 w-5 shrink-0 text-accent-strong" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
@@ -186,7 +186,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
         )}
         <button
           type="submit"
-          className="shrink-0 rounded-full bg-gradient-to-r from-accent-soft via-accent to-accent-strong px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-brand shadow-[0_10px_24px_-12px_rgba(255,199,44,0.9)] transition hover:brightness-105 sm:px-7"
+          className="shrink-0 rounded-full bg-gradient-to-r from-accent-soft via-accent to-accent-strong px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.14em] text-brand shadow-[0_10px_24px_-12px_rgba(255,204,4,0.9)] transition hover:brightness-105 sm:px-7"
         >
           Buscar
         </button>
@@ -196,7 +196,7 @@ export function BuscarBox({ initial = "", autoFocus = false }: { initial?: strin
         <div
           id={listId}
           role="listbox"
-          className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-[var(--line-strong)] bg-surface text-left shadow-[0_30px_60px_-30px_rgba(7,47,87,0.7)] animate-chatin [transform-origin:top_center]"
+          className="absolute inset-x-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-[var(--line-strong)] bg-surface text-left shadow-[0_30px_60px_-30px_rgba(29,58,14,0.7)] animate-chatin [transform-origin:top_center]"
         >
           {shown.correction && (
             <p className="border-b border-[var(--line)] px-4 py-2.5 text-xs text-muted">

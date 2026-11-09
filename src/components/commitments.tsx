@@ -2,23 +2,23 @@ import { Emblem } from "./brand/emblem";
 
 const COMMITMENTS = [
   {
-    title: "Hechas al momento",
-    body: "Carne a la plancha, pan tostado y queso derretido en cada pedido.",
-    icon: <BurgerIcon />,
+    title: "Hecho al momento",
+    body: "Cocina criolla preparada al momento, con el sabor de siempre.",
+    icon: <PlateIcon />,
   },
   {
     title: "Delivery y retiro",
-    body: "Pide en línea y recíbelo en tu puerta o retíralo en tu sucursal SantaMaria.",
+    body: "Pide en línea y recíbelo en tu puerta o retíralo en tu sucursal Casa del Camba.",
     icon: <ScooterIcon />,
   },
   {
-    title: "Precios de barrio",
-    body: "Combos claros y promos todos los días, sin sorpresas al pagar.",
+    title: "Precios claros",
+    body: "Precios claros en bolivianos y porciones generosas, sin sorpresas al pagar.",
     icon: <TagIcon />,
   },
   {
     title: "Cerca de ti",
-    body: "13 sucursales en Santa Cruz y atención directa por WhatsApp.",
+    body: "8 sucursales en Santa Cruz y atención directa por WhatsApp.",
     icon: <ChatIcon />,
   },
 ];
@@ -30,10 +30,10 @@ export function Commitments() {
         <Emblem size={40} className="mx-auto text-accent-soft" />
         <span className="eyebrow mt-4 block text-accent-soft">Nuestro compromiso</span>
         <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
-          Comida rápida, bien hecha
+          Tradición camba, bien servida
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-light/75">
-          SantaMaria Fast Food: sabor de barrio, hecha al momento y servida en 13 sucursales
+          Casa del Camba: tradición camba desde 1986, hecha al momento y servida en 8 sucursales
           de Santa Cruz.
         </p>
       </div>
@@ -42,7 +42,7 @@ export function Commitments() {
         {COMMITMENTS.map((c) => (
           <div
             key={c.title}
-            className="flex items-start gap-4 rounded-2xl border border-[rgba(255,199,44,0.25)] bg-[rgba(255,255,255,0.05)] p-6 text-left transition hover:border-accent-soft/60 hover:bg-[rgba(255,255,255,0.08)]"
+            className="flex items-start gap-4 rounded-2xl border border-[rgba(255,204,4,0.25)] bg-[rgba(255,255,255,0.05)] p-6 text-left transition hover:border-accent-soft/60 hover:bg-[rgba(255,255,255,0.08)]"
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-soft">
               {c.icon}
@@ -58,13 +58,14 @@ export function Commitments() {
   );
 }
 
-function BurgerIcon() {
+function PlateIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 9c0-3 3.6-5 8-5s8 2 8 5" />
-      <path d="M4 12.5h16" />
-      <path d="M4.5 16h15" />
-      <path d="M4.5 19.5h15a1 1 0 0 0 0-2h-15a1 1 0 0 0 0 2z" />
+      <path d="M4 17h16" />
+      <path d="M5 17a7 7 0 0 1 14 0" />
+      <path d="M12 10V8" />
+      <path d="M10.5 8h3" />
+      <path d="M3 20h18" />
     </svg>
   );
 }

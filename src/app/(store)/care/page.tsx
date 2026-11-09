@@ -4,21 +4,21 @@ import { Emblem } from "@/components/brand/emblem";
 export const metadata: Metadata = {
   alternates: { canonical: "/care" },
   title: "Ingredientes y cuidado",
-  description: "Ingredientes, alergias y cómo disfrutar tu pedido de SantaMaria Fast Food en su punto.",
+  description: "Ingredientes, alergias y cómo disfrutar tu pedido de Casa del Camba en su punto.",
 };
 
 const TIPS = [
   {
     title: "Come mientras está caliente",
-    body: "Las burgers y papas se disfrutan mejor recién hechas. Si recoges en tienda, te avisamos apenas tu pedido esté listo.",
+    body: "Los platos recién hechos se disfrutan mejor al momento. Si recoges en tienda, te avisamos apenas tu pedido esté listo.",
   },
   {
     title: "Ingredientes a la vista",
-    body: "Cada combo detalla sus ingredientes en el menú. Si tienes dudas sobre un producto, pregúntanos antes de pedir.",
+    body: "Cada plato detalla sus ingredientes en el menú. Si tienes dudas sobre un producto, pregúntanos antes de pedir.",
   },
   {
     title: "Alergias y restricciones",
-    body: "Trabajamos con pan, lácteos, huevo y sésamo. Avísanos al confirmar tu pedido si tienes alguna alergia o restricción.",
+    body: "Trabajamos con lácteos, huevo, maní, gluten (empanadas) y carnes de res, pollo y cerdo. Avísanos al confirmar tu pedido si tienes alguna alergia o restricción.",
   },
   {
     title: "Bebidas bien frías",
@@ -44,7 +44,7 @@ export default function CarePage() {
           Ingredientes y cuidado
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-muted">
-          Todo lo que necesitas saber para disfrutar tu pedido tal como salió de la plancha.
+          Todo lo que necesitas saber para disfrutar tu pedido tal como salió de nuestra cocina.
         </p>
       </div>
 

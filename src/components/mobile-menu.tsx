@@ -44,7 +44,7 @@ export function MobileMenu({
   const { count, ready } = useCart();
 
   const nav = clubName
-    ? [...NAV.slice(0, 2), { label: clubName, href: "/club-santamaria" }, ...NAV.slice(2)]
+    ? [...NAV.slice(0, 2), { label: clubName, href: "/club-camba" }, ...NAV.slice(2)]
     : NAV;
 
   // Lock body scroll + close on Escape while open
@@ -109,7 +109,7 @@ export function MobileMenu({
         <div className="flex items-center justify-between border-b border-[var(--line)] bg-brand px-5 py-4">
           <span className="flex items-center gap-2 text-light">
             <Emblem size={24} accent="var(--color-accent-soft)" />
-            <span className="font-display text-lg font-extrabold tracking-tight">SantaMaria</span>
+            <span className="font-display text-lg font-extrabold tracking-tight">Casa del Camba</span>
           </span>
           <button
             onClick={() => setOpen(false)}

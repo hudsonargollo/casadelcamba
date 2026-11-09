@@ -80,8 +80,8 @@ export function QuickAdd({ product }: { product: ProductView }) {
         title="Agregar al carrito"
         className={`flex h-10 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-3.5 text-xs font-semibold uppercase tracking-[0.08em] transition duration-200 active:scale-[0.98] ${
           added
-            ? "bg-accent text-brand-deep shadow-[0_12px_26px_-14px_rgba(255,199,44,0.95)]"
-            : "bg-brand text-light shadow-[0_12px_26px_-14px_rgba(13,90,167,0.8)] hover:bg-brand-deep"
+            ? "bg-accent text-brand-deep shadow-[0_12px_26px_-14px_rgba(255,204,4,0.95)]"
+            : "bg-brand text-light shadow-[0_12px_26px_-14px_rgba(76,138,35,0.8)] hover:bg-brand-deep"
         }`}
       >
         {added ? (

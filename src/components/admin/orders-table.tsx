@@ -40,7 +40,7 @@ export function OrdersTable({ orders }: { orders: AdminOrderRow[] }) {
   }, [orders, tab, q]);
 
   return (
-    <div className="rounded-2xl border border-[var(--line)] bg-surface shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)]">
+    <div className="rounded-2xl border border-[var(--line)] bg-surface shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)]">
       {/* Toolbar */}
       <div className="flex flex-col gap-3 border-b border-[var(--line)] p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative w-full sm:max-w-xs">

@@ -1,9 +1,10 @@
-# SantaMaria — Minimarket en línea (multi-sucursal)
+# Casa del Camba — Tienda en línea (multi-sucursal)
 
-Tienda en línea de **SantaMaria**, un minimarket boliviano con **13 sucursales**.
-Catálogo compartido con **stock por sucursal**, entrega a domicilio o retiro en
-tienda, y un panel donde cada sucursal gestiona sus propios pedidos con sus
-propias credenciales.
+Tienda en línea de **Casa del Camba**, restaurante de comida típica cruceña
+fundado en **1986**, con **8 sucursales** en Santa Cruz, Bolivia. Catálogo
+compartido con **stock por sucursal**, entrega a domicilio o retiro en tienda,
+y un panel donde cada sucursal gestiona sus propios pedidos con sus propias
+credenciales.
 
 ## Stack
 
@@ -23,8 +24,8 @@ propias credenciales.
 2. **Configurar la base de datos**
    Copia `.env.example` a `.env` y ajusta las conexiones:
    ```env
-   DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/santamaria?schema=public"
-   DIRECT_URL="postgresql://USER:PASSWORD@HOST:5432/santamaria?schema=public"
+   DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/casadelcamba?schema=public"
+   DIRECT_URL="postgresql://USER:PASSWORD@HOST:5432/casadelcamba?schema=public"
    ```
 
 3. **Aplicar el esquema y cargar datos**
@@ -48,7 +49,7 @@ propias credenciales.
 | `npm run build` | Build de producción |
 | `npm run db:migrate` | Crea/aplica migraciones en desarrollo |
 | `npm run db:push` | Empuja el esquema sin migración |
-| `npm run db:seed` | Categorías, productos y sucursal inicial |
+| `npm run db:seed` | Menú (58 platos), 8 sucursales, ajustes y Club Camba |
 | `npm run db:studio` | Prisma Studio |
 | `npm run db:create-admin` | Crea/actualiza el administrador desde `ADMIN_EMAIL` / `ADMIN_PASSWORD` |
 | `npm run db:copy` | Copia datos entre dos bases (ver `prisma/copy-data.ts`) |
@@ -63,7 +64,7 @@ propias credenciales.
   la disponibilidad para la sucursal elegida por el cliente.
 - Cada `Order` pertenece a una sucursal y registra `fulfillment` (`DELIVERY` o
   `PICKUP`). El número de pedido empieza con el código de la sucursal
-  (`SM01-241105-1234`).
+  (`CC01-241105-A1B2C3D4`).
 - Los usuarios `STAFF` están ligados a una sucursal (`User.branchId`); los
   `ADMIN` son globales.
 
@@ -73,14 +74,15 @@ propias credenciales.
 | ---- | ------ |
 | `/` | Inicio |
 | `/sucursal` | Selector de sucursal (obligatorio antes de pagar) |
-| `/shop`, `/shop/[category]` | Catálogo y categorías |
+| `/shop`, `/shop/[category]` | Menú y categorías |
 | `/product/[slug]` | Detalle de producto |
 | `/search` | Búsqueda |
 | `/cart` | Carrito |
 | `/checkout` | Entrega o retiro + método de pago |
 | `/checkout/success` | Confirmación |
+| `/club-camba` | Club Camba — sellos, puntos y recompensas |
 
-La sucursal elegida se guarda en la cookie `sm_branch` (180 días). Sin sucursal
+La sucursal elegida se guarda en la cookie `cc_branch` (180 días). Sin sucursal
 se puede navegar, pero al iniciar el pago la tienda pide elegir una.
 
 ## Panel administrativo
@@ -110,19 +112,19 @@ de intentos.
 
 **VPS (systemd + nginx):** el build genera un servidor standalone
 (`output: "standalone"`). `scripts/deploy.sh` compila, sincroniza a
-`/var/www/santamaria` y reinicia `santamaria.service`. Usa **una sola instancia**
+`/var/www/casadelcamba` y reinicia `casadelcamba.service`. Usa **una sola instancia**
 de larga duración (las alertas de pedidos y el rate limit son en memoria).
 
 **Docker:**
 ```bash
-docker build -t santamaria .
-docker run -p 3000:3000 --env-file .env -v santamaria-uploads:/app/uploads santamaria
+docker build -t casadelcamba .
+docker run -p 3000:3000 --env-file .env -v casadelcamba-uploads:/app/uploads casadelcamba
 ```
 
 En una base nueva:
 ```bash
 npx prisma migrate deploy
-npm run db:seed        # opcional: catálogo + sucursal inicial
+npm run db:seed        # opcional: menú + sucursales
 npm run db:create-admin
 ```
 
@@ -132,4 +134,6 @@ npm run db:create-admin
 ## Notas
 
 - Despliegue en producción: [`docs/DEPLOY.md`](docs/DEPLOY.md).
-- Datos base del catálogo: [`catalogo-pil.md`](catalogo-pil.md).
+- El seed (`prisma/seed.ts`) y los datos de respaldo sin base de datos
+  (`src/lib/sample-data.ts`) reflejan el menú completo: 10 categorías y
+  58 platos con fotos en `public/imgs/menu/`.

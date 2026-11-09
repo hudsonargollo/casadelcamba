@@ -22,37 +22,37 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "SantaMaria Fast Food | Las Santa María en Santa Cruz",
-    template: "%s | SantaMaria Fast Food",
+    default: "Casa del Camba | El mejor sabor de Santa Cruz",
+    template: "%s | Casa del Camba",
   },
   description:
-    "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria. Pide en línea con delivery o retiro en tienda en Santa Cruz, Bolivia.",
+    "Comida típica cruceña desde 1986: majao de pato, picante de pollo, empanadas de keperí y parrilla. Pide en línea con delivery o retiro en tienda en Santa Cruz, Bolivia.",
   keywords: [
-    "SantaMaria Fast Food",
-    "hamburguesas",
-    "cheese burger",
-    "combos",
-    "comida rápida",
+    "Casa del Camba",
+    "comida típica cruceña",
+    "majao de pato",
+    "picante de pollo",
+    "empanadas de keperí",
+    "parrilla",
     "delivery Santa Cruz",
     "retiro en tienda",
-    "sucursales SantaMaria",
     "Santa Cruz",
     "Bolivia",
   ],
-  applicationName: "SantaMaria Fast Food",
+  applicationName: "Casa del Camba",
   openGraph: {
-    title: "SantaMaria Fast Food | Las Santa María hechas a la plancha",
+    title: "Casa del Camba | El mejor sabor de Santa Cruz",
     description:
-      "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
+      "Comida típica cruceña desde 1986: majao de pato, picantes, empanadas de keperí y parrilla, con delivery y retiro en tienda en Santa Cruz.",
     type: "website",
-    siteName: "SantaMaria Fast Food",
+    siteName: "Casa del Camba",
     url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "SantaMaria Fast Food | Las Santa María hechas a la plancha",
+    title: "Casa del Camba | El mejor sabor de Santa Cruz",
     description:
-      "Sándwiches Santa María hechos a la plancha, combos y bebidas bien frías en tus 13 sucursales SantaMaria, con delivery y retiro en tienda en Santa Cruz.",
+      "Comida típica cruceña desde 1986: majao de pato, picantes, empanadas de keperí y parrilla, con delivery y retiro en tienda en Santa Cruz.",
   },
 };
 
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('santamaria-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();",
+              "(function(){try{var t=localStorage.getItem('casadelcamba-theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');}else if(t==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();",
           }}
         />
         <ToastProvider>

@@ -7,7 +7,7 @@ import { StatusBadge } from "@/components/status-badge";
 import { requireAdmin, scopeBranchId } from "@/lib/admin";
 import { TagIcon } from "@/components/icons";
 
-export const metadata = { title: { absolute: "Panel · SantaMaria" } };
+export const metadata = { title: { absolute: "Panel · Casa del Camba" } };
 
 export const dynamic = "force-dynamic";
 
@@ -44,7 +44,7 @@ export default async function AdminDashboard() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl font-bold text-ink">Panel</h1>
-          <p className="mt-1 text-sm text-muted">Bienvenido de nuevo al panel de gestión de SantaMaria.</p>
+          <p className="mt-1 text-sm text-muted">Bienvenido de nuevo al panel de gestión de Casa del Camba.</p>
         </div>
         <div className="flex gap-3">
           <Link
@@ -71,7 +71,7 @@ export default async function AdminDashboard() {
           {cards.map((c) => (
             <div
               key={c.label}
-              className="group relative overflow-hidden rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_44px_-26px_rgba(7,47,87,0.55)]"
+              className="group relative overflow-hidden rounded-2xl border border-[var(--line)] bg-surface p-5 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.45)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_44px_-26px_rgba(29,58,14,0.55)]"
             >
               {/* accent top accent */}
               <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent-soft via-accent to-accent-strong" />
@@ -92,7 +92,7 @@ export default async function AdminDashboard() {
         {/* Recent orders + quick actions */}
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_300px]">
           {/* Recent orders */}
-          <section className="min-w-0 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)]">
+          <section className="min-w-0 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)]">
             <div className="flex items-center justify-between">
               <h2 className="font-display text-xl font-semibold text-ink">Pedidos recientes</h2>
               <Link href="/admin/orders" className="text-sm text-accent-strong hover:underline">
@@ -150,7 +150,7 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Low stock */}
-        <section className="mt-8 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_10px_30px_-22px_rgba(7,47,87,0.4)]">
+        <section className="mt-8 rounded-2xl border border-[var(--line)] bg-surface p-6 shadow-[0_10px_30px_-22px_rgba(29,58,14,0.4)]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-500/15">
@@ -219,7 +219,7 @@ function QuickAction({
   return (
     <Link
       href={href}
-      className="group flex items-center gap-3 rounded-xl border border-[var(--line)] bg-surface p-4 shadow-[0_10px_30px_-24px_rgba(7,47,87,0.4)] transition hover:border-accent hover:shadow-[0_16px_36px_-26px_rgba(7,47,87,0.5)]"
+      className="group flex items-center gap-3 rounded-xl border border-[var(--line)] bg-surface p-4 shadow-[0_10px_30px_-24px_rgba(29,58,14,0.4)] transition hover:border-accent hover:shadow-[0_16px_36px_-26px_rgba(29,58,14,0.5)]"
     >
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/8 text-accent-strong transition group-hover:bg-brand group-hover:text-accent">
         {icon}

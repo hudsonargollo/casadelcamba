@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { CONTACT } from "@/lib/contact";
 
-const PROMO_IMAGE = "/imgs/slider4.jpg";
+const PROMO_IMAGE = "/imgs/menu/majao-de-pato.jpeg";
 
 const slideUp = {
   hidden: { opacity: 0, y: 40 },
@@ -25,40 +25,40 @@ export function PromoOverlay() {
           <motion.div variants={slideUp} className="text-center md:text-left">
             <motion.span
               variants={slideUp}
-              className="inline-block rounded-full border border-[rgba(255,199,44,0.6)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-soft"
+              className="inline-block rounded-full border border-[rgba(255,204,4,0.6)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-soft"
             >
-              Promo del día
+              El infaltable
             </motion.span>
 
             <motion.h2
               variants={slideUp}
               className="mt-5 font-display text-4xl font-black leading-tight tracking-tight sm:text-6xl"
             >
-              CHEESE BURGER
+              MAJAO DE PATO
               <br />
               <span className="bg-gradient-to-r from-accent-soft to-accent bg-clip-text text-transparent">
-                A SOLO BS 20
+                A SOLO BS 55
               </span>
             </motion.h2>
 
             <motion.p variants={slideUp} className="mt-4 text-lg text-light/80">
-              Carne a la plancha, queso fundido y papas doradas. Pide hoy en tu sucursal
-              SantaMaria con delivery o retiro en tienda.
+              Arroz batido con pato desmenuzado y urucú, huevo, plátano y yuca frita.
+              Pide hoy en tu sucursal Casa del Camba con delivery o retiro en tienda.
               <br className="hidden sm:block" />
               Pago contra entrega · Sin complicaciones.
             </motion.p>
 
             <motion.div variants={slideUp} className="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
               <Link
-                href="/shop/imperdibles"
-                className="inline-block rounded-full bg-accent px-9 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-brand-deep shadow-[0_14px_34px_-14px_rgba(255,199,44,0.8)] transition hover:bg-accent-soft"
+                href="/shop/platos-tipicos-y-combinados"
+                className="inline-block rounded-full bg-accent px-9 py-3.5 text-sm font-bold uppercase tracking-[0.14em] text-brand-deep shadow-[0_14px_34px_-14px_rgba(255,204,4,0.8)] transition hover:bg-accent-soft"
               >
                 Pedir ahora
               </Link>
               <a
                 href={CONTACT.whatsappUrl || "/contact"}
                 {...(CONTACT.whatsappUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="inline-block rounded-full border border-[rgba(255,199,44,0.55)] px-9 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-light transition hover:border-accent hover:text-accent-soft"
+                className="inline-block rounded-full border border-[rgba(255,204,4,0.55)] px-9 py-3.5 text-sm font-medium uppercase tracking-[0.14em] text-light transition hover:border-accent hover:text-accent-soft"
               >
                 WhatsApp
               </a>
@@ -71,7 +71,7 @@ export function PromoOverlay() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
               src={PROMO_IMAGE}
-              alt="Cheese burgers SantaMaria — promo del día"
+              alt="Majao de pato Casa del Camba — el infaltable de la casa"
               className="max-h-[340px] w-auto rounded-2xl shadow-[0_28px_50px_-18px_rgba(0,0,0,0.65)]"
             />
           </motion.div>
@@ -80,7 +80,7 @@ export function PromoOverlay() {
 
       {/* thin accent hairline */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,199,44,0.6)] to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,204,4,0.6)] to-transparent"
         aria-hidden="true"
       />
     </motion.section>
