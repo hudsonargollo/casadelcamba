@@ -11,8 +11,8 @@ Cloudflare no se usan para el sitio en vivo.
 | Código fuente | `/root/ClubeMkt/casadelcamba` |
 | Build desplegado | `/var/www/casadelcamba` (`server.js`, `.next/`, `public/`) |
 | Servicio | `casadelcamba.service` (systemd) |
-| Puerto interno | `3004` (`PORT` en la unit) |
-| Proxy | nginx `sites-enabled/casadelcamba` → `http://172.17.0.1:3004` |
+| Puerto interno | `3005` (`PORT` en la unit) |
+| Proxy | nginx `sites-enabled/casadelcamba` → `http://172.17.0.1:3005` |
 | Variables de entorno | `EnvironmentFile=/root/ClubeMkt/casadelcamba/.env` |
 | Uploads | `UPLOAD_DIR=/var/www/casadelcamba-data/uploads` |
 | Base de datos | PostgreSQL (`DATABASE_URL` / `DIRECT_URL` en `.env`) |
@@ -39,7 +39,7 @@ El script:
 4. Copia el build standalone a `/var/www/casadelcamba` (sin `node_modules`) y
    sincroniza `public/`.
 5. Limpia `.next/cache` y reinicia `casadelcamba.service`.
-6. Comprueba `http://127.0.0.1:3004/` hasta obtener `200`.
+6. Comprueba `http://127.0.0.1:3005/` hasta obtener `200`.
 
 ## Operación
 
@@ -47,8 +47,8 @@ El script:
 systemctl status casadelcamba.service
 systemctl restart casadelcamba.service
 journalctl -u casadelcamba.service -f
-curl -I http://127.0.0.1:3004/
-curl -s http://127.0.0.1:3004/api/health
+curl -I http://127.0.0.1:3005/
+curl -s http://127.0.0.1:3005/api/health
 ```
 
 `start-store.sh` es solo un respaldo manual para arrancar el build desplegado;
