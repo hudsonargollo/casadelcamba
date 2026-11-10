@@ -18,6 +18,7 @@ import {
   mulberry32,
   normalize,
   project,
+  projectOnMap,
 } from "./city";
 
 export type MapBranch = {
@@ -64,7 +65,7 @@ type PinVisual = {
 
 function pinPosition(branch: MapBranch) {
   if (branch.latitude == null || branch.longitude == null) return null;
-  return project(branch.latitude, branch.longitude);
+  return projectOnMap(branch.latitude, branch.longitude);
 }
 
 /* ------------------------------------------------------------------ */

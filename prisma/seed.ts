@@ -125,21 +125,23 @@ async function main() {
   // WhatsApp order line from the official Linktree (linktr.ee/CasadelCambaExpres3);
   // the full-service restaurants and addresses follow their Google Maps listings,
   // and Camba Muerto's phone/WhatsApp come from its official Facebook page.
-  // Coordinates are used by the storefront to suggest the closest branch.
+  // Coordinates are used by the storefront to suggest the closest branch and to
+  // place every pin on the 3D map. Malls and plazas that no gazetteer knows
+  // (Punto Market, Mega Center) rest on the street or corner they publish.
   const branches = [
     { name: "Central", slug: "central", code: "CC01", address: "Avenida Cristóbal de Mendoza #1365", city: "Santa Cruz de la Sierra", phone: "+591 3 3427864", whatsapp: "59176003875", hours: "Lun–Dom, 11:00 – 23:00", latitude: -17.7699, longitude: -63.1737, sortOrder: 1 },
-    { name: "Urubó", slug: "urubo", code: "CC02", address: "Colinas del Urubó", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 2 },
-    { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", whatsapp: "59178002456", latitude: null, longitude: null, sortOrder: 3 },
-    { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", whatsapp: "59169061542", latitude: null, longitude: null, sortOrder: 4 },
-    { name: "Punto Market", slug: "punto-market", code: "CC05", address: "Punto Market, Ruta Nacional 4", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 5 },
-    { name: "Mega Center", slug: "mega-center", code: "CC06", address: "Mega Center, Av. El Trompillo (Sur)", city: "Santa Cruz de la Sierra", whatsapp: "59169202296", latitude: null, longitude: null, sortOrder: 6 },
-    { name: "Ventura Mall", slug: "ventura-mall", code: "CC07", address: "Ventura Mall", city: "Santa Cruz de la Sierra", whatsapp: "59178511582", latitude: null, longitude: null, sortOrder: 7 },
-    { name: "Makro Parque", slug: "makro-parque", code: "CC08", address: "Makro Parque", city: "Santa Cruz de la Sierra", whatsapp: "59169202586", latitude: null, longitude: null, sortOrder: 8 },
-    { name: "Ice Norte", slug: "ice-norte", code: "CC09", address: "Ice Norte", city: "Santa Cruz de la Sierra", whatsapp: "59162078775", latitude: null, longitude: null, sortOrder: 9 },
-    { name: "Patio Belén", slug: "patio-belen", code: "CC10", address: "Patio Belén", city: "Santa Cruz de la Sierra", whatsapp: "59177676009", latitude: null, longitude: null, sortOrder: 10 },
-    { name: "Busch", slug: "busch", code: "CC11", address: "Av. Busch", city: "Santa Cruz de la Sierra", latitude: null, longitude: null, sortOrder: 11 },
-    { name: "Porongo", slug: "porongo", code: "CC12", address: "Porongo", city: "Porongo", latitude: null, longitude: null, sortOrder: 12 },
-    { name: "La Casa del Camba Muerto", slug: "la-casa-del-camba-muerto", code: "CC13", address: "Av. Canal Guapilo, 7mo anillo, Calle 3 #7", city: "Santa Cruz de la Sierra", phone: "+591 76012093", whatsapp: "59176012093", latitude: null, longitude: null, sortOrder: 13 },
+    { name: "Urubó", slug: "urubo", code: "CC02", address: "Colinas del Urubó", city: "Santa Cruz de la Sierra", latitude: -17.7507, longitude: -63.2164, sortOrder: 2 },
+    { name: "Fidalga", slug: "fidalga", code: "CC03", address: "Av. Fidalga", city: "Santa Cruz de la Sierra", whatsapp: "59178002456", latitude: -17.7765, longitude: -63.1732, sortOrder: 3 },
+    { name: "Las Brisas", slug: "las-brisas", code: "CC04", address: "Las Brisas", city: "Santa Cruz de la Sierra", whatsapp: "59169061542", latitude: -17.7492, longitude: -63.1763, sortOrder: 4 },
+    { name: "Punto Market", slug: "punto-market", code: "CC05", address: "Punto Market, Ruta Nacional 4", city: "Santa Cruz de la Sierra", latitude: -17.7200, longitude: -63.1530, sortOrder: 5 },
+    { name: "Mega Center", slug: "mega-center", code: "CC06", address: "Mega Center, Av. El Trompillo (Sur)", city: "Santa Cruz de la Sierra", whatsapp: "59169202296", latitude: -17.7987, longitude: -63.1780, sortOrder: 6 },
+    { name: "Ventura Mall", slug: "ventura-mall", code: "CC07", address: "Ventura Mall", city: "Santa Cruz de la Sierra", whatsapp: "59178511582", latitude: -17.7544, longitude: -63.1995, sortOrder: 7 },
+    { name: "Makro Parque", slug: "makro-parque", code: "CC08", address: "Makro Parque", city: "Santa Cruz de la Sierra", whatsapp: "59169202586", latitude: -17.7650, longitude: -63.1472, sortOrder: 8 },
+    { name: "Ice Norte", slug: "ice-norte", code: "CC09", address: "Ice Norte", city: "Santa Cruz de la Sierra", whatsapp: "59162078775", latitude: -17.7731, longitude: -63.2037, sortOrder: 9 },
+    { name: "Patio Belén", slug: "patio-belen", code: "CC10", address: "Patio Belén", city: "Santa Cruz de la Sierra", whatsapp: "59177676009", latitude: -17.7452, longitude: -63.1606, sortOrder: 10 },
+    { name: "Busch", slug: "busch", code: "CC11", address: "Av. Busch", city: "Santa Cruz de la Sierra", latitude: -17.7738, longitude: -63.1892, sortOrder: 11 },
+    { name: "Porongo", slug: "porongo", code: "CC12", address: "Porongo", city: "Porongo", latitude: -17.8529, longitude: -63.3083, sortOrder: 12 },
+    { name: "La Casa del Camba Muerto", slug: "la-casa-del-camba-muerto", code: "CC13", address: "Av. Canal Guapilo, 7mo anillo, Calle 3 #7", city: "Santa Cruz de la Sierra", phone: "+591 76012093", whatsapp: "59176012093", latitude: -17.7871, longitude: -63.1352, sortOrder: 13 },
   ];
   const branchIds: string[] = [];
   for (const b of branches) {

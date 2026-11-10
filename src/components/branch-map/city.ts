@@ -51,6 +51,20 @@ export function project(latitude: number, longitude: number) {
   return { x: (u - 0.5) * MAP_SIZE, z: (v - 0.5) * MAP_SIZE };
 }
 
+/**
+ * project() for locations that must stay on the slab. Porongo sits past the
+ * Piraí, outside the area this map draws, so its pin rests on the border
+ * instead of floating in the void beyond it.
+ */
+export function projectOnMap(latitude: number, longitude: number) {
+  const { u, v } = normalize(latitude, longitude);
+  const inset = 0.045;
+  return {
+    x: (Math.min(1 - inset, Math.max(inset, u)) - 0.5) * MAP_SIZE,
+    z: (Math.min(1 - inset, Math.max(inset, v)) - 0.5) * MAP_SIZE,
+  };
+}
+
 export const CITY_CENTER_WORLD = project(CITY_CENTER.latitude, CITY_CENTER.longitude);
 
 export const KM_TO_UNITS = MAP_SIZE / 18; // 18 km across the map
